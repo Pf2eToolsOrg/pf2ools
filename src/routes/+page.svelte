@@ -7,3 +7,7 @@
 		<a class="btn variant-filled-tertiary" href="https://github.com/">GitHub</a>
 	</section>
 </div>
+
+<svelte:head>
+	<title>PF2ools</title>
+</svelte:head>
