@@ -27,7 +27,7 @@
 			<ul>
 				{#each pages as link}
 					<li>
-						<a class:!bg-primary-500={link.href === $page.url.pathname} href={link.href}>
+						<a class:!variant-filled-primary={link.href === $page.url.pathname} href={link.href}>
 							{link.label}
 						</a>
 					</li>
@@ -73,6 +73,6 @@
 <style>
 	.icon {
 		transform: scale(2);
-		margin: 0 2em 0 1.5em;
+		margin: 0 2em 0 1.3em;
 	}
 </style>
