@@ -40,7 +40,7 @@
 				</div>
 			</svelte:fragment>
 
-			<div class="search hidden md:contents">
+			<div class="search hidden md:flex">
 				<Search />
 			</div>
 
@@ -79,12 +79,11 @@
 	.search {
 		margin: auto;
 		width: 50%;
-		padding: 10rem;
 	}
 
 	.search.drawer {
-		width: 100%;
 		margin: 0.5rem;
+		width: auto;
 	}
 
 	.icon {
@@ -92,6 +91,7 @@
 		width: 4rem;
 		min-width: 4rem;
 		margin: 0 1em 0 0;
+		filter: drop-shadow(1px 1px 2px rgb(0 0 0 / 0.4));
 	}
 	.noselect {
 		-webkit-touch-callout: none; /* iOS Safari */
