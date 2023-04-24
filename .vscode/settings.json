@@ -1,9 +1,7 @@
 {
 	"json.schemas": [],
 	"editor.formatOnSave": true,
-	"prettier.documentSelectors": [
-		"**/*.svelte"
-	],
+	"prettier.documentSelectors": ["**/*.svelte"],
 	"tailwindCSS.classAttributes": [
 		"class",
 		"accent",

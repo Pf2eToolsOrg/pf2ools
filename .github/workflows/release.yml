@@ -1,47 +1,47 @@
 name: Create Release
 
 on:
-    push:
-        tags:
-            - "v**"
+  push:
+    tags:
+      - 'v**'
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Extract tag version number
-              id: get_version
-              uses: battila7/get-version-action@v2
+      - name: Extract tag version number
+        id: get_version
+        uses: battila7/get-version-action@v2
 
-            - name: Install Dependencies
-              run: |
-                  node --version
-                  npm --version
-                  npm ci
-                  npm run build
+      - name: Install Dependencies
+        run: |
+          node --version
+          npm --version
+          npm ci
+          npm run build
 
-            - name: Build Site
-              run: npm run build
+      - name: Build Site
+        run: npm run build
 
-            - name: Zip
-              run: zip -r pf2ools.zip build/
+      - name: Zip
+        run: zip -r pf2ools.zip build/
 
-            # Create a release for this specific version
-            # TODO: Automatic changelog
-            - name: Update Release with Files
-              id: create_version_release
-              uses: ncipollo/release-action@v1
-              with:
-                  name: ${{steps.get_version.outputs.version}}
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  artifacts: "./pf2ools.zip"
-                  prerelease: ${{steps.get_version.outputs.major < 1}}
+      # Create a release for this specific version
+      # TODO: Automatic changelog
+      - name: Update Release with Files
+        id: create_version_release
+        uses: ncipollo/release-action@v1
+        with:
+          name: ${{steps.get_version.outputs.version}}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './pf2ools.zip'
+          prerelease: ${{steps.get_version.outputs.major < 1}}
 
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@releases/v4
-              with:
-                  branch: gh-pages
-                  folder: build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: build
