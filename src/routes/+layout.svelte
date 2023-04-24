@@ -4,11 +4,15 @@
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
 	import { AppBar, AppShell, Drawer, LightSwitch, drawerStore } from '@skeletonlabs/skeleton';
+	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 
 	function drawerOpen() {
 		drawerStore.open({});
 	}
 </script>
+
+<!-- Toast -->
+<Toast />
 
 <!-- Mobile Sidebar -->
 <Drawer>
@@ -19,6 +23,7 @@
 	<Navigation />
 </Drawer>
 
+<!-- Where Everything Happens -->
 <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-48">
 	<!-- Desktop Sidebar -->
 	<svelte:fragment slot="sidebarLeft">
