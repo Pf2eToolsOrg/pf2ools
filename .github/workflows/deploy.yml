@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+    workflow_run:
+        workflows: ["Tests"]
+        branches: [main]
+        types:
+            - completed
+
+jobs:
+    release:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Extract tag version number
+              id: get_version
+              uses: battila7/get-version-action@v2
+
+            - name: Install Dependencies
+              run: |
+                  node --version
+                  npm --version
+                  npm ci
+                  npm run build
+
+            - name: Build Site
+              run: npm run build
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v4
+              with:
+                branch: gh-pages
+                folder: build

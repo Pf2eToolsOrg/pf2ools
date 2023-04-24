@@ -9,7 +9,8 @@
 		"test": "playwright test",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"push": ".github/increment-and-tag.sh && git push && git push --tags"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
