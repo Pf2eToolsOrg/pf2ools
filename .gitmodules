@@ -1,0 +1,3 @@
+[submodule "static/data"]
+	path = static/data
+	url = https://github.com/Pf2eToolsOrg/pf2ools-data.git
