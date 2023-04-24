@@ -57,9 +57,9 @@
 			]
 		},
 		{
-			label: 'About',
-			href: '/about',
-			icon: 'about'
+			label: 'Licenses',
+			href: '/licenses',
+			icon: 'fa-file-signature'
 		}
 	];
 </script>
