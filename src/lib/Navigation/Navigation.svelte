@@ -1,8 +1,7 @@
 <script>
-	import { drawerStore } from '@skeletonlabs/skeleton';
-	import NavigationOption from './NavigationOption.svelte';
 	import { page } from '$app/stores';
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
+	import NavigationOption from './NavigationOption.svelte';
 
 	function drawerClose() {
 		drawerStore.close();
