@@ -1,7 +1,6 @@
 <script>
 	import Renderer from '../Renderer.svelte';
 	import TagRenderer from '../TagRenderer.js';
-	import { slide } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	export let entry;
 
@@ -26,7 +25,7 @@
 	{#if !$collapse}
 		{#if entry?.entries?.length > 0}
 			{#each entry.entries as subentry}
-				<p transition:slide={{ duration: 400 }}>
+				<p>
 					<Renderer entries={subentry} />
 				</p>
 			{/each}
