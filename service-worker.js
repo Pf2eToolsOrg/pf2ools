@@ -1,22 +1,22 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.9a8fe8c7.js",
-  t + "/_app/immutable/chunks/0.42332da1.js",
-  t + "/_app/immutable/chunks/1.2af2a87f.js",
+  t + "/_app/immutable/entry/app.ae24fb8e.js",
+  t + "/_app/immutable/chunks/0.533490cb.js",
+  t + "/_app/immutable/chunks/1.5dd6fd2b.js",
   t + "/_app/immutable/chunks/2.b2fcb3d9.js",
-  t + "/_app/immutable/chunks/3.677d17fa.js",
+  t + "/_app/immutable/chunks/3.66e4c3f0.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ec6fbd8a.js",
   t + "/_app/immutable/chunks/index.363b4140.js",
   t + "/_app/immutable/chunks/index.69e6a8df.js",
-  t + "/_app/immutable/chunks/singletons.2a83280a.js",
-  t + "/_app/immutable/chunks/stores.57c101b0.js",
-  t + "/_app/immutable/entry/start.f97285c6.js",
-  t + "/_app/immutable/entry/error.svelte.d566ec5a.js",
+  t + "/_app/immutable/chunks/singletons.ec01ee6d.js",
+  t + "/_app/immutable/chunks/stores.ab14706a.js",
+  t + "/_app/immutable/entry/start.53fc0e04.js",
+  t + "/_app/immutable/entry/error.svelte.ab468019.js",
   t + "/_app/immutable/assets/_layout.d30cdcb1.css",
-  t + "/_app/immutable/entry/_layout.svelte.e5efccf7.js",
+  t + "/_app/immutable/entry/_layout.svelte.e88ac6ed.js",
   t + "/_app/immutable/entry/_page.svelte.c2d11e1c.js",
   t + "/_app/immutable/assets/_page.16c46a82.css",
-  t + "/_app/immutable/entry/licenses-page.svelte.8fd96698.js"
+  t + "/_app/immutable/entry/licenses-page.svelte.ebbe29b2.js"
 ], g = [
   t + "/data/.git",
   t + "/data/.gitignore",
@@ -125,7 +125,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], c = "1682460626278", f = `cache-${c}`, l = [
+], c = "1682461306893", f = `cache-${c}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
