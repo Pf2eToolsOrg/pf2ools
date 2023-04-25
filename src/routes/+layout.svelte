@@ -12,8 +12,6 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import '../css/index.scss';
-	import '@fortawesome/fontawesome-free/css/all.css';
-	import '@fortawesome/fontawesome-free/js/all.js';
 
 	function drawerOpen() {
 		drawerStore.open({});
