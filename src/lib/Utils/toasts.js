@@ -20,6 +20,10 @@ export default class Toasts {
 		this.trigger({ message: message, background: 'variant-filled-success' });
 	}
 
+	warn(message) {
+		this.warning(message)
+	}
+
 	warning(message) {
 		console.warn(message);
 		this.trigger({ message: message, background: 'variant-filled-warning' });

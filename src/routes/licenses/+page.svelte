@@ -34,21 +34,24 @@
 				'13. Termination: This License will terminate automatically if You fail to comply with all terms herein and fail to cure such breach within 30 days of becoming aware of the breach. All sublicenses shall survive the termination of this License.',
 				'14. Reformation: If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable.',
 				'15. COPYRIGHT NOTICE',
-				'{@b {@b Open Game License} v 1.0} © 2000, Wizards of the Coast, Inc.',
-				'{@b {@b System Reference Document}} © 2000. Wizards of the Coast, Inc; Authors: Jonathan Tweet, Monte Cook, Skip Williams, based on material by E. Gary Gygax and Dave Arneson.'
+				'{@b Open Game License v 1.0} © 2000, Wizards of the Coast, Inc.',
+				'{@b System Reference Document} © 2000. Wizards of the Coast, Inc; Authors: Jonathan Tweet, Monte Cook, Skip Williams, based on material by E. Gary Gygax and Dave Arneson.'
 			]
 		},
 		{ type: 'hr' }
 	];
 
-	const sourceEntries = $sources.map((x) => {
-		return {
-			type: 'pf2-h3',
-			name: `{@link ${x.name}|${x.store}} {@note (${x.source})}`,
-			source: x.source,
-			entries: x.entries
-		};
-	});
+	const sourceEntries = $sources
+		.filter((x) => !x.unreleased)
+		.map((x) => {
+			return {
+				type: 'pf2-h3',
+				name: `{@link ${x.name}|${x.store}} {@note (${x.source})}`,
+				source: x.source,
+				entries: x.entries,
+				collapsible: true
+			};
+		});
 
 	const entries = licenseEntries.concat(sourceEntries);
 </script>

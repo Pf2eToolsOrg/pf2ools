@@ -3,6 +3,11 @@
 	import TagRenderer from './TagRenderer.js';
 	import Toast from '$lib/Utils/toasts.js';
 	export let entries;
+	export let options = { noWrap: false };
+
+	if (!Array.isArray(entries)) {
+		entries = [entries];
+	}
 
 	function getComponent(entry) {
 		if (!entry.type) {
@@ -21,8 +26,8 @@
 
 {#each entries as entry}
 	{#if typeof entry === 'string'}
-		<p>{TagRenderer(entry)}</p>
+		{@html TagRenderer(entry, options)}
 	{:else if typeof entry === 'object'}
-		<svelte:component this={getComponent(entry)} {entry} />
+		<svelte:component this={getComponent(entry)} {entry} {options} />
 	{/if}
 {/each}
