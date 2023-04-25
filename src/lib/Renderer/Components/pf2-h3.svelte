@@ -43,7 +43,7 @@
 
 	.pf2-h3 .entry-title-inner {
 		margin: 0;
-		font-family: "Gin",sans-serif;
+		font-family: 'Gin', sans-serif;
 		font-size: 1.2em;
 	}
 

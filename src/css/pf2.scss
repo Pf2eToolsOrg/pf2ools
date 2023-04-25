@@ -1,50 +1,50 @@
 .pf2ools {
-    a {
-        color: #337ab7 !important;
+	a {
+		color: #337ab7 !important;
 
-        html.dark & {
-            color: #7db6e8 !important;
-        }
-    }
+		html.dark & {
+			color: #7db6e8 !important;
+		}
+	}
 
-    .note-muted {
-        color: #777;
-    }
+	.note-muted {
+		color: #777;
+	}
 
-    .pf2-box {
-        position: relative;
-        left: 3%;
-        margin: 1.6em 0 0.6em;
-        padding: 0.6em 1.6em;
-        font-family: 'good-pro', sans-serif;
-        width: 94%;
-        min-width: 120px;
-        border-radius: 2px;
-        font-size: 1em;
-        border-radius: 6px;
+	.pf2-box {
+		position: relative;
+		left: 3%;
+		margin: 1.6em 0 0.6em;
+		padding: 0.6em 1.6em;
+		font-family: 'good-pro', sans-serif;
+		width: 94%;
+		min-width: 120px;
+		border-radius: 2px;
+		font-size: 1em;
+		border-radius: 6px;
 
-        &.red {
-            background-color: #5e0000;
-            fill: #5e0000;
-            color: #fff;
+		&.red {
+			background-color: #5e0000;
+			fill: #5e0000;
+			color: #fff;
 
-            html.dark & {
-                background-color: #472c2c;
-                fill: #472c2c;
-                color: #c9c9c9;
-            }
-        }
+			html.dark & {
+				background-color: #472c2c;
+				fill: #472c2c;
+				color: #c9c9c9;
+			}
+		}
 
-        & .title {
-            position: relative;
-            z-index: 2;
-            left: 0;
-            padding: 0 0.3em;
-            display: block;
-            font-weight: bold;
-            font-size: 1.22em;
-            text-transform: uppercase;
-            text-align: center;
-        }
-    }
+		& .title {
+			position: relative;
+			z-index: 2;
+			left: 0;
+			padding: 0 0.3em;
+			display: block;
+			font-weight: bold;
+			font-size: 1.22em;
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
 }
