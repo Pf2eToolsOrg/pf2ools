@@ -1,22 +1,22 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.ae24fb8e.js",
-  t + "/_app/immutable/chunks/0.533490cb.js",
-  t + "/_app/immutable/chunks/1.5dd6fd2b.js",
+  t + "/_app/immutable/entry/app.95cbe628.js",
+  t + "/_app/immutable/chunks/0.b123c889.js",
+  t + "/_app/immutable/chunks/1.476cc3c5.js",
   t + "/_app/immutable/chunks/2.b2fcb3d9.js",
-  t + "/_app/immutable/chunks/3.66e4c3f0.js",
+  t + "/_app/immutable/chunks/3.4f5087c9.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
-  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ec6fbd8a.js",
+  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ba5a522f.js",
   t + "/_app/immutable/chunks/index.363b4140.js",
   t + "/_app/immutable/chunks/index.69e6a8df.js",
-  t + "/_app/immutable/chunks/singletons.ec01ee6d.js",
-  t + "/_app/immutable/chunks/stores.ab14706a.js",
-  t + "/_app/immutable/entry/start.53fc0e04.js",
-  t + "/_app/immutable/entry/error.svelte.ab468019.js",
+  t + "/_app/immutable/chunks/singletons.4a8eff87.js",
+  t + "/_app/immutable/chunks/stores.8391a1d0.js",
+  t + "/_app/immutable/entry/start.0b711570.js",
+  t + "/_app/immutable/entry/error.svelte.d76b6026.js",
   t + "/_app/immutable/assets/_layout.d30cdcb1.css",
-  t + "/_app/immutable/entry/_layout.svelte.e88ac6ed.js",
+  t + "/_app/immutable/entry/_layout.svelte.038753df.js",
   t + "/_app/immutable/entry/_page.svelte.c2d11e1c.js",
   t + "/_app/immutable/assets/_page.16c46a82.css",
-  t + "/_app/immutable/entry/licenses-page.svelte.ebbe29b2.js"
+  t + "/_app/immutable/entry/licenses-page.svelte.c5d0339a.js"
 ], g = [
   t + "/data/.git",
   t + "/data/.gitignore",
@@ -125,7 +125,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], c = "1682461306893", f = `cache-${c}`, l = [
+], c = "1682464504203", f = `cache-${c}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
