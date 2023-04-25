@@ -1,8 +1,7 @@
 <script>
-	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import Renderer from '../../lib/Renderer/Renderer.svelte';
 	export let data;
-	const sources = localStorageStore('sources', data.sources);
+	const sources = data.sources;
 
 	const licenseEntries = [
 		{
@@ -41,7 +40,7 @@
 		{ type: 'hr' }
 	];
 
-	const sourceEntries = $sources
+	const sourceEntries = sources
 		.filter((x) => !x.unreleased)
 		.map((x) => {
 			return {

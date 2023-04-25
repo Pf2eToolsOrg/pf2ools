@@ -13,6 +13,7 @@
 		"release": ".github/increment-and-tag.sh && git push && git push --tags"
 	},
 	"devDependencies": {
+		"@github/hotkey": "^2.0.1",
 		"@playwright/test": "^1.28.1",
 		"@skeletonlabs/skeleton": "^1.2.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
