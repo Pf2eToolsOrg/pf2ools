@@ -6,7 +6,7 @@
 
 <div>
 	{#if entry.name}
-		<span>{@html TagRenderer(entry.name)}</span>
+		<span class="text-2xl font-bold">{@html TagRenderer(entry.name)}</span>
 	{/if}
 	{#if entry?.entries?.length > 0}
 		<div>

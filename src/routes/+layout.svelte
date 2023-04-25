@@ -1,10 +1,17 @@
 <script>
-	import '@skeletonlabs/skeleton/styles/all.css';
-	import '../app.postcss';
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
-	import { AppBar, AppShell, Drawer, LightSwitch, drawerStore } from '@skeletonlabs/skeleton';
-	import { Toast, toastStore } from '@skeletonlabs/skeleton';
+	import {
+		AppBar,
+		AppShell,
+		Drawer,
+		LightSwitch,
+		Toast,
+		drawerStore
+	} from '@skeletonlabs/skeleton';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '../app.postcss';
+	import '../css/index.scss';
 
 	function drawerOpen() {
 		drawerStore.open({});

@@ -15,11 +15,11 @@
 <div>
 	<p>
 		{#if entry.name}
-			<span>{@html TagRenderer(entry.name)}</span>
+			<h3>{@html TagRenderer(entry.name)}</h3>
 		{/if}
 		{#if entry.collapsible}
 			<button on:keypress on:click={click}>
-				{$collapse ? '[+]' : '[-]'}
+				{$collapse ? '[+]' : '[\u2012]'}
 			</button>
 		{/if}
 	</p>
