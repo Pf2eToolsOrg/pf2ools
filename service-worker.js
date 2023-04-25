@@ -1,64 +1,76 @@
-const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), p = [
-  a + "/_app/immutable/entry/app.4f1ffc8e.js",
-  a + "/_app/immutable/chunks/0.66cbfd71.js",
-  a + "/_app/immutable/chunks/1.82154872.js",
-  a + "/_app/immutable/chunks/2.de758367.js",
-  a + "/_app/immutable/chunks/3.02d19520.js",
-  a + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
-  a + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.daa0fa4c.js",
-  a + "/_app/immutable/chunks/index.a70da5a2.js",
-  a + "/_app/immutable/chunks/index.e03c40d8.js",
-  a + "/_app/immutable/chunks/singletons.1d1ec8c1.js",
-  a + "/_app/immutable/chunks/stores.bd6c9cb4.js",
-  a + "/_app/immutable/entry/start.78c52f46.js",
-  a + "/_app/immutable/entry/error.svelte.83cf3635.js",
-  a + "/_app/immutable/assets/_layout.b1486cbb.css",
-  a + "/_app/immutable/entry/_layout.svelte.427e313a.js",
-  a + "/_app/immutable/entry/_page.svelte.a8cc7ed7.js",
-  a + "/_app/immutable/entry/licenses-page.svelte.d9b2ffd7.js"
-], u = [
-  a + "/data/.git",
-  a + "/data/.gitignore",
-  a + "/data/CUP.license",
-  a + "/data/LICENSE",
-  a + "/data/README.md",
-  a + "/data/core/sources.json",
-  a + "/fonts/Quicksand.ttf",
-  a + "/icons/Background.svg",
-  a + "/icons/NoBackground.svg",
-  a + "/icons/safari-pinned-tab.svg"
-], r = "1682367866056", i = `cache-${r}`, l = [
-  ...p,
+const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), l = [
+  t + "/_app/immutable/entry/app.9fbfebd0.js",
+  t + "/_app/immutable/chunks/0.44448528.js",
+  t + "/_app/immutable/chunks/1.412a745d.js",
+  t + "/_app/immutable/chunks/2.b2fcb3d9.js",
+  t + "/_app/immutable/chunks/3.32d7f98c.js",
+  t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
+  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ec6fbd8a.js",
+  t + "/_app/immutable/chunks/index.363b4140.js",
+  t + "/_app/immutable/chunks/index.69e6a8df.js",
+  t + "/_app/immutable/chunks/singletons.af903bb2.js",
+  t + "/_app/immutable/chunks/stores.e4e41364.js",
+  t + "/_app/immutable/entry/start.79a1f2f5.js",
+  t + "/_app/immutable/entry/error.svelte.49f5b175.js",
+  t + "/_app/immutable/assets/_layout.847b8748.css",
+  t + "/_app/immutable/entry/_layout.svelte.b900e3b9.js",
+  t + "/_app/immutable/entry/_page.svelte.c2d11e1c.js",
+  t + "/_app/immutable/entry/licenses-page.svelte.490796ae.js"
+], f = [
+  t + "/data/.git",
+  t + "/data/.gitignore",
+  t + "/data/CUP.license",
+  t + "/data/LICENSE",
+  t + "/data/README.md",
+  t + "/data/core/sources.json",
+  t + "/fonts/Gin-Regular.ttf",
+  t + "/fonts/Pathfinder2eActions.ttf",
+  t + "/fonts/Quicksand.ttf",
+  t + "/fonts/Roboto-regular.ttf",
+  t + "/fonts/Sabon-Bold.ttf",
+  t + "/fonts/Sabon-BoldItalic.ttf",
+  t + "/fonts/Sabon-Italic.ttf",
+  t + "/fonts/Sabon-Roman.ttf",
+  t + "/fonts/SabonLTStd-Bold.ttf",
+  t + "/fonts/SabonLTStd-BoldItalic.ttf",
+  t + "/fonts/SabonLTStd-Italic.ttf",
+  t + "/fonts/SabonLTStd-Roman.ttf",
+  t + "/fonts/Taroca.ttf",
+  t + "/icons/Background.svg",
+  t + "/icons/NoBackground.svg",
+  t + "/icons/safari-pinned-tab.svg"
+], r = "1682441752900", o = `cache-${r}`, i = [
+  ...l,
   // the app itself
-  ...u.filter((e) => !e.startsWith("/data"))
+  ...f.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
-self.addEventListener("install", (e) => {
-  async function t() {
-    await (await caches.open(i)).addAll(l);
+self.addEventListener("install", (a) => {
+  async function s() {
+    await (await caches.open(o)).addAll(i);
   }
-  e.waitUntil(t());
+  a.waitUntil(s());
 });
-self.addEventListener("activate", (e) => {
-  async function t() {
-    for (const s of await caches.keys())
-      s !== i && await caches.delete(s);
+self.addEventListener("activate", (a) => {
+  async function s() {
+    for (const e of await caches.keys())
+      e !== o && await caches.delete(e);
   }
-  e.waitUntil(t());
+  a.waitUntil(s());
 });
-self.addEventListener("fetch", (e) => {
-  if (e.request.method !== "GET")
+self.addEventListener("fetch", (a) => {
+  if (a.request.method !== "GET")
     return;
-  async function t() {
-    const s = new URL(e.request.url), c = await caches.open(i);
-    if (l.includes(s.pathname))
-      return c.match(s.pathname);
+  async function s() {
+    const e = new URL(a.request.url), n = await caches.open(o);
+    if (i.includes(e.pathname))
+      return n.match(e.pathname);
     try {
-      const n = await fetch(e.request);
-      return n.status === 200 && c.put(e.request, n.clone()), n;
+      const c = await fetch(a.request);
+      return c.status === 200 && n.put(a.request, c.clone()), c;
     } catch {
-      return c.match(e.request);
+      return n.match(a.request);
     }
   }
-  e.respondWith(t());
+  a.respondWith(s());
 });
