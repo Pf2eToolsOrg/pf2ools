@@ -13,9 +13,9 @@
 </script>
 
 <div>
-	<p>
+	<p class="pf2-h3 flex">
 		{#if entry.name}
-			<span>{@html TagRenderer(entry.name)}</span>
+			<span class="entry-title-inner">{@html TagRenderer(entry.name)}</span>
 		{/if}
 		{#if entry.collapsible}
 			<button class="ml-auto" on:keypress on:click={click}>
@@ -33,3 +33,21 @@
 		{/if}
 	{/if}
 </div>
+
+<style>
+	.pf2-h3 {
+		display: flex;
+		align-items: center;
+		margin: 0;
+	}
+
+	.pf2-h3 .entry-title-inner {
+		margin: 0;
+		font-family: "Gin",sans-serif;
+		font-size: 1.2em;
+	}
+
+	.pf2-h3 button {
+		user-select: none;
+	}
+</style>
