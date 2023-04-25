@@ -1,31 +1,23 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.9b4bcd3d.js",
-  t + "/_app/immutable/chunks/0.c56273c7.js",
-  t + "/_app/immutable/chunks/1.49ddcf08.js",
+  t + "/_app/immutable/entry/app.9a8fe8c7.js",
+  t + "/_app/immutable/chunks/0.42332da1.js",
+  t + "/_app/immutable/chunks/1.2af2a87f.js",
   t + "/_app/immutable/chunks/2.b2fcb3d9.js",
   t + "/_app/immutable/chunks/3.677d17fa.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ec6fbd8a.js",
   t + "/_app/immutable/chunks/index.363b4140.js",
   t + "/_app/immutable/chunks/index.69e6a8df.js",
-  t + "/_app/immutable/chunks/singletons.8354a009.js",
-  t + "/_app/immutable/chunks/stores.6d7e77ce.js",
-  t + "/_app/immutable/assets/fa-brands-400.20c4a58b.ttf",
-  t + "/_app/immutable/assets/fa-brands-400.74833209.woff2",
-  t + "/_app/immutable/assets/fa-regular-400.528d022d.ttf",
-  t + "/_app/immutable/assets/fa-regular-400.8e7e5ea1.woff2",
-  t + "/_app/immutable/assets/fa-solid-900.67a65763.ttf",
-  t + "/_app/immutable/assets/fa-solid-900.7152a693.woff2",
-  t + "/_app/immutable/assets/fa-v4compatibility.0515a423.ttf",
-  t + "/_app/immutable/assets/fa-v4compatibility.694a17c3.woff2",
-  t + "/_app/immutable/entry/start.5f1f6bf3.js",
-  t + "/_app/immutable/entry/error.svelte.fa434491.js",
-  t + "/_app/immutable/assets/_layout.d5d63895.css",
-  t + "/_app/immutable/entry/_layout.svelte.3bd6bda4.js",
+  t + "/_app/immutable/chunks/singletons.2a83280a.js",
+  t + "/_app/immutable/chunks/stores.57c101b0.js",
+  t + "/_app/immutable/entry/start.f97285c6.js",
+  t + "/_app/immutable/entry/error.svelte.d566ec5a.js",
+  t + "/_app/immutable/assets/_layout.d30cdcb1.css",
+  t + "/_app/immutable/entry/_layout.svelte.e5efccf7.js",
   t + "/_app/immutable/entry/_page.svelte.c2d11e1c.js",
   t + "/_app/immutable/assets/_page.16c46a82.css",
   t + "/_app/immutable/entry/licenses-page.svelte.8fd96698.js"
-], i = [
+], g = [
   t + "/data/.git",
   t + "/data/.gitignore",
   t + "/data/CUP.license",
@@ -133,38 +125,38 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], g = "1682459455529", f = `cache-${g}`, l = [
+], c = "1682460626278", f = `cache-${c}`, l = [
   ...r,
   // the app itself
-  ...i.filter((a) => !a.startsWith("/data"))
+  ...g.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (a) => {
-  async function s() {
+  async function n() {
     await (await caches.open(f)).addAll(l);
   }
-  a.waitUntil(s());
+  a.waitUntil(n());
 });
 self.addEventListener("activate", (a) => {
-  async function s() {
+  async function n() {
     for (const o of await caches.keys())
       o !== f && await caches.delete(o);
   }
-  a.waitUntil(s());
+  a.waitUntil(n());
 });
 self.addEventListener("fetch", (a) => {
-  if (a.request.method !== "GET")
+  if (a.request.method !== "GET" || !a.request.url.startsWith("http"))
     return;
-  async function s() {
-    const o = new URL(a.request.url), n = await caches.open(f);
+  async function n() {
+    const o = new URL(a.request.url), s = await caches.open(f);
     if (l.includes(o.pathname))
-      return n.match(o.pathname);
+      return s.match(o.pathname);
     try {
       const e = await fetch(a.request);
-      return e.status === 200 && n.put(a.request, e.clone()), e;
+      return e.status === 200 && s.put(a.request, e.clone()), e;
     } catch {
-      return n.match(a.request);
+      return s.match(a.request);
     }
   }
-  a.respondWith(s());
+  a.respondWith(n());
 });
