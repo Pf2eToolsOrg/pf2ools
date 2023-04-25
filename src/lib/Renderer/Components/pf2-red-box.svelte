@@ -5,9 +5,9 @@
 </script>
 
 <div class="flex">
-	<div>
+	<div class="pf2-box red">
 		{#if entry.name}
-			<span class="text-2xl font-bold">{@html TagRenderer(entry.name)}</span>
+			<span class="title">{@html TagRenderer(entry.name)}</span>
 		{/if}
 		{#if entry?.entries?.length > 0}
 			<div>

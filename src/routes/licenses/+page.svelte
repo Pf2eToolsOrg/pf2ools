@@ -60,6 +60,6 @@
 	<title>PF2ools - Licenses</title>
 </svelte:head>
 
-<div class="container mx-auto p-8 space-y-8">
+<div class="container mx-auto p-8 space-y-8 pf2ools">
 	<Renderer {entries} />
 </div>

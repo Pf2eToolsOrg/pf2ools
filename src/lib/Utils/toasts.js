@@ -21,7 +21,7 @@ export default class Toasts {
 	}
 
 	warn(message) {
-		this.warning(message)
+		this.warning(message);
 	}
 
 	warning(message) {

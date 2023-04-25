@@ -15,10 +15,10 @@
 <div>
 	<p>
 		{#if entry.name}
-			<h3>{@html TagRenderer(entry.name)}</h3>
+			<span>{@html TagRenderer(entry.name)}</span>
 		{/if}
 		{#if entry.collapsible}
-			<button on:keypress on:click={click}>
+			<button class="ml-auto" on:keypress on:click={click}>
 				{$collapse ? '[+]' : '[\u2012]'}
 			</button>
 		{/if}
