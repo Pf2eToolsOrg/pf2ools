@@ -25,7 +25,7 @@
 	{#if !collapse}
 		{#if entry?.entries?.length > 0}
 			{#each entry.entries as subentry}
-				<p transition:fly="{{ y: -10, duration: 500 }}">
+				<p transition:fly={{ y: -10, duration: 500 }}>
 					<Renderer entries={subentry} />
 				</p>
 			{/each}

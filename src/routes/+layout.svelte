@@ -21,7 +21,7 @@
 <Toast />
 
 <!-- Mobile Sidebar -->
-<Drawer duration=250 >
+<Drawer duration="250">
 	<div class="search drawer">
 		<Search />
 	</div>
