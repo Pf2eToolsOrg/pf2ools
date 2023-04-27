@@ -12,6 +12,7 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import '../css/index.scss';
+	import { fly } from 'svelte/transition';
 
 	function drawerOpen() {
 		drawerStore.open({});
@@ -22,7 +23,7 @@
 <Toast />
 
 <!-- Mobile Sidebar -->
-<Drawer>
+<Drawer duration=250 >
 	<div class="search drawer">
 		<Search />
 	</div>
@@ -31,7 +32,7 @@
 </Drawer>
 
 <!-- Where Everything Happens -->
-<AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-48">
+<AppShell slotSidebarLeft="bg-surface-500/5 w-0 md:w-56">
 	<!-- Desktop Sidebar -->
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />

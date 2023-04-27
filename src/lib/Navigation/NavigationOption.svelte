@@ -3,6 +3,8 @@
 	export let link = {};
 	export let openFunction;
 	export let selected = false;
+	import Fa from 'svelte-fa'
+	import * as fort from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <a
@@ -10,5 +12,6 @@
 	class:!variant-ghost-surface={selected || link.href === $page.url.pathname}
 	href={link.href}
 >
-	{link.label}
+	<Fa icon={fort[link.icon]} />
+	<span>{link.label}</span>
 </a>

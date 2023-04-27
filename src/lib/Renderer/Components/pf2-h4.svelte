@@ -1,32 +1,31 @@
 <script>
 	import Renderer from '../Renderer.svelte';
 	import TagRenderer from '../TagRenderer.js';
-	import { slide } from 'svelte/transition';
-	import { writable } from 'svelte/store';
+	import { fly } from 'svelte/transition';
 	export let entry;
 
-	let collapse = writable(false);
+	let collapse = false;
 
 	function click() {
-		$collapse = !$collapse;
+		collapse = !collapse;
 	}
 </script>
 
 <div>
 	<p>
 		{#if entry.name}
-			<h4>{@html TagRenderer(entry.name)}</h4>
+			<span class="h4 font-gin">{@html TagRenderer(entry.name)}</span>
 		{/if}
 		{#if entry.collapsible}
-			<button on:keypress on:click={click}>
-				{$collapse ? '[+]' : '[\u2012]'}
+			<button class="ml-auto select-none" on:keypress on:click={click}>
+				{collapse ? '[+]' : '[\u2012]'}
 			</button>
 		{/if}
 	</p>
-	{#if !$collapse}
+	{#if !collapse}
 		{#if entry?.entries?.length > 0}
 			{#each entry.entries as subentry}
-				<p transition:slide={{ duration: 400 }}>
+				<p transition:fly="{{ y: -10, duration: 500 }}">
 					<Renderer entries={subentry} />
 				</p>
 			{/each}

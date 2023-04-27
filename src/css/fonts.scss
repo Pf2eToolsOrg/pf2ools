@@ -1,3 +1,55 @@
+.font {
+	&-gin {
+		@extend .font;
+		font-family: 'gin', sans-serif;
+	}
+
+	&-good-pro {
+		@extend .font;
+		font-family: 'good-pro', sans-serif;
+	}
+
+	&-good-pro-condensed {
+		@extend .font;
+		font-family: 'good-pro-condensed', sans-serif;
+	}
+
+	&-action {
+		@extend .font;
+		font-family: 'pathfinder2eactions', sans-serif;
+	}
+
+	&-dax {
+		@extend .font;
+		font-family: 'dax', sans-serif;
+	}
+
+	&-sabon {
+		@extend .font;
+		font-family: 'sabon', sans-serif;
+	}
+
+	&-taroca {
+		@extend .font;
+		font-family: 'taroca', sans-serif;
+	}
+
+	&-sabonltstd {
+		@extend .font;
+		font-family: 'sabonltstd', sans-serif;
+	}
+
+	&-basing {
+		@extend .font;
+		font-family: 'basing', sans-serif;
+	}
+
+	&-albertus {
+		@extend .font;
+		font-family: 'albertus', sans-serif;
+	}
+}
+
 @font-face {
 	font-family: 'quicksand';
 	src: url('/fonts/Quicksand.ttf');

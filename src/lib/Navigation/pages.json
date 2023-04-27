@@ -1,0 +1,24 @@
+[
+    {
+        "label": "Home",
+        "href": "/",
+        "icon": "faHome"
+    },
+    {
+        "label": "Utilities",
+        "icon": "faBars",
+        "pages": [
+            {
+                "label": "Renderer Demo",
+                "href": "/renderer",
+                "disabled": true,
+                "icon": "faTextHeight"
+            },
+            {
+                "label": "Licenses",
+                "href": "/licenses",
+                "icon": "faFileSignature"
+            }
+        ]
+    }
+]

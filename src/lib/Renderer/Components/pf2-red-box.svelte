@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex">
-	<div class="pf2-box red">
+	<div class="box red">
 		{#if entry.name}
 			<span class="title">{@html TagRenderer(entry.name)}</span>
 		{/if}
