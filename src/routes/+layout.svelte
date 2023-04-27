@@ -12,8 +12,6 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import '../css/index.scss';
-	import { fly } from 'svelte/transition';
-
 	function drawerOpen() {
 		drawerStore.open({});
 	}
