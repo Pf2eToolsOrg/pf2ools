@@ -1,10 +1,10 @@
 <script>
 	import { page } from '$app/stores';
+	import * as fort from '@fortawesome/free-solid-svg-icons';
 	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
+	import Fa from 'svelte-fa';
 	import NavigationOption from './NavigationOption.svelte';
 	import pages from './pages.json';
-	import * as fort from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
 
 	function drawerClose() {
 		drawerStore.close();

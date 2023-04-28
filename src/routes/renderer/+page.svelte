@@ -1,7 +1,6 @@
 <script>
-	import Renderer from '../../lib/Renderer/Renderer.svelte';
-	import { CodeBlock } from '@skeletonlabs/skeleton';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import Renderer from '../../lib/Renderer/Renderer.svelte';
 	export let data;
 	const renderdemo = data.renderdemo;
 	const store = localStorageStore('renderdemo', renderdemo);

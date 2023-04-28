@@ -1,7 +1,7 @@
 <script>
+	import { fly } from 'svelte/transition';
 	import Renderer from '../Renderer.svelte';
 	import TagRenderer from '../TagRenderer.js';
-	import { fly } from 'svelte/transition';
 	export let entry;
 
 	let collapse = false;

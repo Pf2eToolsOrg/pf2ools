@@ -1,7 +1,7 @@
 <script>
+	import Toast from '$lib/Utils/toasts.js';
 	import * as Components from './Components/index.js';
 	import TagRenderer from './TagRenderer.js';
-	import Toast from '$lib/Utils/toasts.js';
 	export let entries;
 	export let options = { noWrap: false };
 
