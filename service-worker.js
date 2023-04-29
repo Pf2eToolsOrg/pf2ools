@@ -1,25 +1,27 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.fd977835.js",
-  t + "/_app/immutable/chunks/0.2cdb3d1c.js",
-  t + "/_app/immutable/chunks/1.c77a4da0.js",
-  t + "/_app/immutable/chunks/2.b2fcb3d9.js",
-  t + "/_app/immutable/chunks/3.0b3e9ea3.js",
-  t + "/_app/immutable/chunks/4.e164d2dc.js",
+  t + "/_app/immutable/entry/app.b32e6d3e.js",
+  t + "/_app/immutable/chunks/0.6b791bd6.js",
+  t + "/_app/immutable/chunks/1.2837f311.js",
+  t + "/_app/immutable/chunks/2.de758367.js",
+  t + "/_app/immutable/chunks/3.a1476d6a.js",
+  t + "/_app/immutable/chunks/4.a5090d75.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
-  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.ec6fbd8a.js",
-  t + "/_app/immutable/chunks/Renderer.bf7392e5.js",
-  t + "/_app/immutable/chunks/index.363b4140.js",
-  t + "/_app/immutable/chunks/index.69e6a8df.js",
-  t + "/_app/immutable/chunks/singletons.620788fd.js",
-  t + "/_app/immutable/chunks/stores.77d55ccb.js",
-  t + "/_app/immutable/entry/start.c235da5f.js",
-  t + "/_app/immutable/entry/error.svelte.b3802f27.js",
-  t + "/_app/immutable/assets/_layout.0d6099a5.css",
-  t + "/_app/immutable/entry/_layout.svelte.89dadd21.js",
-  t + "/_app/immutable/entry/_page.svelte.c2d11e1c.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.598832e4.js",
-  t + "/_app/immutable/entry/renderer-page.svelte.62a7e37d.js"
-], g = [
+  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.daa0fa4c.js",
+  t + "/_app/immutable/chunks/Renderer.ad03eb92.js",
+  t + "/_app/immutable/chunks/_layout.e4a84b88.js",
+  t + "/_app/immutable/chunks/index.a70da5a2.js",
+  t + "/_app/immutable/chunks/index.e03c40d8.js",
+  t + "/_app/immutable/chunks/singletons.75066051.js",
+  t + "/_app/immutable/chunks/stores.ca73b164.js",
+  t + "/_app/immutable/entry/start.fd02bf63.js",
+  t + "/_app/immutable/entry/error.svelte.23bc1b1b.js",
+  t + "/_app/immutable/assets/_layout.f94f404e.css",
+  t + "/_app/immutable/entry/_layout.js.7dbd68f0.js",
+  t + "/_app/immutable/entry/_layout.svelte.a985320d.js",
+  t + "/_app/immutable/entry/_page.svelte.a8cc7ed7.js",
+  t + "/_app/immutable/entry/licenses-page.svelte.db5e9dbb.js",
+  t + "/_app/immutable/entry/renderer-page.svelte.436c8b0e.js"
+], i = [
   t + "/data/.git",
   t + "/data/.gitignore",
   t + "/data/CUP.license",
@@ -128,10 +130,10 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], c = "1682702651840", f = `cache-${c}`, l = [
+], g = "1682811085424", f = `cache-${g}`, l = [
   ...r,
   // the app itself
-  ...g.filter((a) => !a.startsWith("/data"))
+  ...i.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (a) => {
