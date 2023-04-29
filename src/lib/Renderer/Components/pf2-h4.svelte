@@ -1,5 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import Renderer from '../Renderer.svelte';
 	import TagRenderer from '../TagRenderer.js';
 	export let entry;
@@ -25,7 +24,7 @@
 	{#if !collapse}
 		{#if entry?.entries?.length > 0}
 			{#each entry.entries as subentry}
-				<p transition:fly={{ y: -10, duration: 500 }}>
+				<p>
 					<Renderer entries={subentry} />
 				</p>
 			{/each}

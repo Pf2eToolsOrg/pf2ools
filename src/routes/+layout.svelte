@@ -63,6 +63,14 @@
 				<div class="hidden md:contents">
 					<a
 						class="btn btn-sm ml-2 variant-ghost-surface noselect"
+						href="https://ko-fi.com/mrvauxs"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Donations
+					</a>
+					<a
+						class="btn btn-sm ml-2 variant-ghost-surface noselect"
 						href="https://discord.gg/2hzNxErtVu"
 						target="_blank"
 						rel="noreferrer"

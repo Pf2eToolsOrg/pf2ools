@@ -1,5 +1,5 @@
 <script>
-	import Renderer from '../../lib/Renderer/Renderer.svelte';
+	import Renderer from '$lib/Renderer/Renderer.svelte';
 	export let data;
 	const sources = data.sources;
 
