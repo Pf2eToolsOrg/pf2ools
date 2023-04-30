@@ -1,33 +1,26 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.0d5b72ba.js",
-  t + "/_app/immutable/chunks/0.767e7ed7.js",
-  t + "/_app/immutable/chunks/1.10e11e1a.js",
+  t + "/_app/immutable/entry/app.9a266068.js",
+  t + "/_app/immutable/chunks/0.bfe4c17e.js",
+  t + "/_app/immutable/chunks/1.946f8b2c.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
-  t + "/_app/immutable/chunks/3.b0df116b.js",
-  t + "/_app/immutable/chunks/4.27805f16.js",
+  t + "/_app/immutable/chunks/3.1aa13b07.js",
+  t + "/_app/immutable/chunks/4.919b75d6.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.98b4d183.js",
   t + "/_app/immutable/chunks/Renderer.069317b1.js",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.220e4899.js",
-  t + "/_app/immutable/chunks/stores.38336b98.js",
-  t + "/_app/immutable/entry/start.eb37c7fd.js",
-  t + "/_app/immutable/entry/error.svelte.8f559432.js",
+  t + "/_app/immutable/chunks/singletons.36234911.js",
+  t + "/_app/immutable/chunks/stores.db7f4e87.js",
+  t + "/_app/immutable/entry/start.c7cac3f5.js",
+  t + "/_app/immutable/entry/error.svelte.9fe4a13f.js",
   t + "/_app/immutable/assets/_layout.ec70db6c.css",
-  t + "/_app/immutable/entry/_layout.svelte.f2977f2d.js",
+  t + "/_app/immutable/entry/_layout.svelte.c1bba087.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.69c489d1.js",
+  t + "/_app/immutable/entry/licenses-page.svelte.22219b56.js",
   t + "/_app/immutable/assets/_page.c7dd0539.css",
-  t + "/_app/immutable/entry/renderer-page.svelte.163cda7b.js"
+  t + "/_app/immutable/entry/renderer-page.svelte.6584e305.js"
 ], g = [
-  t + "/data/.git",
-  t + "/data/.gitignore",
-  t + "/data/CUP.license",
-  t + "/data/LICENSE",
-  t + "/data/README.md",
-  t + "/data/core/renderdemo.json",
-  t + "/data/core/sources.json",
   t + "/fonts/AlbertusMT.ttf",
   t + "/fonts/Basing.ttf",
   t + "/fonts/Blambot-Casual-Regular.ttf",
@@ -129,7 +122,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], i = "1682878093029", f = `cache-${i}`, l = [
+], c = "1682879069817", f = `cache-${c}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
