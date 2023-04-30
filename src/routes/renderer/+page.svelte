@@ -1,11 +1,13 @@
 <script>
 	import { renderdemo } from '$data/renderdemo.json';
-	import { localStorageStore } from '@skeletonlabs/skeleton';
-	import CodeMirror from 'svelte-codemirror-editor';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
-	import { oneDark } from '@codemirror/theme-one-dark';
-	import { EditorView } from 'codemirror';
 	import { json } from '@codemirror/lang-json';
+	import { oneDark } from '@codemirror/theme-one-dark';
+	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+	import { localStorageStore, modeUserPrefers } from '@skeletonlabs/skeleton';
+	import { EditorView } from 'codemirror';
+	import CodeMirror from 'svelte-codemirror-editor';
+	import Fa from 'svelte-fa';
 
 	const store = localStorageStore('renderdemo', JSON.stringify(renderdemo[0], null, 2));
 
@@ -20,6 +22,10 @@
 		rendered = [JSON.parse(value)];
 	}
 
+	function refreshCode() {
+		$store = JSON.stringify(renderdemo[0], null, 2);
+	}
+
 	$: checkAndUpdateJson($store);
 </script>
 
@@ -27,28 +33,42 @@
 	<title>PF2ools - Renderer Demo</title>
 </svelte:head>
 
-<!-- FIXME: This is hell to center and widen properly -->
-<div class="pf2ools md:flex">
-	<div class=" p-2">
-		<CodeMirror
-			bind:value={$store}
-			lang={json()}
-			theme={oneDark}
-			styles={{
-				'&': {
-					height: '90vh',
-					width: '100vh'
-				}
-			}}
-			extensions={[EditorView.lineWrapping]}
-		/>
+<div class="pf2ools md:flex flex-row">
+	<div class="md:w-2/4">
+		<div class="view-col variant-ghost-surface">
+			<CodeMirror
+				bind:value={$store}
+				lang={json()}
+				theme={$modeUserPrefers ? null : oneDark}
+				extensions={[EditorView.lineWrapping]}
+			/>
+		</div>
+		<button
+			type="button"
+			class="mx-2 mb-2 btn variant-ghost-surface float-right"
+			on:click={refreshCode}
+		>
+			<span><Fa icon={faRefresh} /></span>
+			<span>Reset</span>
+		</button>
 	</div>
-	<div class="render p-2"><Renderer entries={rendered} /></div>
+	<div class="render md:w-2/4 view-col font-sabonltstd variant-ghost-surface px-2">
+		<Renderer entries={rendered} />
+	</div>
 </div>
 
 <style>
+	.view-col {
+		position: relative;
+		margin: 0.5em;
+		display: flex;
+		flex-direction: column;
+		height: calc(100% - 19px);
+		max-height: 85vh;
+		overflow: auto;
+	}
+
 	.render {
-		overflow-y: scroll;
-		max-height: 90.8vh;
+		max-height: 90vh;
 	}
 </style>
