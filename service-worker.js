@@ -1,7 +1,7 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.f6440321.js",
-  t + "/_app/immutable/chunks/0.5e6b2e82.js",
-  t + "/_app/immutable/chunks/1.9070fa82.js",
+  t + "/_app/immutable/entry/app.cede1b39.js",
+  t + "/_app/immutable/chunks/0.a7e77ef0.js",
+  t + "/_app/immutable/chunks/1.3115f7ee.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
   t + "/_app/immutable/chunks/3.b0df116b.js",
   t + "/_app/immutable/chunks/4.27805f16.js",
@@ -11,18 +11,18 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/_app/immutable/chunks/_layout.e4a84b88.js",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.296dba24.js",
-  t + "/_app/immutable/chunks/stores.3524bdbb.js",
-  t + "/_app/immutable/entry/start.72f22308.js",
-  t + "/_app/immutable/entry/error.svelte.6a46f77e.js",
+  t + "/_app/immutable/chunks/singletons.21f14bce.js",
+  t + "/_app/immutable/chunks/stores.cc83fd83.js",
+  t + "/_app/immutable/entry/start.0450c28f.js",
+  t + "/_app/immutable/entry/error.svelte.29db13da.js",
   t + "/_app/immutable/assets/_layout.ec70db6c.css",
   t + "/_app/immutable/entry/_layout.js.7dbd68f0.js",
-  t + "/_app/immutable/entry/_layout.svelte.05f7ca94.js",
+  t + "/_app/immutable/entry/_layout.svelte.d730b6ca.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
   t + "/_app/immutable/entry/licenses-page.svelte.69c489d1.js",
   t + "/_app/immutable/assets/_page.c7dd0539.css",
   t + "/_app/immutable/entry/renderer-page.svelte.163cda7b.js"
-], i = [
+], c = [
   t + "/data/.git",
   t + "/data/.gitignore",
   t + "/data/CUP.license",
@@ -131,10 +131,10 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], g = "1682877006384", f = `cache-${g}`, l = [
+], i = "1682877239375", f = `cache-${i}`, l = [
   ...r,
   // the app itself
-  ...i.filter((a) => !a.startsWith("/data"))
+  ...c.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (a) => {
