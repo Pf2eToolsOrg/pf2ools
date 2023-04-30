@@ -9,8 +9,10 @@
 		<h2>{@html TagRenderer(entry.name)}</h2>
 	{/if}
 	{#if entry?.entries?.length > 0}
-		<div>
-			<Renderer entries={entry.entries} />
-		</div>
+		{#each entry.entries as subentry}
+			<p>
+				<Renderer entries={subentry} />
+			</p>
+		{/each}
 	{/if}
 </div>

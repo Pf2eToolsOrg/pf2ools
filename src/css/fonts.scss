@@ -16,7 +16,13 @@
 
 	&-action {
 		@extend .font;
-		font-family: 'pathfinder2eactions', sans-serif;
+		font-family: 'pathfinder2eactions';
+		font-size: 1.78em;
+		line-height: 0;
+
+		&::after {
+			content: attr(data-symbol);
+		}
 	}
 
 	&-dax {

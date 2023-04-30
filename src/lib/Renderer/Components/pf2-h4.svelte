@@ -11,7 +11,7 @@
 </script>
 
 <div>
-	<p>
+	<p class="flex">
 		{#if entry.name}
 			<span class="h4 font-gin">{@html TagRenderer(entry.name)}</span>
 		{/if}

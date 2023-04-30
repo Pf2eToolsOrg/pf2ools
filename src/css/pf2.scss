@@ -47,3 +47,14 @@ a {
 		text-align: center;
 	}
 }
+
+ul {
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	padding-left: 1.5rem;
+	text-indent: 0;
+
+	& ul {
+		list-style-type: circle;
+	}
+}

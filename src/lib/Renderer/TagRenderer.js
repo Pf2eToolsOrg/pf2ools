@@ -46,9 +46,8 @@ function renderTag(options, tag, text) {
 	switch (tag) {
 		case '@as':
 		case '@actionsymbol':
-			return `<span class="pf2-action-icon" data-symbol="${text}"></span><span class="pf2-action-icon-copy-text">${this._renderString_actionCopyText(
-				text
-			)}</span>`;
+			return `<span class="font-action" data-symbol="${text}"></span>
+			<span class="opacity-0 text-[0px] left-2 absolute">${stringToActionCopyPaste(text)}</span>`;
 
 		case '@b':
 		case '@bold':
@@ -96,6 +95,26 @@ function splitFirstSpace(string) {
 	return firstIndex === -1
 		? [string, '']
 		: [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
+}
+
+function stringToActionCopyPaste(text) {
+	switch (text.toLowerCase()) {
+		case '1':
+		case 'a':
+			return '[>]';
+		case '2':
+		case 'd':
+			return '[>>]';
+		case '3':
+		case 't':
+			return '[>>>]';
+		case 'f':
+			return '[F]';
+		case 'r':
+			return '[R]';
+		default:
+			return '[?]';
+	}
 }
 
 function splitByTagsBase(leadingCharacter) {

@@ -5,10 +5,6 @@
 	export let entries;
 	export let options = { noWrap: false };
 
-	if (!Array.isArray(entries)) {
-		entries = [entries];
-	}
-
 	function getComponent(entry) {
 		if (!entry.type) {
 			throw new Error('Entry type is not defined!');
@@ -17,10 +13,18 @@
 		const type = entry.type.replaceAll('-', '_').toLowerCase();
 
 		if (!Object.keys(Components).includes(type)) {
-			new Toast().error(new Error(`Entry type "${entry.type}" is not recognized by the renderer!`));
+			new Toast().error(
+				new Error(`Entry type "${entry.type}" is not recognized by the component renderer!`)
+			);
 		}
 
 		return Components[type];
+	}
+
+	$: {
+		if (!Array.isArray(entries)) {
+			entries = [entries];
+		}
 	}
 </script>
 

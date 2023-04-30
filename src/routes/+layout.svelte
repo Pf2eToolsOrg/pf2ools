@@ -7,14 +7,23 @@
 		Drawer,
 		LightSwitch,
 		Toast,
-		drawerStore
+		drawerStore,
+		localStorageStore
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
+	import { fly } from 'svelte/transition';
 	import '../app.postcss';
 	import '../css/index.scss';
+
 	function drawerOpen() {
 		drawerStore.open({});
 	}
+
+	function toggleSidebar() {
+		$open = !$open;
+	}
+
+	let open = localStorageStore('openSidebar', true);
 </script>
 
 <!-- Toast -->
@@ -30,10 +39,14 @@
 </Drawer>
 
 <!-- Where Everything Happens -->
-<AppShell slotSidebarLeft="bg-surface-500/5 w-0 md:w-56">
+<AppShell slotSidebarLeft="bg-surface-500/5">
 	<!-- Desktop Sidebar -->
 	<svelte:fragment slot="sidebarLeft">
-		<Navigation />
+		{#if $open}
+			<div class="w-0 md:w-64" transition:fly={{ x: -200, duration: 250 }}>
+				<Navigation />
+			</div>
+		{/if}
 	</svelte:fragment>
 
 	<!-- Header -->
@@ -44,10 +57,10 @@
 					<button class="btn btn-sm mr-4 md:hidden" on:click={drawerOpen}>
 						<img src="/icons/NoBackground.svg" alt="PF2ools" class="h-8 icon" />
 					</button>
-					<div class="hidden md:contents">
+					<button class="btn btn-sm hidden md:contents" on:click={toggleSidebar}>
 						<img src="/icons/NoBackground.svg" alt="PF2ools" class="h-8 icon" />
-						<strong class="text-xl ml-1">PF2ools</strong>
-					</div>
+					</button>
+					<strong class="text-xl ml-1">PF2ools</strong>
 				</div>
 			</svelte:fragment>
 
