@@ -34,7 +34,7 @@
 </svelte:head>
 
 <div class="pf2ools md:flex flex-row">
-	<div class="md:w-2/4">
+	<div class="md:w-2/4 relative">
 		<div class="view-col variant-ghost-surface">
 			<CodeMirror
 				bind:value={$store}
@@ -45,7 +45,7 @@
 		</div>
 		<button
 			type="button"
-			class="mx-2 mb-2 btn variant-ghost-surface float-right"
+			class="mx-2 mb-2 btn variant-ghost-surface float-right absolute top-3 right-3"
 			on:click={refreshCode}
 		>
 			<span><Fa icon={faRefresh} /></span>
@@ -64,7 +64,7 @@
 		display: flex;
 		flex-direction: column;
 		height: calc(100% - 19px);
-		max-height: 85vh;
+		max-height: 90vh;
 		overflow: auto;
 	}
 
