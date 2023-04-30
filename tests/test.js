@@ -8,4 +8,4 @@ test('index page has expected h1', async ({ page }) => {
 test('license page has expected the open game license', async ({ page }) => {
 	await page.goto('/');
 	await page.isVisible('text=Core Rulebook');
-})
+});
