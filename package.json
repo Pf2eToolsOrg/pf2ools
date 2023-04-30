@@ -15,7 +15,7 @@
 	"devDependencies": {
 		"@github/hotkey": "^2.0.1",
 		"@playwright/test": "^1.33.0",
-		"@skeletonlabs/skeleton": "^1.2.0",
+		"@skeletonlabs/skeleton": "^1.2.5",
 		"@sveltejs/adapter-auto": "^2.0.1",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.15.9",
