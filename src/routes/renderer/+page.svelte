@@ -1,11 +1,10 @@
 <script>
+	import { renderdemo } from '$data/renderdemo.json';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import CodeMirror from 'svelte-codemirror-editor';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
 	import { oneDark } from '@codemirror/theme-one-dark';
 	import { EditorView } from 'codemirror';
-	export let data;
-	const renderdemo = data.renderdemo;
 	import { json } from '@codemirror/lang-json';
 
 	const store = localStorageStore('renderdemo', JSON.stringify(renderdemo[0], null, 2));
