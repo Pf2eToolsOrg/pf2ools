@@ -1,9 +1,9 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.b32e6d3e.js",
-  t + "/_app/immutable/chunks/0.6b791bd6.js",
-  t + "/_app/immutable/chunks/1.2837f311.js",
+  t + "/_app/immutable/entry/app.fe66f8f2.js",
+  t + "/_app/immutable/chunks/0.c17e4b51.js",
+  t + "/_app/immutable/chunks/1.512165a8.js",
   t + "/_app/immutable/chunks/2.de758367.js",
-  t + "/_app/immutable/chunks/3.a1476d6a.js",
+  t + "/_app/immutable/chunks/3.bc960d5a.js",
   t + "/_app/immutable/chunks/4.a5090d75.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.daa0fa4c.js",
@@ -11,15 +11,15 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/_app/immutable/chunks/_layout.e4a84b88.js",
   t + "/_app/immutable/chunks/index.a70da5a2.js",
   t + "/_app/immutable/chunks/index.e03c40d8.js",
-  t + "/_app/immutable/chunks/singletons.75066051.js",
-  t + "/_app/immutable/chunks/stores.ca73b164.js",
-  t + "/_app/immutable/entry/start.fd02bf63.js",
-  t + "/_app/immutable/entry/error.svelte.23bc1b1b.js",
-  t + "/_app/immutable/assets/_layout.f94f404e.css",
+  t + "/_app/immutable/chunks/singletons.6466e4dd.js",
+  t + "/_app/immutable/chunks/stores.c1dad2ff.js",
+  t + "/_app/immutable/entry/start.0f36a613.js",
+  t + "/_app/immutable/entry/error.svelte.4b8a4113.js",
+  t + "/_app/immutable/assets/_layout.a81b67c6.css",
   t + "/_app/immutable/entry/_layout.js.7dbd68f0.js",
-  t + "/_app/immutable/entry/_layout.svelte.a985320d.js",
+  t + "/_app/immutable/entry/_layout.svelte.97e31ca7.js",
   t + "/_app/immutable/entry/_page.svelte.a8cc7ed7.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.db5e9dbb.js",
+  t + "/_app/immutable/entry/licenses-page.svelte.27dd1f34.js",
   t + "/_app/immutable/entry/renderer-page.svelte.436c8b0e.js"
 ], i = [
   t + "/data/.git",
@@ -130,7 +130,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], g = "1682811085424", f = `cache-${g}`, l = [
+], g = "1682857677799", f = `cache-${g}`, l = [
   ...r,
   // the app itself
   ...i.filter((a) => !a.startsWith("/data"))
