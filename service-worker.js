@@ -1,25 +1,27 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.9a266068.js",
-  t + "/_app/immutable/chunks/0.bfe4c17e.js",
-  t + "/_app/immutable/chunks/1.946f8b2c.js",
+  t + "/_app/immutable/entry/app.0ff26978.js",
+  t + "/_app/immutable/chunks/0.3c87e442.js",
+  t + "/_app/immutable/chunks/1.1a3d9146.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
-  t + "/_app/immutable/chunks/3.1aa13b07.js",
-  t + "/_app/immutable/chunks/4.919b75d6.js",
+  t + "/_app/immutable/chunks/3.94a8a918.js",
+  t + "/_app/immutable/chunks/4.8cdb46cc.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
-  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.98b4d183.js",
-  t + "/_app/immutable/chunks/Renderer.069317b1.js",
+  t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.71927ef1.js",
+  t + "/_app/immutable/chunks/Renderer.5306c725.js",
+  t + "/_app/immutable/chunks/fa.52dabe20.js",
+  t + "/_app/immutable/assets/fa.95b16411.css",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.36234911.js",
-  t + "/_app/immutable/chunks/stores.db7f4e87.js",
-  t + "/_app/immutable/entry/start.c7cac3f5.js",
-  t + "/_app/immutable/entry/error.svelte.9fe4a13f.js",
-  t + "/_app/immutable/assets/_layout.ec70db6c.css",
-  t + "/_app/immutable/entry/_layout.svelte.c1bba087.js",
+  t + "/_app/immutable/chunks/singletons.469f5efa.js",
+  t + "/_app/immutable/chunks/stores.f2c8ac28.js",
+  t + "/_app/immutable/entry/start.3d61a222.js",
+  t + "/_app/immutable/entry/error.svelte.eda6efd6.js",
+  t + "/_app/immutable/assets/_layout.7aed0d92.css",
+  t + "/_app/immutable/entry/_layout.svelte.efb45be9.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.22219b56.js",
-  t + "/_app/immutable/assets/_page.c7dd0539.css",
-  t + "/_app/immutable/entry/renderer-page.svelte.6584e305.js"
+  t + "/_app/immutable/entry/licenses-page.svelte.99ee8022.js",
+  t + "/_app/immutable/assets/_page.ce60ff78.css",
+  t + "/_app/immutable/entry/renderer-page.svelte.80742013.js"
 ], g = [
   t + "/fonts/AlbertusMT.ttf",
   t + "/fonts/Basing.ttf",
@@ -122,38 +124,38 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], c = "1682879069817", f = `cache-${c}`, l = [
+], i = "1682897634848", f = `cache-${i}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (a) => {
-  async function n() {
+  async function s() {
     await (await caches.open(f)).addAll(l);
   }
-  a.waitUntil(n());
+  a.waitUntil(s());
 });
 self.addEventListener("activate", (a) => {
-  async function n() {
+  async function s() {
     for (const o of await caches.keys())
       o !== f && await caches.delete(o);
   }
-  a.waitUntil(n());
+  a.waitUntil(s());
 });
 self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET" || !a.request.url.startsWith("http"))
     return;
-  async function n() {
-    const o = new URL(a.request.url), s = await caches.open(f);
+  async function s() {
+    const o = new URL(a.request.url), n = await caches.open(f);
     if (l.includes(o.pathname))
-      return s.match(o.pathname);
+      return n.match(o.pathname);
     try {
       const e = await fetch(a.request);
-      return e.status === 200 && s.put(a.request, e.clone()), e;
+      return e.status === 200 && n.put(a.request, e.clone()), e;
     } catch {
-      return s.match(a.request);
+      return n.match(a.request);
     }
   }
-  a.respondWith(n());
+  a.respondWith(s());
 });
