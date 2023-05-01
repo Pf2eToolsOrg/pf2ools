@@ -1,7 +1,7 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.c05f1af7.js",
-  t + "/_app/immutable/chunks/0.daef5fb8.js",
-  t + "/_app/immutable/chunks/1.156b0f2c.js",
+  t + "/_app/immutable/entry/app.921a546e.js",
+  t + "/_app/immutable/chunks/0.6f9b3494.js",
+  t + "/_app/immutable/chunks/1.18b4b129.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
   t + "/_app/immutable/chunks/3.94a8a918.js",
   t + "/_app/immutable/chunks/4.522996be.js",
@@ -12,12 +12,12 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/_app/immutable/assets/fa.95b16411.css",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.36329664.js",
-  t + "/_app/immutable/chunks/stores.5049fe73.js",
-  t + "/_app/immutable/entry/start.6389c659.js",
-  t + "/_app/immutable/entry/error.svelte.4c5918d1.js",
+  t + "/_app/immutable/chunks/singletons.7e2c6dd5.js",
+  t + "/_app/immutable/chunks/stores.1abf403c.js",
+  t + "/_app/immutable/entry/start.4b4489b9.js",
+  t + "/_app/immutable/entry/error.svelte.a2ddf7b3.js",
   t + "/_app/immutable/assets/_layout.3a2df5a7.css",
-  t + "/_app/immutable/entry/_layout.svelte.08ca7214.js",
+  t + "/_app/immutable/entry/_layout.svelte.a744b1e1.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
   t + "/_app/immutable/entry/licenses-page.svelte.99ee8022.js",
   t + "/_app/immutable/assets/_page.5431a283.css",
@@ -124,7 +124,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], i = "1682966314303", f = `cache-${i}`, l = [
+], i = "1682967639216", f = `cache-${i}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
