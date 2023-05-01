@@ -11,7 +11,7 @@ export default {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: '404.html',
+			fallback: '404.html', // Github Pages, change it to index.html or 200.html on other hosting providers
 			strict: true
 		}),
 		alias: {
