@@ -11,7 +11,7 @@ export default {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: 'index.html',
+			fallback: '404.html',
 			strict: true
 		}),
 		alias: {
