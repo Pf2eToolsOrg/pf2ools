@@ -1,5 +1,5 @@
 import Toasts from '../Utils/Toasts';
-import { Utils } from './RendererUtils';
+import { getValidColor, stringToActionCopyPaste } from './RendererUtils';
 const toasts = new Toasts();
 
 /**
@@ -82,7 +82,7 @@ function renderTag(options, tag, text) {
 
 		case "@color": {
 			const [toDisplay, color] = splitTagByPipe(text);
-			const scrubbedColor = Utils.getValidColor(color);
+			const scrubbedColor = getValidColor(color);
 			return `<span style="color: ${scrubbedColor}">${TagRenderer(toDisplay)}</span>`;
 		}
 
@@ -92,7 +92,7 @@ function renderTag(options, tag, text) {
 
 		case "@highlight": {
 			const [toDisplay, color] = splitTagByPipe(text);
-			const scrubbedColor = color ? Utils.getValidColor(color) : null;
+			const scrubbedColor = color ? getValidColor(color) : null;
 			return (scrubbedColor ? `<span style="background-color: ${scrubbedColor}">` : `<span class="bg-warning-300 dark:bg-warning-700">`) + TagRenderer(toDisplay) + `</span>`;
 		}
 
@@ -107,11 +107,13 @@ function renderTag(options, tag, text) {
 			return `<span class="appearance-none font-no inline-block">${TagRenderer(text)}</span>`;
 		}
 
-		case "@indentFirst":
+		case "@indentFirst": {
 			return `<span class="text-indent-first inline-block">${TagRenderer(text)}</span>`;
+		}
 
-		case "@indentSubsequent":
+		case "@indentSubsequent": {
 			return `<span class="text-indent-subsequent inline-block">${TagRenderer(text)}</span>`;
+		}
 
 		default:
 			toasts.warn(`Unknown tag: ${tag}`);
@@ -131,26 +133,6 @@ function splitFirstSpace(string) {
 	return firstIndex === -1
 		? [string, '']
 		: [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
-}
-
-function stringToActionCopyPaste(text) {
-	switch (text.toLowerCase()) {
-		case '1':
-		case 'a':
-			return '[>]';
-		case '2':
-		case 'd':
-			return '[>>]';
-		case '3':
-		case 't':
-			return '[>>>]';
-		case 'f':
-			return '[F]';
-		case 'r':
-			return '[R]';
-		default:
-			return '[?]';
-	}
 }
 
 function splitByTagsBase(leadingCharacter) {
