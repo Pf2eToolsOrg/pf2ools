@@ -1,4 +1,5 @@
-import Toasts from '../Utils/toasts';
+import Toasts from '../Utils/Toasts';
+import { Utils } from './RendererUtils';
 const toasts = new Toasts();
 
 /**
@@ -77,6 +78,26 @@ function renderTag(options, tag, text) {
 			let outUrl = url == null ? displayText : url;
 			if (!outUrl.startsWith('http')) outUrl = `http://${outUrl}`;
 			return `<a href=${outUrl}>${TagRenderer(displayText)}</a>`;
+		}
+
+		case "@color": {
+			const [toDisplay, color] = splitTagByPipe(text);
+			const scrubbedColor = Utils.getValidColor(color);
+			return `<span style="color: ${scrubbedColor}">${TagRenderer(toDisplay)}</span>`;
+		}
+
+		case "@handwriting": {
+			return `<span class="font-basing italic text-xl">${TagRenderer(text)}</span>`;
+		}
+
+		case "@highlight": {
+			const [toDisplay, color] = splitTagByPipe(text);
+			const scrubbedColor = color ? Utils.getValidColor(color) : null;
+			return (scrubbedColor ? `<span style="background-color: ${scrubbedColor}">` : `<span class="bg-warning-700">`) + TagRenderer(toDisplay) + `</span>`;
+		}
+
+		case "@nostyle": {
+			return `<span class="appearance-none font-no inline-block">${TagRenderer(text)}</span>`;
 		}
 
 		default:

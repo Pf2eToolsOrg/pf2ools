@@ -1,5 +1,5 @@
 <script>
-	import Toast from '$lib/Utils/toasts.js';
+	import Toast from '$lib/Utils/Toasts.js';
 	import * as Components from './Components/index.js';
 	import TagRenderer from './TagRenderer.js';
 	export let entries;

@@ -54,6 +54,19 @@
 		@extend .font;
 		font-family: 'albertus', sans-serif;
 	}
+
+	&-quicksand {
+		@extend .font;
+		font-family: 'quicksand', sans-serif;
+	}
+
+	&-no {
+		@extend .font;
+		font-weight: normal !important;
+		font-style: normal !important;
+		font-variant: none !important;
+		text-decoration: none !important;
+	}
 }
 
 @font-face {
