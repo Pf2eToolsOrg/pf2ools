@@ -1,27 +1,27 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.921a546e.js",
-  t + "/_app/immutable/chunks/0.6f9b3494.js",
-  t + "/_app/immutable/chunks/1.18b4b129.js",
+  t + "/_app/immutable/entry/app.66683056.js",
+  t + "/_app/immutable/chunks/0.8912d530.js",
+  t + "/_app/immutable/chunks/1.2ce71856.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
-  t + "/_app/immutable/chunks/3.94a8a918.js",
-  t + "/_app/immutable/chunks/4.522996be.js",
+  t + "/_app/immutable/chunks/3.13d6ea3a.js",
+  t + "/_app/immutable/chunks/4.01a468d5.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.71927ef1.js",
-  t + "/_app/immutable/chunks/Renderer.5306c725.js",
+  t + "/_app/immutable/chunks/Renderer.1765ea24.js",
   t + "/_app/immutable/chunks/fa.52dabe20.js",
   t + "/_app/immutable/assets/fa.95b16411.css",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.7e2c6dd5.js",
-  t + "/_app/immutable/chunks/stores.1abf403c.js",
-  t + "/_app/immutable/entry/start.4b4489b9.js",
-  t + "/_app/immutable/entry/error.svelte.a2ddf7b3.js",
-  t + "/_app/immutable/assets/_layout.3a2df5a7.css",
-  t + "/_app/immutable/entry/_layout.svelte.a744b1e1.js",
+  t + "/_app/immutable/chunks/singletons.ca883d19.js",
+  t + "/_app/immutable/chunks/stores.426ade53.js",
+  t + "/_app/immutable/entry/start.eb365d2b.js",
+  t + "/_app/immutable/entry/error.svelte.60140689.js",
+  t + "/_app/immutable/assets/_layout.7613344a.css",
+  t + "/_app/immutable/entry/_layout.svelte.dbf048ea.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.99ee8022.js",
+  t + "/_app/immutable/entry/licenses-page.svelte.575c28c2.js",
   t + "/_app/immutable/assets/_page.5431a283.css",
-  t + "/_app/immutable/entry/renderer-page.svelte.70e595e6.js"
+  t + "/_app/immutable/entry/renderer-page.svelte.7d67cb7a.js"
 ], g = [
   t + "/fonts/AlbertusMT.ttf",
   t + "/fonts/Basing.ttf",
@@ -124,7 +124,7 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], i = "1682967639216", f = `cache-${i}`, l = [
+], i = "1683032914981", f = `cache-${i}`, l = [
   ...r,
   // the app itself
   ...g.filter((a) => !a.startsWith("/data"))
