@@ -8,6 +8,7 @@
 	import { EditorView } from 'codemirror';
 	import CodeMirror from 'svelte-codemirror-editor';
 	import Fa from 'svelte-fa';
+	import { pf2oolsPlugin } from './pf2ools-codemirror.js';
 
 	const store = localStorageStore('renderdemo', JSON.stringify(renderdemo[0], null, 2));
 
@@ -40,7 +41,7 @@
 				bind:value={$store}
 				lang={json()}
 				theme={$modeUserPrefers ? null : oneDark}
-				extensions={[EditorView.lineWrapping]}
+				extensions={[EditorView.lineWrapping, pf2oolsPlugin]}
 			/>
 		</div>
 		<button

@@ -93,18 +93,33 @@ function renderTag(options, tag, text) {
 		case "@highlight": {
 			const [toDisplay, color] = splitTagByPipe(text);
 			const scrubbedColor = color ? Utils.getValidColor(color) : null;
-			return (scrubbedColor ? `<span style="background-color: ${scrubbedColor}">` : `<span class="bg-warning-700">`) + TagRenderer(toDisplay) + `</span>`;
+			return (scrubbedColor ? `<span style="background-color: ${scrubbedColor}">` : `<span class="bg-warning-300 dark:bg-warning-700">`) + TagRenderer(toDisplay) + `</span>`;
 		}
 
+		case "@sup":
+			return `<sup>${TagRenderer(text)}</sup>`;
+
+		case "@sub":
+			return `<sub>${TagRenderer(text)}</sub>`;
+
+		case "@n":
 		case "@nostyle": {
 			return `<span class="appearance-none font-no inline-block">${TagRenderer(text)}</span>`;
 		}
 
+		case "@indentFirst":
+			return `<span class="text-indent-first inline-block">${TagRenderer(text)}</span>`;
+
+		case "@indentSubsequent":
+			return `<span class="text-indent-subsequent inline-block">${TagRenderer(text)}</span>`;
+
 		default:
 			toasts.warn(`Unknown tag: ${tag}`);
-			return `<span class="bg-warning-500">{${tag} ${TagRenderer(text)}}</span>`;
+			return `<span class="bg-warning-400 dark:bg-warning-600">{${tag} ${TagRenderer(text)}}</span>`;
 	}
 }
+
+export const tags = [...renderTag.toString().matchAll(/case '(@\w+?)':/g)].map((m) => m[1]);
 
 const splitByTags = (string) => splitByTagsBase('@')(string); // Split by @
 // const splitByPropertyInjectors = () => splitByTagsBase("=");

@@ -39,7 +39,7 @@
 </Drawer>
 
 <!-- Where Everything Happens -->
-<AppShell slotSidebarLeft="bg-surface-500/5">
+<AppShell slotSidebarLeft="bg-surface-500/10">
 	<!-- Desktop Sidebar -->
 	<svelte:fragment slot="sidebarLeft">
 		{#if $open}
@@ -51,7 +51,7 @@
 
 	<!-- Header -->
 	<svelte:fragment slot="header">
-		<AppBar>
+		<AppBar background="bg-surface-300/75 dark:bg-surface-800/75">
 			<svelte:fragment slot="lead">
 				<div class="flex items-center">
 					<button class="btn btn-sm mr-4 md:hidden" on:click={drawerOpen}>

@@ -1,7 +1,6 @@
 <script>
-	import { source } from '$data/sources.json';
+	import { source as sources } from '$data/sources.json';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
-	const sources = source;
 
 	const licenseEntries = [
 		{
