@@ -12,29 +12,25 @@
 </script>
 
 <nav class="list-nav p-1">
-	<ul>
-		{#each pages as link}
-			{#if link.pages}
-				<Accordion regionPanel="space-y-1">
-					<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
-						<svelte:fragment slot="lead">
-							<Fa icon={fort[link.icon]} />
-						</svelte:fragment>
-						<svelte:fragment slot="summary">
-							{link.label}
-						</svelte:fragment>
-						<svelte:fragment slot="content">
-							{#each link.pages as sublink}
-								<NavigationOption link={sublink} openFunction={drawerClose} />
-							{/each}
-						</svelte:fragment>
-					</AccordionItem>
-				</Accordion>
-			{:else}
-				<li>
-					<NavigationOption {link} openFunction={drawerClose} />
-				</li>
-			{/if}
-		{/each}
-	</ul>
+	{#each pages as link}
+		{#if link.pages}
+			<Accordion regionPanel="space-y-1" on:keydown={(e) => console.log(e)}>
+				<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
+					<svelte:fragment slot="lead">
+						<Fa icon={fort[link.icon]} />
+					</svelte:fragment>
+					<svelte:fragment slot="summary">
+						{link.label}
+					</svelte:fragment>
+					<svelte:fragment slot="content">
+						{#each link.pages as sublink}
+							<NavigationOption link={sublink} openFunction={drawerClose} />
+						{/each}
+					</svelte:fragment>
+				</AccordionItem>
+			</Accordion>
+		{:else}
+			<NavigationOption {link} openFunction={drawerClose} />
+		{/if}
+	{/each}
 </nav>

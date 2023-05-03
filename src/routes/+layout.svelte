@@ -1,6 +1,7 @@
 <script>
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
+	import { hotkey } from 'svelte-gh-hotkey';
 	import '$lib/Utils/MonkeyPatches.js';
 	import {
 		AppBar,
@@ -20,6 +21,8 @@
 		});
 	}
 </script>
+
+<button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
 
 <!-- Toast -->
 <Toast />
@@ -58,7 +61,7 @@
 			</svelte:fragment>
 
 			<div class="hidden md:flex">
-				<Search />
+				<Search classes={'focus:w-80 transition-all'} />
 			</div>
 
 			<!-- Trailing Buttons (Dark Mode, Discord, GitHub, etc.) -->

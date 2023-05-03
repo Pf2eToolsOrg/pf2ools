@@ -1,12 +1,14 @@
 <script>
 	import { hotkey } from 'svelte-gh-hotkey';
-	let inputDemo = '';
+	import { writable } from 'svelte/store';
+	export let classes = '';
+	let inputDemo = writable('');
 </script>
 
 <input
-	class="search input focus:w-80 transition-all"
+	class="search input {classes}"
 	type="search"
-	bind:value={inputDemo}
+	bind:value={$inputDemo}
 	placeholder="Search..."
 	use:hotkey={'f'}
 	on:keydown={(e) => {
