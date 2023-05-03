@@ -1,28 +1,28 @@
 const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r = [
-  t + "/_app/immutable/entry/app.66683056.js",
-  t + "/_app/immutable/chunks/0.8912d530.js",
-  t + "/_app/immutable/chunks/1.2ce71856.js",
+  t + "/_app/immutable/entry/app.964f91ef.js",
+  t + "/_app/immutable/chunks/0.adc0c00e.js",
+  t + "/_app/immutable/chunks/1.1eb61ed5.js",
   t + "/_app/immutable/chunks/2.bcdd3e28.js",
-  t + "/_app/immutable/chunks/3.13d6ea3a.js",
-  t + "/_app/immutable/chunks/4.01a468d5.js",
+  t + "/_app/immutable/chunks/3.bc918af4.js",
+  t + "/_app/immutable/chunks/4.67301681.js",
   t + "/_app/immutable/assets/ProgressBar.4f1e9ba5.css",
   t + "/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.71927ef1.js",
-  t + "/_app/immutable/chunks/Renderer.1765ea24.js",
+  t + "/_app/immutable/chunks/Renderer.c4f60298.js",
   t + "/_app/immutable/chunks/fa.52dabe20.js",
   t + "/_app/immutable/assets/fa.95b16411.css",
   t + "/_app/immutable/chunks/index.54c581ea.js",
   t + "/_app/immutable/chunks/index.65bfe307.js",
-  t + "/_app/immutable/chunks/singletons.ca883d19.js",
-  t + "/_app/immutable/chunks/stores.426ade53.js",
-  t + "/_app/immutable/entry/start.eb365d2b.js",
-  t + "/_app/immutable/entry/error.svelte.60140689.js",
-  t + "/_app/immutable/assets/_layout.7613344a.css",
-  t + "/_app/immutable/entry/_layout.svelte.dbf048ea.js",
+  t + "/_app/immutable/chunks/singletons.cd7675ec.js",
+  t + "/_app/immutable/chunks/stores.1ec32a3e.js",
+  t + "/_app/immutable/entry/start.abe7b2b1.js",
+  t + "/_app/immutable/entry/error.svelte.5508d409.js",
+  t + "/_app/immutable/assets/_layout.9fc3eeb2.css",
+  t + "/_app/immutable/entry/_layout.svelte.949b6e23.js",
   t + "/_app/immutable/entry/_page.svelte.3270e54d.js",
-  t + "/_app/immutable/entry/licenses-page.svelte.575c28c2.js",
-  t + "/_app/immutable/assets/_page.5431a283.css",
-  t + "/_app/immutable/entry/renderer-page.svelte.7d67cb7a.js"
-], g = [
+  t + "/_app/immutable/entry/licenses-page.svelte.09325cf0.js",
+  t + "/_app/immutable/assets/_page.488bd331.css",
+  t + "/_app/immutable/entry/renderer-page.svelte.653002df.js"
+], c = [
   t + "/fonts/AlbertusMT.ttf",
   t + "/fonts/Basing.ttf",
   t + "/fonts/Blambot-Casual-Regular.ttf",
@@ -124,10 +124,10 @@ const t = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), r
   t + "/icons/Background.svg",
   t + "/icons/NoBackground.svg",
   t + "/icons/safari-pinned-tab.svg"
-], i = "1683032914981", f = `cache-${i}`, l = [
+], g = "1683139122037", f = `cache-${g}`, l = [
   ...r,
   // the app itself
-  ...g.filter((a) => !a.startsWith("/data"))
+  ...c.filter((a) => !a.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (a) => {
