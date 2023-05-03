@@ -1,6 +1,7 @@
 <script>
 	import Renderer from '../Renderer.svelte';
-	import TagRenderer from '../TagRenderer.js';
+	import Tagger from '../Tagger.svelte';
+
 	export let entry;
 
 	let collapse = false;
@@ -13,7 +14,7 @@
 <div>
 	<p class="flex">
 		{#if entry.name}
-			<span class="h4 font-gin">{@html TagRenderer(entry.name)}</span>
+			<span class="h4 font-gin"><Tagger entry={entry.name} /></span>
 		{/if}
 		{#if entry.collapsible}
 			<button class="ml-auto select-none" on:keypress on:click={click}>

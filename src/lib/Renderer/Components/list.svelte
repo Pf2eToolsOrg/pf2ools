@@ -1,11 +1,11 @@
 <script>
-	import TagRenderer from '../TagRenderer.js';
+	import Tagger from '../Tagger.svelte';
 	import Renderer from '../Renderer.svelte';
 	export let entry;
 </script>
 
 {#if entry.name}
-	<span class="">{@html TagRenderer(entry.name)}</span>
+	<span class=""><Tagger entry={entry.name} /></span>
 {/if}
 {#if entry?.items?.length > 0}
 	<ul class={entry.style ?? 'list-disc'}>

@@ -1,5 +1,5 @@
 import { MatchDecorator, ViewPlugin, Decoration } from "@codemirror/view";
-import { tags } from "$lib/Renderer/TagRenderer";
+// import { tags } from "$lib/Renderer/TagRenderer";
 
 let worldDeco = Decoration.mark({ class: "world" }); // This adds a className to the text that matches the regex.
 let decorator = new MatchDecorator({

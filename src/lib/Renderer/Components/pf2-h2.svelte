@@ -1,12 +1,13 @@
 <script>
 	import Renderer from '../Renderer.svelte';
-	import TagRenderer from '../TagRenderer.js';
+	import Tagger from '../Tagger.svelte';
+
 	export let entry;
 </script>
 
 <div>
 	{#if entry.name}
-		<h2>{@html TagRenderer(entry.name)}</h2>
+		<span class="h2 font-gin"><Tagger entry={entry.name} /></span>
 	{/if}
 	{#if entry?.entries?.length > 0}
 		{#each entry.entries as subentry}

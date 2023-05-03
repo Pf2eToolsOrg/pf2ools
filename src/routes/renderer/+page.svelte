@@ -36,12 +36,18 @@
 
 <div class="pf2ools md:flex flex-row">
 	<div class="md:w-2/4 relative">
-		<div class="view-col variant-ghost-surface">
+		<div class="view-col variant-ghost-surface max-height-[90vh] height-[90vh]">
 			<CodeMirror
 				bind:value={$store}
 				lang={json()}
 				theme={$modeUserPrefers ? null : oneDark}
 				extensions={[EditorView.lineWrapping, pf2oolsPlugin]}
+				styles={{
+					'&': {
+						height: '90vh',
+						maxHeight: '90vh'
+					}
+				}}
 			/>
 		</div>
 		<button
@@ -53,7 +59,9 @@
 			<span>Reset</span>
 		</button>
 	</div>
-	<div class="render md:w-2/4 view-col font-sabonltstd variant-ghost-surface px-2">
+	<div
+		class="render md:w-2/4 view-col font-sabonltstd variant-ghost-surface px-2 max-height-[90vh] height-[90vh]"
+	>
 		<Renderer entries={rendered} />
 	</div>
 </div>
@@ -64,8 +72,6 @@
 		margin: 0.5em;
 		display: flex;
 		flex-direction: column;
-		height: calc(100% - 19px);
-		max-height: 90vh;
 		overflow: auto;
 	}
 

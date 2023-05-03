@@ -1,29 +1,24 @@
 <script>
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
+	import '$lib/Utils/MonkeyPatches.js';
 	import {
 		AppBar,
 		AppShell,
 		Drawer,
 		LightSwitch,
 		Toast,
-		drawerStore,
-		localStorageStore
+		drawerStore
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
-	import { fly } from 'svelte/transition';
 	import '../app.postcss';
 	import '../css/index.scss';
 
 	function drawerOpen() {
-		drawerStore.open({});
+		drawerStore.open({
+			width: 'w-60'
+		});
 	}
-
-	function toggleSidebar() {
-		$open = !$open;
-	}
-
-	let open = localStorageStore('openSidebar', true);
 </script>
 
 <!-- Toast -->
@@ -31,7 +26,7 @@
 
 <!-- Mobile Sidebar -->
 <Drawer duration="250">
-	<div class="search drawer">
+	<div class="m-1">
 		<Search />
 	</div>
 	<hr />
@@ -40,31 +35,29 @@
 
 <!-- Where Everything Happens -->
 <AppShell slotSidebarLeft="bg-surface-500/10">
-	<!-- Desktop Sidebar -->
-	<svelte:fragment slot="sidebarLeft">
-		{#if $open}
-			<div class="w-0 md:w-64" transition:fly={{ x: -200, duration: 250 }}>
-				<Navigation />
-			</div>
-		{/if}
-	</svelte:fragment>
-
 	<!-- Header -->
 	<svelte:fragment slot="header">
-		<AppBar background="bg-surface-300/75 dark:bg-surface-800/75">
+		<AppBar
+			background="bg-surface-300/75 dark:bg-surface-800/75"
+			gridColumns="grid-cols-3"
+			slotDefault="place-self-center"
+			slotTrail="place-content-end"
+		>
 			<svelte:fragment slot="lead">
 				<div class="flex items-center">
-					<button class="btn btn-sm mr-4 md:hidden" on:click={drawerOpen}>
-						<img src="/icons/NoBackground.svg" alt="PF2ools" class="h-8 icon" />
-					</button>
-					<button class="btn btn-sm hidden md:contents" on:click={toggleSidebar}>
-						<img src="/icons/NoBackground.svg" alt="PF2ools" class="h-8 icon" />
+					<button class="btn btn-sm contents noselect" on:click={drawerOpen}>
+						<img
+							src="/icons/NoBackground.svg"
+							alt="PF2ools"
+							class="h-8 icon"
+							draggable={false}
+						/>
 					</button>
 					<strong class="text-xl ml-1">PF2ools</strong>
 				</div>
 			</svelte:fragment>
 
-			<div class="search hidden md:flex">
+			<div class="hidden md:flex">
 				<Search />
 			</div>
 
@@ -108,16 +101,6 @@
 </AppShell>
 
 <style>
-	.search {
-		margin: auto;
-		width: 50%;
-	}
-
-	.search.drawer {
-		margin: 0.5rem;
-		width: auto;
-	}
-
 	.icon {
 		transform: scale(2);
 		width: 4rem;

@@ -1,7 +1,7 @@
 <script>
 	import Toast from '$lib/Utils/Toasts.js';
 	import * as Components from './Components/index.js';
-	import TagRenderer from './TagRenderer.js';
+	import Tagger from './Tagger.svelte';
 	export let entries;
 	export let options = { noWrap: false };
 
@@ -30,7 +30,7 @@
 
 {#each entries as entry}
 	{#if typeof entry === 'string'}
-		{@html TagRenderer(entry, options)}
+		<Tagger {entry} {options} />
 	{:else if typeof entry === 'object'}
 		<svelte:component this={getComponent(entry)} {entry} {options} />
 	{/if}

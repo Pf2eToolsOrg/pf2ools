@@ -1,13 +1,13 @@
 <script>
+	import Tagger from '../Tagger.svelte';
 	import Renderer from '../Renderer.svelte';
-	import TagRenderer from '../TagRenderer.js';
 	export let entry;
 </script>
 
 <div class="flex">
 	<div class="box red">
 		{#if entry.name}
-			<span class="title">{@html TagRenderer(entry.name)}</span>
+			<span class="title"><Tagger entry={entry.name} /></span>
 		{/if}
 		{#if entry?.entries?.length > 0}
 			<div>
