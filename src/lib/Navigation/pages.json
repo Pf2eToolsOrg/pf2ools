@@ -5,13 +5,221 @@
 		"icon": "faHome"
 	},
 	{
+		"label": "Rules",
+		"icon": "faBook",
+		"pages": [
+			{
+				"label": "Quick Reference",
+				"href": "/quickref",
+				"icon": "faBookBookmark"
+			},
+			{
+				"label": "Variant Rules & Subsystems",
+				"href": "/variantrules",
+				"icon": "faClipboardQuestion"
+			},
+			{
+				"label": "Tables",
+				"href": "/tables",
+				"icon": "faTable"
+			}
+		]
+	},
+	{
+		"label": "Player",
+		"icon": "faUser",
+		"pages": [
+			{
+				"label": "Ancestries",
+				"href": "/ancestries",
+				"icon": "faUsers"
+			},
+			{
+				"label": "Backgrounds",
+				"href": "/backgrounds",
+				"icon": "faPersonCircleQuestion"
+			},
+			{
+				"label": "Classes",
+				"href": "/classes",
+				"icon": "faHatWizard"
+			},
+			{
+				"label": "Feats",
+				"href": "/feats",
+				"icon": "faAward"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Archetypes",
+				"href": "/archetypes",
+				"icon": "faPersonCirclePlus"
+			},
+			{
+				"label": "Companions & Familiars",
+				"href": "/companionsfamiliars",
+				"icon": [
+					"faPaw",
+					"faCat",
+					"faCrow",
+					"faDove",
+					"faFrog",
+					"faSpider",
+					"faDog",
+					"faHorse",
+					"faOtter"
+				]
+			},
+			{
+				"label": "Optional Features",
+				"href": "/optionalfeatures",
+				"icon": "faSquarePlus"
+			}
+		]
+	},
+	{
+		"label": "Game Master",
+		"icon": "faDiceD20",
+		"pages": [
+			{
+				"label": "GM Screen",
+				"href": "/gmscreen",
+				"icon": "faBookOpenReader"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Events",
+				"href": "/events",
+				"icon": "faCloudShowersHeavy"
+			},
+			{
+				"label": "Hazards",
+				"href": "/hazards",
+				"icon": "faTriangleExclamation"
+			},
+			{
+				"label": "Relic Gifts",
+				"href": "/relicgifts",
+				"icon": "faWandSparkles"
+			}
+		]
+	},
+	{
+		"label": "References",
+		"icon": "faAsterisk",
+		"pages": [
+			{
+				"label": "Actions",
+				"href": "/actions",
+				"icon": "<span class='font-action' data-symbol='1' />"
+			},
+			{
+				"label": "Bestiary",
+				"href": "/bestiary",
+				"icon": "faDragon"
+			},
+			{
+				"label": "Items",
+				"href": "/items",
+				"icon": "faShieldHalved"
+			},
+			{
+				"label": "Spells",
+				"href": "/spells",
+				"icon": "faWandMagicSparkles"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Afflictions",
+				"href": "/afflictions",
+				"icon": "faDisease"
+			},
+			{
+				"label": "Rituals",
+				"href": "/rituals",
+				"icon": "faHandSparkles"
+			},
+			{
+				"label": "Vehicles",
+				"href": "/vehicles",
+				"icon": "faSailboat"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Deities",
+				"href": "/deities",
+				"icon": "faStar"
+			},
+			{
+				"label": "Languages",
+				"href": "/languages",
+				"icon": "faLanguage"
+			},
+			{
+				"label": "Planes & Places",
+				"href": "/places",
+				"icon": "faLocationDot"
+			},
+			{
+				"label": "Organizations",
+				"href": "/organizations",
+				"icon": "faBuildingUser"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Creature Abilities",
+				"href": "/abilities",
+				"icon": "faFire"
+			},
+			{
+				"label": "Creature Templates",
+				"href": "/creaturetemplates",
+				"icon": "faCopy"
+			},
+			{
+				"label": "Traits",
+				"href": "/traits",
+				"icon": "faCommentDots"
+			}
+		]
+	},
+	{
 		"label": "Utilities",
 		"icon": "faBars",
 		"pages": [
 			{
+				"label": "Search",
+				"href": "/search",
+				"icon": "faMagnifyingGlass"
+			},
+			{
+				"type": "divider"
+			},
+			{
 				"label": "Renderer Demo",
 				"href": "/renderer",
 				"icon": "faTextHeight"
+			},
+			{
+				"type": "divider"
+			},
+			{
+				"label": "Changelog",
+				"href": "/changelog",
+				"icon": "faCodeMerge"
+			},
+			{
+				"type": "divider"
 			},
 			{
 				"label": "Licenses",

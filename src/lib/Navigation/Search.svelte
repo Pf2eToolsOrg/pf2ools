@@ -17,5 +17,5 @@
 			e.target.blur();
 		}
 	}}
-	title="Hotkey: F. Disclaimer: unlikely to search everywhere."
+	title="Hotkey: F. Disclaimer: Won't Ctrl+F text for you, this just searches names."
 />

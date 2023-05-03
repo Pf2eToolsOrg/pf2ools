@@ -1,5 +1,6 @@
 <script>
-	import Navigation from '$lib/Navigation/Navigation.svelte';
+	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
+	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
 	import { hotkey } from 'svelte-gh-hotkey';
 	import '$lib/Utils/MonkeyPatches.js';
@@ -17,7 +18,7 @@
 
 	function drawerOpen() {
 		drawerStore.open({
-			width: 'w-60'
+			width: 'w-80'
 		});
 	}
 </script>
@@ -33,7 +34,7 @@
 		<Search />
 	</div>
 	<hr />
-	<Navigation />
+	<DrawerNavigation />
 </Drawer>
 
 <!-- Where Everything Happens -->
@@ -45,6 +46,7 @@
 			gridColumns="grid-cols-3"
 			slotDefault="place-self-center"
 			slotTrail="place-content-end"
+			padding="p-2"
 		>
 			<svelte:fragment slot="lead">
 				<div class="flex items-center">
@@ -54,14 +56,14 @@
 							alt="PF2ools"
 							class="h-8 icon"
 							draggable={false}
+							title="Open Sidebar (Hotkey: D)"
 						/>
 					</button>
-					<strong class="text-xl ml-1">PF2ools</strong>
 				</div>
 			</svelte:fragment>
 
 			<div class="hidden md:flex">
-				<Search classes={'focus:w-80 transition-all'} />
+				<Search classes={'focus:w-80 transition-all max-h-8'} />
 			</div>
 
 			<!-- Trailing Buttons (Dark Mode, Discord, GitHub, etc.) -->
@@ -96,6 +98,15 @@
 					</a>
 				</div>
 			</svelte:fragment>
+		</AppBar>
+		<AppBar
+			background=""
+			gridColumns="grid-cols-3"
+			slotDefault="place-self-center"
+			slotTrail="place-content-end"
+			padding="p-2"
+		>
+			<TopNavigation />
 		</AppBar>
 	</svelte:fragment>
 

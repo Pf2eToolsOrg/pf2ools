@@ -11,7 +11,8 @@
 	}
 </script>
 
-<nav class="list-nav p-1">
+<!--
+<nav class="list-nav p-1 flex">
 	{#each pages as link}
 		{#if link.pages}
 			<Accordion regionPanel="space-y-1" on:keydown={(e) => console.log(e)}>
@@ -34,3 +35,4 @@
 		{/if}
 	{/each}
 </nav>
+-->
