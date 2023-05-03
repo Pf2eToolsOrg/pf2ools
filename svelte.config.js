@@ -17,7 +17,7 @@ export default {
 		alias: {
 			$data: './src/data/core',
 			tagger: './src/lib/Renderer/Tagger.svelte',
-			renderer: './src/lib/Renderer/Renderer.svelte',
+			renderer: './src/lib/Renderer/Renderer.svelte'
 		}
 	}
 };

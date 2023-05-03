@@ -6,7 +6,7 @@
 </script>
 
 {#if entry.name}
-	<span class="h1 font-taroca centre"><Tagger entry={entry.name} /></span>
+	<span class="h1 font-taroca"><Tagger entry={entry.name} /></span>
 {/if}
 {#if entry?.entries?.length > 0}
 	{#each entry.entries as subentry}

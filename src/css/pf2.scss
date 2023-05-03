@@ -7,43 +7,6 @@ a {
 	}
 }
 
-.box {
-	position: relative;
-	left: 3%;
-	margin: 1.6em 0 0.6em;
-	padding: 0.6em 1.6em;
-	font-family: 'good-pro', sans-serif;
-	width: 94%;
-	min-width: 120px;
-	border-radius: 2px;
-	font-size: 1em;
-	border-radius: 6px;
-
-	&.red {
-		background-color: #5e0000;
-		fill: #5e0000;
-		color: #fff;
-
-		html.dark & {
-			background-color: #472c2c;
-			fill: #472c2c;
-			color: #c9c9c9;
-		}
-	}
-
-	& .title {
-		position: relative;
-		z-index: 2;
-		left: 0;
-		padding: 0 0.3em;
-		display: block;
-		font-weight: bold;
-		font-size: 1.22em;
-		text-transform: uppercase;
-		text-align: center;
-	}
-}
-
 ul {
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
@@ -52,5 +15,13 @@ ul {
 
 	& ul {
 		list-style-type: circle;
+	}
+}
+
+.stats {
+	background: #f6f4f2;
+
+	html.dark & {
+		background: #222;
 	}
 }

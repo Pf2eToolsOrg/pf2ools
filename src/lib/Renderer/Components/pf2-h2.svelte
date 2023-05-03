@@ -7,7 +7,7 @@
 
 <div>
 	{#if entry.name}
-		<span class="h2 font-gin"><Tagger entry={entry.name} /></span>
+		<span class="h1 font-taroca"><Tagger entry={entry.name} /></span>
 	{/if}
 	{#if entry?.entries?.length > 0}
 		{#each entry.entries as subentry}

@@ -80,44 +80,52 @@ function renderTag(options, tag, text) {
 			return `<a href=${outUrl}>${TagRenderer(displayText)}</a>`;
 		}
 
-		case "@color": {
+		case '@color': {
 			const [toDisplay, color] = splitTagByPipe(text);
 			const scrubbedColor = getValidColor(color);
 			return `<span style="color: ${scrubbedColor}">${TagRenderer(toDisplay)}</span>`;
 		}
 
-		case "@handwriting": {
+		case '@handwriting': {
 			return `<span class="font-basing italic text-xl">${TagRenderer(text)}</span>`;
 		}
 
-		case "@highlight": {
+		case '@highlight': {
 			const [toDisplay, color] = splitTagByPipe(text);
 			const scrubbedColor = color ? getValidColor(color) : null;
-			return (scrubbedColor ? `<span style="background-color: ${scrubbedColor}">` : `<span class="bg-warning-300 dark:bg-warning-700">`) + TagRenderer(toDisplay) + `</span>`;
+			return (
+				(scrubbedColor
+					? `<span style="background-color: ${scrubbedColor}">`
+					: `<span class="bg-warning-300 dark:bg-warning-700">`) +
+				TagRenderer(toDisplay) +
+				`</span>`
+			);
 		}
 
-		case "@sup":
+		case '@sup':
 			return `<sup>${TagRenderer(text)}</sup>`;
 
-		case "@sub":
+		case '@sub':
 			return `<sub>${TagRenderer(text)}</sub>`;
 
-		case "@n":
-		case "@nostyle": {
+		case '@n':
+		case '@nostyle': {
 			return `<span class="appearance-none font-no inline-block">${TagRenderer(text)}</span>`;
 		}
 
-		case "@indentFirst": {
+		case '@indentFirst': {
 			return `<span class="text-indent-first inline-block">${TagRenderer(text)}</span>`;
 		}
 
-		case "@indentSubsequent": {
+		case '@indentSubsequent': {
 			return `<span class="text-indent-subsequent inline-block">${TagRenderer(text)}</span>`;
 		}
 
 		default:
 			toasts.warn(`Unknown tag: ${tag}`);
-			return `<span class="bg-warning-400 dark:bg-warning-600">{${tag} ${TagRenderer(text)}}</span>`;
+			return `<span class="bg-warning-400 dark:bg-warning-600">{${tag} ${TagRenderer(
+				text
+			)}}</span>`;
 	}
 }
 
