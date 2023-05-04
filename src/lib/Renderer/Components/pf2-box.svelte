@@ -35,7 +35,7 @@
 			fill: #5e0000;
 			color: #fff;
 
-			html.dark & {
+			:global(html.dark) & {
 				background-color: #472c2c;
 				fill: #472c2c;
 				color: #c9c9c9;
@@ -59,7 +59,7 @@
 		&.sample {
 			fill: #2e2c27;
 			background: #2e2c27;
-			color: #bbb;
+			color: #c9c9c9;
 		}
 	}
 </style>

@@ -1,5 +1,4 @@
 <script>
-	import { renderdemo } from '$data/renderdemo.json';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
 	import { json } from '@codemirror/lang-json';
 	import { oneDark } from '@codemirror/theme-one-dark';
@@ -9,6 +8,7 @@
 	import CodeMirror from 'svelte-codemirror-editor';
 	import Fa from 'svelte-fa';
 	import { pf2oolsPlugin } from './pf2ools-codemirror.js';
+	import { renderdemo } from '$data/renderdemo.json';
 
 	const store = localStorageStore('renderdemo', JSON.stringify(renderdemo[0], null, 2));
 
@@ -67,14 +67,6 @@
 </div>
 
 <style>
-	.view-col {
-		position: relative;
-		margin: 0.5em;
-		display: flex;
-		flex-direction: column;
-		overflow: auto;
-	}
-
 	.render {
 		max-height: 90vh;
 	}

@@ -37,7 +37,6 @@
 	text-indent: -1em !important;
 }
 
-// TODO: TEST FOR CODEMIRROR
 span.world span {
 	color: purple;
 
@@ -48,4 +47,12 @@ span.world span {
 
 .svelte-fa {
 	width: 1.2em;
+}
+
+.view-col {
+	position: relative;
+	margin: 0.5em;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
 }
