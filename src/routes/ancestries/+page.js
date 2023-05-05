@@ -2,13 +2,11 @@ const modules = import.meta.glob([
     '$data/ancestries/*.json',
     '!$data/ancestries/versatile-heritages.json'
 ]);
-import { get, writable } from 'svelte/store';
 
-const ancestries = writable([]);
-
+const ancestries = [];
 for (const path in modules) {
     modules[path]().then((mod) => {
-        console.log(...mod.ancestry)
+        ancestries.push(...mod.ancestry)
     });
 }
 
@@ -17,8 +15,6 @@ for (const path in modules) {
 /** @type {import('./$types').PageServerLoad} */
 export function load() {
     return {
-        ancestries: new Promise((fulfil) => {
-            fulfil(get(ancestries))
-        })
+        ancestries
     };
 }

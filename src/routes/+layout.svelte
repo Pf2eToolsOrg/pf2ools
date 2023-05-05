@@ -35,6 +35,11 @@
 	</div>
 	<hr />
 	<DrawerNavigation />
+	<div class="fixed bottom-0 absolute p-2">
+		<span class="text-sm">
+			<kbd>Esc</kbd> to close. <kbd>D</kbd> to open. <kbd>Tabs</kbd> to navigate.
+		</span>
+	</div>
 </Drawer>
 
 <!-- Where Everything Happens -->
@@ -99,13 +104,7 @@
 				</div>
 			</svelte:fragment>
 		</AppBar>
-		<AppBar
-			background=""
-			gridColumns="grid-cols-3"
-			slotDefault="place-self-center"
-			slotTrail="place-content-end"
-			padding="p-2"
-		>
+		<AppBar background="" padding="p-0">
 			<TopNavigation />
 		</AppBar>
 	</svelte:fragment>

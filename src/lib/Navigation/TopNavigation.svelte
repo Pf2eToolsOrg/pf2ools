@@ -9,30 +9,20 @@
 	function drawerClose() {
 		drawerStore.close();
 	}
+
+	// Dropdowns: https://flowbite.com/docs/components/dropdowns/#multi-level-dropdown
 </script>
 
-<!--
-<nav class="list-nav p-1 flex">
-	{#each pages as link}
-		{#if link.pages}
-			<Accordion regionPanel="space-y-1" on:keydown={(e) => console.log(e)}>
-				<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
-					<svelte:fragment slot="lead">
-						<Fa icon={fort[link.icon]} />
-					</svelte:fragment>
-					<svelte:fragment slot="summary">
-						{link.label}
-					</svelte:fragment>
-					<svelte:fragment slot="content">
-						{#each link.pages as sublink}
-							<NavigationOption link={sublink} openFunction={drawerClose} />
-						{/each}
-					</svelte:fragment>
-				</AccordionItem>
-			</Accordion>
-		{:else}
-			<NavigationOption {link} openFunction={drawerClose} />
-		{/if}
-	{/each}
+<nav>
+	<div class="flex flex-wrap items-center justify-between mx-auto">
+		<ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+			{#each pages as page}
+				<li class="mr-2">
+					<a href={page.href} class="inline-block px-4 py-2 rounded-lg variant-ghost-surface">
+						{page.label}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
 </nav>
--->

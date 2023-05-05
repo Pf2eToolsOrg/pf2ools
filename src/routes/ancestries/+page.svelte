@@ -12,14 +12,9 @@
 	<title>PF2ools - Items</title>
 </svelte:head>
 
-<div class="container mx-auto p-8 space-y-8 pf2ools md:flex flex-row">
+<div class="container center p-8 space-y-8 pf2ools md:flex flex-row justify-center">
 	<div class="view-col">
 		<FilterBox />
-		{#if data.ancestries}
-			{#each data.ancestries as ancestry}
-				<a href="#a">{ancestry.name}</a>
-			{/each}
-		{/if}
 	</div>
 	<div class="view-col font-sabonltstd">
 		<Renderer />Content Content Content
