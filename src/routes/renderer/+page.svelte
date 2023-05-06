@@ -3,6 +3,7 @@
 	import { json } from '@codemirror/lang-json';
 	import { oneDark } from '@codemirror/theme-one-dark';
 	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+	import { faItalic } from '@fortawesome/free-solid-svg-icons';
 	import { localStorageStore, modeUserPrefers } from '@skeletonlabs/skeleton';
 	import { EditorView } from 'codemirror';
 	import CodeMirror from 'svelte-codemirror-editor';
@@ -25,6 +26,10 @@
 
 	function refreshCode() {
 		$store = JSON.stringify(renderdemo[0], null, 2);
+	}
+
+	function format() {
+		$store = JSON.stringify(JSON.parse($store), null, 2);
 	}
 
 	$: checkAndUpdateJson($store);
@@ -50,14 +55,16 @@
 				}}
 			/>
 		</div>
-		<button
-			type="button"
-			class="mx-2 mb-2 btn variant-ghost-surface float-right absolute top-3 right-3"
-			on:click={refreshCode}
-		>
-			<span><Fa icon={faRefresh} /></span>
-			<span>Reset</span>
-		</button>
+		<div class="float-right absolute top-3 right-5">
+			<button type="button" class="px-2 pb-2 btn variant-ghost-surface" on:click={refreshCode}>
+				<span><Fa icon={faRefresh} /></span>
+				<span>Reset</span>
+			</button>
+			<button type="button" class="px-2 pb-2 btn variant-ghost-surface" on:click={format}>
+				<span><Fa icon={faItalic} /></span>
+				<span>Format</span>
+			</button>
+		</div>
 	</div>
 	<div
 		class="render md:w-2/4 stats view-col font-sabonltstd variant-ghost-surface px-2 max-height-[90vh] height-[90vh]"

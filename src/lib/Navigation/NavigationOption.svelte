@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	export let link = {};
+	export let classes = '';
 	export let openFunction;
 	export let selected = false;
 	import Fa from 'svelte-fa';
@@ -20,6 +21,7 @@
 {:else}
 	<a
 		on:click={openFunction}
+		class={classes}
 		class:!variant-ghost-surface={selected || link.href === $page.url.pathname}
 		href={link.href}
 	>

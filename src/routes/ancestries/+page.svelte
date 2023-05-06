@@ -12,11 +12,17 @@
 	<title>PF2ools - Items</title>
 </svelte:head>
 
-<div class="container center p-8 space-y-8 pf2ools md:flex flex-row justify-center">
-	<div class="view-col">
+<div class="container pf2ools md:flex flex-row justify-center space-y-3">
+	<div class="border view-col">
 		<FilterBox />
 	</div>
-	<div class="view-col font-sabonltstd">
+	<div class="border view-col font-sabonltstd">
 		<Renderer />Content Content Content
 	</div>
 </div>
+
+<style>
+	.border {
+		border: 1px solid red;
+	}
+</style>

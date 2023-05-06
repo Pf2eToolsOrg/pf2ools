@@ -14,7 +14,7 @@
 <div>
 	<p class="flex">
 		{#if entry.name}
-			<span class="h4 font-gin"><Tagger entry={entry.name} /></span>
+			<span class="text-xl font-gin"><Tagger entry={entry.name} /></span>
 		{/if}
 		{#if entry.collapsible}
 			<button class="ml-auto select-none" on:keypress on:click={click}>
