@@ -23,7 +23,11 @@
 		});
 	}
 
+	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
+
 	function handler(event) {
+		if (!mobileCheck())
+			return console.warn('Not a mobile device. Ignoring swipe motion to open drawer.');
 		let direction = event.detail.direction;
 		if (direction === 'left') drawerStore.close();
 		if (direction === 'right') drawerOpen();
