@@ -1,25 +1,26 @@
 const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c = [
-  a + "/_app/immutable/entry/app.0c8b1c74.js",
-  a + "/_app/immutable/chunks/0.bb211682.js",
-  a + "/_app/immutable/chunks/1.28cbfa4e.js",
-  a + "/_app/immutable/chunks/2.54d0b0c8.js",
-  a + "/_app/immutable/chunks/3.90dd2d00.js",
-  a + "/_app/immutable/chunks/4.2d48ac9a.js",
-  a + "/_app/immutable/chunks/5.67dd69e4.js",
+  a + "/_app/immutable/entry/app.3d6c0595.js",
+  a + "/_app/immutable/assets/0.346caafb.css",
+  a + "/_app/immutable/nodes/0.2ae56262.js",
+  a + "/_app/immutable/nodes/1.b0fef5cf.js",
+  a + "/_app/immutable/nodes/2.4558b095.js",
+  a + "/_app/immutable/assets/3.c20883ca.css",
+  a + "/_app/immutable/nodes/3.f4519f9e.js",
+  a + "/_app/immutable/nodes/4.c354f47e.js",
+  a + "/_app/immutable/assets/5.c9c22b2a.css",
+  a + "/_app/immutable/nodes/5.242f5970.js",
   a + "/_app/immutable/assets/MiscUtils.4f1e9ba5.css",
   a + "/_app/immutable/assets/Renderer.01cf1ad8.css",
-  a + "/_app/immutable/chunks/MiscUtils.949a32d9.js",
-  a + "/_app/immutable/chunks/Renderer.48c733a1.js",
-  a + "/_app/immutable/chunks/_page.84af82c0.js",
-  a + "/_app/immutable/chunks/fa.39e775bc.js",
+  a + "/_app/immutable/chunks/MiscUtils.14e3614e.js",
+  a + "/_app/immutable/chunks/Renderer.d13793b6.js",
+  a + "/_app/immutable/chunks/fa.8ffa40a7.js",
   a + "/_app/immutable/assets/fa.95b16411.css",
-  a + "/_app/immutable/chunks/index.54c581ea.js",
-  a + "/_app/immutable/chunks/index.65bfe307.js",
+  a + "/_app/immutable/chunks/index.d99625a3.js",
+  a + "/_app/immutable/chunks/index.f9c4f2e2.js",
   a + "/_app/immutable/chunks/preload-helper.41c905a7.js",
-  a + "/_app/immutable/chunks/singletons.f9cb514d.js",
-  a + "/_app/immutable/chunks/stores.5871d37e.js",
-  a + "/_app/immutable/entry/start.5d4b6702.js",
-  a + "/_app/immutable/entry/error.svelte.52935860.js",
+  a + "/_app/immutable/chunks/singletons.92646266.js",
+  a + "/_app/immutable/chunks/stores.0e1f16fa.js",
+  a + "/_app/immutable/entry/start.881a7d30.js",
   a + "/_app/immutable/chunks/ancestry-anadi.fbeb9cbb.js",
   a + "/_app/immutable/chunks/ancestry-android.121e4632.js",
   a + "/_app/immutable/chunks/ancestry-automaton.b9e564f7.js",
@@ -55,17 +56,8 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/_app/immutable/chunks/ancestry-strix.9fbd5e31.js",
   a + "/_app/immutable/chunks/ancestry-tengu.8cc46df0.js",
   a + "/_app/immutable/chunks/ancestry-vanara.76fa06e7.js",
-  a + "/_app/immutable/chunks/ancestry-vishkanya.97fce2f2.js",
-  a + "/_app/immutable/assets/_layout.92c366b4.css",
-  a + "/_app/immutable/entry/_layout.svelte.c7de1d34.js",
-  a + "/_app/immutable/entry/_page.svelte.72793bcd.js",
-  a + "/_app/immutable/assets/_page.c20883ca.css",
-  a + "/_app/immutable/entry/ancestries-page.js.123c927c.js",
-  a + "/_app/immutable/entry/ancestries-page.svelte.244bead9.js",
-  a + "/_app/immutable/entry/licenses-page.svelte.9a294fa0.js",
-  a + "/_app/immutable/assets/_page.c9c22b2a.css",
-  a + "/_app/immutable/entry/renderer-page.svelte.8ae70299.js"
-], u = [
+  a + "/_app/immutable/chunks/ancestry-vishkanya.97fce2f2.js"
+], i = [
   a + "/fonts/AlbertusMT.ttf",
   a + "/fonts/Basing.ttf",
   a + "/fonts/Blambot-Casual-Regular.ttf",
@@ -167,10 +159,10 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/icons/Background.svg",
   a + "/icons/NoBackground.svg",
   a + "/icons/safari-pinned-tab.svg"
-], r = "1683463327423", f = `cache-${r}`, l = [
+], u = "1683472103225", f = `cache-${u}`, l = [
   ...c,
   // the app itself
-  ...u.filter((t) => !t.startsWith("/data"))
+  ...i.filter((t) => !t.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (t) => {
