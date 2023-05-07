@@ -1,25 +1,25 @@
 const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c = [
-  a + "/_app/immutable/entry/app.88b7959a.js",
-  a + "/_app/immutable/chunks/0.14362c08.js",
-  a + "/_app/immutable/chunks/1.8986e491.js",
+  a + "/_app/immutable/entry/app.84c305c3.js",
+  a + "/_app/immutable/chunks/0.df7b1b9b.js",
+  a + "/_app/immutable/chunks/1.82a32601.js",
   a + "/_app/immutable/chunks/2.54d0b0c8.js",
-  a + "/_app/immutable/chunks/3.90dd2d00.js",
-  a + "/_app/immutable/chunks/4.2d48ac9a.js",
-  a + "/_app/immutable/chunks/5.67dd69e4.js",
+  a + "/_app/immutable/chunks/3.e78e3ca0.js",
+  a + "/_app/immutable/chunks/4.1dc452be.js",
+  a + "/_app/immutable/chunks/5.e1cb13ff.js",
   a + "/_app/immutable/assets/MiscUtils.4f1e9ba5.css",
   a + "/_app/immutable/assets/Renderer.01cf1ad8.css",
-  a + "/_app/immutable/chunks/MiscUtils.949a32d9.js",
-  a + "/_app/immutable/chunks/Renderer.48c733a1.js",
+  a + "/_app/immutable/chunks/MiscUtils.b00dfdd5.js",
+  a + "/_app/immutable/chunks/Renderer.d9446884.js",
   a + "/_app/immutable/chunks/_page.84af82c0.js",
   a + "/_app/immutable/chunks/fa.39e775bc.js",
   a + "/_app/immutable/assets/fa.95b16411.css",
   a + "/_app/immutable/chunks/index.54c581ea.js",
   a + "/_app/immutable/chunks/index.65bfe307.js",
   a + "/_app/immutable/chunks/preload-helper.41c905a7.js",
-  a + "/_app/immutable/chunks/singletons.5fbc2a58.js",
-  a + "/_app/immutable/chunks/stores.1d9d5ec2.js",
-  a + "/_app/immutable/entry/start.7be1e845.js",
-  a + "/_app/immutable/entry/error.svelte.208690e7.js",
+  a + "/_app/immutable/chunks/singletons.39755b7a.js",
+  a + "/_app/immutable/chunks/stores.e548b21b.js",
+  a + "/_app/immutable/entry/start.67402b6a.js",
+  a + "/_app/immutable/entry/error.svelte.7a8997e1.js",
   a + "/_app/immutable/chunks/ancestry-anadi.fbeb9cbb.js",
   a + "/_app/immutable/chunks/ancestry-android.121e4632.js",
   a + "/_app/immutable/chunks/ancestry-automaton.b9e564f7.js",
@@ -56,15 +56,15 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/_app/immutable/chunks/ancestry-tengu.8cc46df0.js",
   a + "/_app/immutable/chunks/ancestry-vanara.76fa06e7.js",
   a + "/_app/immutable/chunks/ancestry-vishkanya.97fce2f2.js",
-  a + "/_app/immutable/assets/_layout.e2511c22.css",
-  a + "/_app/immutable/entry/_layout.svelte.3e58a3f2.js",
+  a + "/_app/immutable/assets/_layout.92c366b4.css",
+  a + "/_app/immutable/entry/_layout.svelte.6a184ec8.js",
   a + "/_app/immutable/entry/_page.svelte.72793bcd.js",
   a + "/_app/immutable/assets/_page.c20883ca.css",
   a + "/_app/immutable/entry/ancestries-page.js.123c927c.js",
-  a + "/_app/immutable/entry/ancestries-page.svelte.244bead9.js",
-  a + "/_app/immutable/entry/licenses-page.svelte.9a294fa0.js",
+  a + "/_app/immutable/entry/ancestries-page.svelte.2b4fd17c.js",
+  a + "/_app/immutable/entry/licenses-page.svelte.a4432bb3.js",
   a + "/_app/immutable/assets/_page.c9c22b2a.css",
-  a + "/_app/immutable/entry/renderer-page.svelte.8ae70299.js"
+  a + "/_app/immutable/entry/renderer-page.svelte.7e9fbd14.js"
 ], u = [
   a + "/fonts/AlbertusMT.ttf",
   a + "/fonts/Basing.ttf",
@@ -167,38 +167,38 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/icons/Background.svg",
   a + "/icons/NoBackground.svg",
   a + "/icons/safari-pinned-tab.svg"
-], r = "1683460016272", f = `cache-${r}`, l = [
+], r = "1683461318351", f = `cache-${r}`, l = [
   ...c,
   // the app itself
   ...u.filter((t) => !t.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (t) => {
-  async function e() {
+  async function n() {
     await (await caches.open(f)).addAll(l);
   }
-  t.waitUntil(e());
+  t.waitUntil(n());
 });
 self.addEventListener("activate", (t) => {
-  async function e() {
+  async function n() {
     for (const s of await caches.keys())
       s !== f && await caches.delete(s);
   }
-  t.waitUntil(e());
+  t.waitUntil(n());
 });
 self.addEventListener("fetch", (t) => {
   if (t.request.method !== "GET" || !t.request.url.startsWith("http"))
     return;
-  async function e() {
-    const s = new URL(t.request.url), n = await caches.open(f);
+  async function n() {
+    const s = new URL(t.request.url), e = await caches.open(f);
     if (l.includes(s.pathname))
-      return n.match(s.pathname);
+      return e.match(s.pathname);
     try {
       const o = await fetch(t.request);
-      return o.status === 200 && n.put(t.request, o.clone()), o;
+      return o.status === 200 && e.put(t.request, o.clone()), o;
     } catch {
-      return n.match(t.request);
+      return e.match(t.request);
     }
   }
-  t.respondWith(e());
+  t.respondWith(n());
 });
