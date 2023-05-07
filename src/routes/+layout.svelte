@@ -9,7 +9,8 @@
 		Drawer,
 		LightSwitch,
 		Toast,
-		drawerStore
+		drawerStore,
+		storePopup
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import { swipe } from 'svelte-gestures';
@@ -23,8 +24,10 @@
 		});
 	}
 
-	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
+	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
+	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
 	function handler(event) {
 		if (!mobileCheck())
 			return console.warn('Not a mobile device. Ignoring swipe motion to open drawer.');
