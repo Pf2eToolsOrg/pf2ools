@@ -1,11 +1,8 @@
 <script>
 	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
-	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
-	import { hotkey } from 'svelte-gh-hotkey';
+	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
 	import '$lib/Utils/MonkeyPatches.js';
-	import { swipe } from 'svelte-gestures';
-	import Toasts from '$lib/Utils/Toasts.js';
 	import {
 		AppBar,
 		AppShell,
@@ -15,6 +12,8 @@
 		drawerStore
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
+	import { swipe } from 'svelte-gestures';
+	import { hotkey } from 'svelte-gh-hotkey';
 	import '../app.postcss';
 	import '../css/index.scss';
 
@@ -24,11 +23,9 @@
 		});
 	}
 
-	const toasts = new Toasts();
 	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
 
 	function handler(event) {
-		toasts.success('Swiped');
 		if (!mobileCheck())
 			return console.warn('Not a mobile device. Ignoring swipe motion to open drawer.');
 		let direction = event.detail.direction;
@@ -40,7 +37,7 @@
 <button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
 
 <!-- Swipe to Open Drawer Handler-->
-<div use:swipe={{ timeframe: 1000, minSwipeDistance: 30 }} on:swipe={handler} class="h-screen">
+<div use:swipe={{ timeframe: 500, minSwipeDistance: 100 }} on:swipe={handler} class="h-screen">
 	<!-- Toast -->
 	<Toast />
 
