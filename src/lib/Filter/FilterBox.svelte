@@ -1,15 +1,39 @@
 <script>
-	import FilterBar from './FilterBar.svelte';
-	export let data = [];
+	export let data;
+	export let field;
+
+	let search = '';
+
+	$: regex = search ? new RegExp(search, 'i') : null;
+	$: matches = (item) => (regex ? regex.test(item[field]) : true);
 </script>
 
-<div class="view-col" id="listcontainer">
-	<FilterBar />
-	<ul class="view-row">
-		{#each data as element}
-			<li>
-				{element}
-			</li>
+<div>
+	<label>
+		<input bind:value={search} />
+	</label>
+
+	{#if $$slots.header}
+		<div class="header">
+			<slot name="header" />
+		</div>
+	{/if}
+
+	<div class="h-[84vh]">
+		{#each data.filter(matches) as item}
+			<!-- Slot: List -->
+			<a href={`#${item.name}_${item.source}`.toLowerCase()}>
+				<div>
+					<slot name="list" {item} />
+				</div>
+			</a>
+			<!-- /Slot -->
 		{/each}
-	</ul>
+	</div>
 </div>
+
+<style>
+	.header {
+		font-weight: bold;
+	}
+</style>

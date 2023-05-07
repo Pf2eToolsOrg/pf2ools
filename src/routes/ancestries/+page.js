@@ -5,7 +5,7 @@ const modules = import.meta.glob([
 
 const ancestries = [];
 for (const path in modules) {
-    modules[path]().then((mod) => {
+    await modules[path]().then((mod) => {
         ancestries.push(...mod.ancestry)
     });
 }
@@ -13,7 +13,7 @@ for (const path in modules) {
 // lookup https://vitejs.dev/guide/features.html#json
 
 /** @type {import('./$types').PageServerLoad} */
-export function load() {
+export async function load() {
     return {
         ancestries
     };

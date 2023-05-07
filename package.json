@@ -42,6 +42,7 @@
 		"codemirror": "^6.0.1",
 		"svelte-codemirror-editor": "^1.1.0",
 		"svelte-fa": "^3.0.3",
+		"svelte-gestures": "^1.4.1",
 		"svelte-gh-hotkey": "^0.2.1"
 	}
 }
