@@ -6,6 +6,8 @@
 
 	$: regex = search ? new RegExp(search, 'i') : null;
 	$: matches = (item) => (regex ? regex.test(item[field]) : true);
+
+	// TODO: https://shortbuzz.in/blog/shortbuzz.in/how-to-create-tailwind-css-grid-system-like-the-bootstrap-grid-system
 </script>
 
 <div>
