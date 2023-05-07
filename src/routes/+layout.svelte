@@ -5,6 +5,7 @@
 	import { hotkey } from 'svelte-gh-hotkey';
 	import '$lib/Utils/MonkeyPatches.js';
 	import { swipe } from 'svelte-gestures';
+	import Toasts from '$lib/Utils/Toasts.js';
 	import {
 		AppBar,
 		AppShell,
@@ -23,9 +24,11 @@
 		});
 	}
 
+	const toasts = new Toasts();
 	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
 
 	function handler(event) {
+		toasts.success('Swiped');
 		if (!mobileCheck())
 			return console.warn('Not a mobile device. Ignoring swipe motion to open drawer.');
 		let direction = event.detail.direction;
@@ -36,28 +39,25 @@
 
 <button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
 
-<!-- Toast -->
-<Toast />
-
-<!-- Mobile Sidebar -->
-<Drawer duration="250">
-	<div class="m-1">
-		<Search />
-	</div>
-	<hr />
-	<DrawerNavigation />
-	<div class="fixed bottom-0 p-2">
-		<span class="text-sm">
-			<kbd>Esc</kbd> to close. <kbd>D</kbd> to open. <kbd>Tabs</kbd> to navigate.
-		</span>
-	</div>
-</Drawer>
 <!-- Swipe to Open Drawer Handler-->
-<div
-	use:swipe={{ timeframe: 500, minSwipeDistance: 10, touchAction: 'pan-y' }}
-	on:swipe={handler}
-	class="h-screen"
->
+<div use:swipe={{ timeframe: 1000, minSwipeDistance: 30 }} on:swipe={handler} class="h-screen">
+	<!-- Toast -->
+	<Toast />
+
+	<!-- Mobile Sidebar -->
+	<Drawer duration="250">
+		<div class="m-1">
+			<Search />
+		</div>
+		<hr />
+		<DrawerNavigation />
+		<div class="fixed bottom-0 p-2">
+			<span class="text-sm hidden md:contents">
+				<kbd>Esc</kbd> to close. <kbd>D</kbd> to open. <kbd>Tabs</kbd> to navigate.
+			</span>
+			<span class="text-sm md:hidden px-14"> You can also swipe to open. </span>
+		</div>
+	</Drawer>
 	<!-- Where Everything Happens -->
 	<AppShell slotSidebarLeft="bg-surface-500/10">
 		<!-- Header -->
@@ -82,7 +82,9 @@
 									title="Open Sidebar (Hotkey: D)"
 								/>
 							</button>
-							<span class="font-gin md:hidden whitespace-nowrap"> Click on the logo. </span>
+							<span class="font-gin md:hidden whitespace-nowrap">
+								&lt;- Click to navigate.
+							</span>
 						</div>
 					</svelte:fragment>
 
