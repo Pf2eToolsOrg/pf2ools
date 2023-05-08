@@ -58,10 +58,12 @@
 		<div>
 			{#if entry.boosts?.length}
 				<b>Boost{pluralIf(entry.boosts)}</b>
-				{entry.boosts?.map((x) => x.toTitleCase()).joinConjunct(', ', ' and ')}
-			{/if}
-			{#if entry.boosts?.length && entry.flaws?.length}
-				;
+				{entry.boosts
+					?.map((x) => x.toTitleCase())
+					.joinConjunct(
+						', ',
+						' and '
+					)}{#if entry.boosts?.length && entry.flaws?.length};{/if}
 			{/if}
 			{#if entry.flaws?.length}
 				<b>Flaw{pluralIf(entry.flaws)}</b>
