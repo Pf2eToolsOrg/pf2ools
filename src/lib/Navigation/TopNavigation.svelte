@@ -9,9 +9,9 @@
 	// Dropdowns: https://flowbite.com/docs/components/dropdowns/#multi-level-dropdown
 
 	let popupCombobox = {
-		event: 'hover-click',
+		event: 'click',
 		placement: 'bottom',
-		closeQuery: '.listbox-item'
+		closeQuery: '#navigation-option'
 	};
 
 	function pickRandom(icons) {
@@ -23,8 +23,10 @@
 	}
 </script>
 
-<nav class="hidden \\md:flex">
-	<div class="flex text-sm font-medium text-center text-gray-500 dark:text-gray-400 flex-nowrap">
+<nav class="hidden md:flex">
+	<div
+		class="flex text-sm font-medium text-center text-gray-500 dark:text-gray-400 flex-nowrap z-10"
+	>
 		{#each pages as link}
 			{#if link.type === 'divider'}
 				<hr />
@@ -55,7 +57,7 @@
 						<NavigationOption
 							link={sublink}
 							classes={{
-								anchor: 'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-centerjustify-center h-8',
+								anchor: 'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex h-8',
 								icon: 'pr-2'
 							}}
 						/>

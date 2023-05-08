@@ -22,7 +22,7 @@ export async function load() {
 			let ancestriesData = mod.ancestry;
 			ancestriesData.forEach((a) => {
 				a._path = path;
-				let ancestry = new Ancestry(a);
+				const ancestry = new Ancestry(a);
 				ancestries.set(ancestry.hash, ancestry);
 			});
 		});

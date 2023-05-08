@@ -4,7 +4,7 @@
 	import { splitByTags, splitFirstSpace } from '$lib/Utils/SplitTags.js';
 	import { isObject } from '$lib/Utils/MiscUtils.js';
 
-	function renderString(string, options) {
+	function renderString(string) {
 		const tagSplit = splitByTags(string);
 		const len = tagSplit.length;
 

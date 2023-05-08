@@ -25,7 +25,7 @@
 			{#if link.type === 'divider'}
 				<hr />
 			{:else if link.pages}
-				<Accordion regionPanel="space-y-1" on:keydown={(e) => console.log(e)}>
+				<Accordion regionPanel="space-y-1">
 					<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
 						<svelte:fragment slot="lead">
 							{#if fort[pickRandom(link.icon)]}

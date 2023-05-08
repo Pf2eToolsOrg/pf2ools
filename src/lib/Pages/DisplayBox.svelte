@@ -3,9 +3,9 @@
 	export let selected;
 </script>
 
-<div class="wrp-stats">
+<div class="wrp-stats stats">
 	<!-- TODO: Tabs, Buttons, etc, make it a slot -->
-	<div class="stats">
+	<div class="m-2">
 		<Renderer entries={selected} />
 	</div>
 </div>

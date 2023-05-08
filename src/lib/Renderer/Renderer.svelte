@@ -3,7 +3,6 @@
 	import * as Components from './Components/index.js';
 	import Tagger from './Tagger.svelte';
 	export let entries;
-	export let options = { noWrap: false };
 
 	function getComponent(entry) {
 		if (!entry.type) {
@@ -30,8 +29,8 @@
 
 {#each entries as entry}
 	{#if typeof entry === 'string'}
-		<Tagger {entry} {options} />
+		<Tagger {entry} />
 	{:else if typeof entry === 'object'}
-		<svelte:component this={getComponent(entry)} {entry} {options} />
+		<svelte:component this={getComponent(entry)} {entry} />
 	{/if}
 {/each}

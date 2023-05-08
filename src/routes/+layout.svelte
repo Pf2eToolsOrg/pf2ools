@@ -24,6 +24,13 @@
 		});
 	}
 
+	import { navigating } from '$app/stores';
+
+	navigating.subscribe((value) => {
+		if (value === null) return;
+		if (value.from.route.id !== value.to.route.id) console.clear();
+	});
+
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 

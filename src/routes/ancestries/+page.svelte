@@ -7,7 +7,6 @@
 	const ancestries = data.ancestries;
 
 	import { page } from '$app/stores';
-
 	let selected;
 
 	page.subscribe((value) => {
@@ -41,9 +40,9 @@
 				<div class="grid grid-cols-4 gap-1">
 					<span id="name">{row.name}</span>
 					<span id="hp">{row.hp}</span>
-					<span id="size"
-						>{row.size.map((x) => x.toTitleCase()).joinConjunct(', ', ' or ')}</span
-					>
+					<span id="size">
+						{row.size.map((x) => x.toTitleCase()).joinConjunct(', ', ' or ')}
+					</span>
 					<span id="source">{row.source}</span>
 				</div>
 			</svelte:fragment>

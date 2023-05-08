@@ -24,6 +24,7 @@
 	<hr />
 {:else}
 	<a
+		id="navigation-option"
 		on:click={openFunction}
 		class={classes.anchor}
 		class:!variant-ghost-surface={selected || link.href === $page.url.pathname}
