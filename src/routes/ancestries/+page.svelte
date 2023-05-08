@@ -1,6 +1,6 @@
 <script>
-	import FilterBox from '$lib/Filter/FilterBox.svelte';
-	import Renderer from '$lib/Renderer/Renderer.svelte';
+	import FilterBox from '$lib/Pages/FilterBox.svelte';
+	import DisplayBox from '$lib/Pages/DisplayBox.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -16,7 +16,7 @@
 		if (hash && ancestries.has(hash)) {
 			selected = ancestries.get(hash);
 		} else {
-			selected  = ancestries.entries().next().value[1];
+			selected = ancestries.entries().next().value[1];
 		}
 	});
 </script>
@@ -25,7 +25,7 @@
 	<title>PF2ools - Ancestries</title>
 </svelte:head>
 
-<div class="container md:flex flex-row justify-center space-y-3">
+<div class="container md:flex">
 	<div class="view-col md:w-3/5">
 		<FilterBox data={data.ancestries} field="name" let:item={row} {selected}>
 			<svelte:fragment slot="header">
@@ -49,7 +49,7 @@
 			</svelte:fragment>
 		</FilterBox>
 	</div>
-	<div class="view-col md:w-2/5 font-sabonltstd pf2ools border-dotted border border-red-700">
-		{selected.name}
+	<div class="view-col max-h-[90vh] md:w-2/5 font-sabonltstd pf2ools">
+		<DisplayBox {selected} />
 	</div>
 </div>

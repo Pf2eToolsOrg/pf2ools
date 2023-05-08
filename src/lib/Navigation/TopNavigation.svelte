@@ -23,7 +23,7 @@
 	}
 </script>
 
-<nav class="hidden md:flex">
+<nav class="hidden \\md:flex">
 	<div class="flex text-sm font-medium text-center text-gray-500 dark:text-gray-400 flex-nowrap">
 		{#each pages as link}
 			{#if link.type === 'divider'}
@@ -55,8 +55,7 @@
 						<NavigationOption
 							link={sublink}
 							classes={{
-								anchor:
-									'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-centerjustify-center h-8',
+								anchor: 'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-centerjustify-center h-8',
 								icon: 'pr-2'
 							}}
 						/>
@@ -67,8 +66,7 @@
 					<NavigationOption
 						{link}
 						classes={{
-							anchor:
-								'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex text-gray-900 dark:text-gray-400 items-center justify-center h-8 ',
+							anchor: 'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex text-gray-900 dark:text-gray-400 items-center justify-center h-8 ',
 							icon: 'pr-2'
 						}}
 					/>

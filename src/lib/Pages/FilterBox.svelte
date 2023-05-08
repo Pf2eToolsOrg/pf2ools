@@ -1,4 +1,6 @@
 <script>
+	import { hotkey } from 'svelte-gh-hotkey';
+	import { goto } from '$app/navigation';
 	export let data;
 	export let field;
 	export let selected;
@@ -8,8 +10,29 @@
 	$: regex = search ? new RegExp(search, 'i') : null;
 	$: matches = (item) => (regex ? regex.test(item[field]) : true);
 
+	function cycleSelected(arg) {
+		let index = [...data.values()].indexOf(selected);
+		let next = [...data.values()][index + arg ? (index + arg) % data.size : data.size - 1];
+		goto('#' + next.hash);
+	}
+
 	// TODO: https://shortbuzz.in/blog/shortbuzz.in/how-to-create-tailwind-css-grid-system-like-the-bootstrap-grid-system
 </script>
+
+<button
+	class="hidden"
+	on:click={(e) => {
+		cycleSelected(-1);
+	}}
+	use:hotkey={'j'}
+/>
+<button
+	class="hidden"
+	on:click={(e) => {
+		cycleSelected(1);
+	}}
+	use:hotkey={'k'}
+/>
 
 <div class="overflow-x-hidden">
 	<div class="flex h-8">

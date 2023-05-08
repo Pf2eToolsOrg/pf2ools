@@ -1,15 +1,14 @@
+import DataEntry from '$lib/Utils/DataUtils';
+
 const modules = import.meta.glob([
 	'$data/ancestries/*.json',
 	'!$data/ancestries/versatile-heritages.json'
 ]);
 
-class Ancestry {
-	constructor(ancestry) {
-		Object.assign(this, ancestry);
-	}
-
-	get hash() {
-		return `${this.name}_${this.source}`.toLowerCase()
+class Ancestry extends DataEntry {
+	// Unique Ancestry Functions Here
+	get type() {
+		return 'ancestry';
 	}
 }
 
@@ -17,18 +16,17 @@ class Ancestry {
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
-	const ancestriesData = [];
+	const ancestries = new Map();
 	for (const path in modules) {
 		await modules[path]().then((mod) => {
-			ancestriesData.push(...mod.ancestry);
+			let ancestriesData = mod.ancestry;
+			ancestriesData.forEach((a) => {
+				a._path = path;
+				let ancestry = new Ancestry(a);
+				ancestries.set(ancestry.hash, ancestry);
+			});
 		});
 	}
-
-	const ancestries = new Map();
-
-	ancestriesData.map((a) => new Ancestry(a)).forEach((a) => {
-		ancestries.set(a.hash, a);
-	});
 
 	return {
 		ancestries

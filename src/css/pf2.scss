@@ -25,3 +25,18 @@ ul {
 		background: #222;
 	}
 }
+
+.wrp-stats {
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-top: 2px solid #5e0000;
+	border-bottom: 2px solid #5e0000;
+	transform: translateZ(0);
+	flex-shrink: 1;
+	background: #f6f4f2;
+
+	html.dark & {
+		border-top: 2px solid #565656;
+		border-bottom: 2px solid #565656;
+	}
+}
