@@ -32,7 +32,7 @@
 	{#if typeof entry === 'string'}
 		{entry}
 	{:else if isObject(entry) && Tags[entry.type]}
-		<svelte:component this={Tags[entry.type]} text={entry.text} />
+		<svelte:component this={Tags[entry.type]} {...entry} />
 	{:else if isObject(entry) && !Tags[entry.type]}
 		<svelte:component this={Tags['highlight']} text={entry.ogText} error={entry.type} />
 	{/if}

@@ -1,16 +1,9 @@
-import DataEntry from '$lib/Utils/DataUtils';
+import Ancestry from './class.js';
 
 const modules = import.meta.glob([
 	'$data/ancestries/*.json',
 	'!$data/ancestries/versatile-heritages.json'
 ]);
-
-class Ancestry extends DataEntry {
-	// Unique Ancestry Functions Here
-	get type() {
-		return 'ancestry';
-	}
-}
 
 // lookup https://vitejs.dev/guide/features.html#json
 

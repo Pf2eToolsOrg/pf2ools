@@ -17,3 +17,10 @@ export function mobileCheck() {
 	})(navigator.userAgent || navigator.vendor || window.opera);
 	return check;
 }
+
+export function pluralIf(entry = [], word = "") {
+	if (typeof entry === "object") {
+		entry = Object.keys(entry)
+	};
+	return entry.length === 1 ? word : `${word}s`;
+}

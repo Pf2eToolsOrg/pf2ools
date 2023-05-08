@@ -6,7 +6,15 @@ export default class DataEntry {
         }
     }
 
+    hashify(name, source) {
+        return `${name}_${source}`.toLowerCase()
+    }
+
     get hash() {
-        return `${this.name}_${this.source}`.toLowerCase()
+        return this.hashify(this.name, this.source)
+    }
+
+    tag(displayText) {
+        return `${this.name}|${this.source}${displayText ? `|${displayText}` : ''}`
     }
 }

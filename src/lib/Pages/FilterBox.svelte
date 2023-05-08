@@ -11,8 +11,11 @@
 	$: matches = (item) => (regex ? regex.test(item[field]) : true);
 
 	function cycleSelected(arg) {
+		// FIXME: There's something wrong here. Select an option, use one of the keys, then the other. The other will not happen.
 		let index = [...data.values()].indexOf(selected);
-		let next = [...data.values()][index + arg ? (index + arg) % data.size : data.size - 1];
+		let next = [...data.values()][
+			index === 0 && arg === -1 ? data.size - 1 : (index + arg) % data.size
+		];
 		goto('#' + next.hash);
 	}
 
@@ -24,14 +27,14 @@
 	on:click={(e) => {
 		cycleSelected(-1);
 	}}
-	use:hotkey={'j'}
+	use:hotkey={'k'}
 />
 <button
 	class="hidden"
 	on:click={(e) => {
 		cycleSelected(1);
 	}}
-	use:hotkey={'k'}
+	use:hotkey={'j'}
 />
 
 <div class="overflow-x-hidden">

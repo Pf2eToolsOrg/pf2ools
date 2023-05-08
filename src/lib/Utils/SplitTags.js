@@ -1,6 +1,3 @@
-export const splitByTags = (string) => splitByTagsBase('@')(string); // Split by @
-export const splitByPropertyInjectors = () => splitByTagsBase('=');
-export const splitTagByPipe = (string) => splitByPipeBase('@')(string); // Split by |
 export function splitByTagsBase(leadingCharacter) {
 	return function (string) {
 		let tagDepth = 0;
@@ -106,3 +103,6 @@ export function splitByPipeBase(leadingCharacter) {
 		return out;
 	};
 }
+export const splitByTags = splitByTagsBase('@');
+export const splitByPropertyInjectors = splitByTagsBase('=');
+export const splitTagByPipe = splitByPipeBase('@');

@@ -28,7 +28,11 @@
 
 	navigating.subscribe((value) => {
 		if (value === null) return;
-		if (value.from.route.id !== value.to.route.id) console.clear();
+		if (value.from.route.id !== value.to.route.id) {
+			console.clear();
+			console.log(`%cPF2ools`, 'color: #ff1111; font-size: 30px;');
+			console.log(`%cNavigating to ${value.to.route.id}`, 'color: #ff0000; font-size: 20px;');
+		}
 	});
 
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
