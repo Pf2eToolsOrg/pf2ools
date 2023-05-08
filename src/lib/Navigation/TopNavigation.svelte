@@ -24,14 +24,17 @@
 </script>
 
 <nav class="hidden md:flex">
-	<div class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+	<div class="flex text-sm font-medium text-center text-gray-500 dark:text-gray-400 flex-nowrap">
 		{#each pages as link}
 			{#if link.type === 'divider'}
 				<hr />
 			{:else if link.pages}
 				<!-- svelte-ignore missing-declaration -->
 				<button
-					class="unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-center justify-center h-8 mr-0.5"
+					class="unstyled px-4 py-2 rounded-lg
+					text-gray-900 dark:text-gray-400
+					variant-ghost-surface flex items-center
+					justify-center h-8 mr-0.5 whitespace-nowrap"
 					use:popup={{ ...popupCombobox, target: link.label }}
 				>
 					<span class="pr-2">
@@ -44,7 +47,8 @@
 					{link.label}
 				</button>
 				<div
-					class="bg-surface-300/95 dark:bg-surface-800/95 rounded-lg min-w-20"
+					class="bg-surface-300/95 dark:bg-surface-800/95 rounded-lg min-w-20
+					text-gray-900 dark:text-gray-400"
 					data-popup={link.label}
 				>
 					{#each link.pages as sublink}
@@ -52,7 +56,7 @@
 							link={sublink}
 							classes={{
 								anchor:
-									'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-center justify-center h-8',
+									'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-centerjustify-center h-8',
 								icon: 'pr-2'
 							}}
 						/>
@@ -64,7 +68,7 @@
 						{link}
 						classes={{
 							anchor:
-								'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex items-center justify-center h-8',
+								'unstyled px-4 py-2 rounded-lg variant-ghost-surface flex text-gray-900 dark:text-gray-400 items-center justify-center h-8 ',
 							icon: 'pr-2'
 						}}
 					/>

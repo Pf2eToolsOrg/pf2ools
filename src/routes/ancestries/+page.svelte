@@ -10,8 +10,15 @@
 
 	let selected;
 
-	$: selected =
-		ancestries.get($page.url.hash.replace('#', '')) ?? ancestries.entries().next().value;
+	page.subscribe((value) => {
+		let hash = value.url.hash.replace('#', '');
+
+		if (hash && ancestries.has(hash)) {
+			selected = ancestries.get(hash);
+		} else {
+			selected  = ancestries.entries().next().value[1];
+		}
+	});
 </script>
 
 <svelte:head>
@@ -19,7 +26,7 @@
 </svelte:head>
 
 <div class="container md:flex flex-row justify-center space-y-3">
-	<div class="view-col w-3/5">
+	<div class="view-col md:w-3/5">
 		<FilterBox data={data.ancestries} field="name" let:item={row} {selected}>
 			<svelte:fragment slot="header">
 				<div class="grid grid-cols-4 gap-1">
@@ -42,7 +49,7 @@
 			</svelte:fragment>
 		</FilterBox>
 	</div>
-	<div class="view-col w-2/5 font-sabonltstd pf2ools">
+	<div class="view-col md:w-2/5 font-sabonltstd pf2ools border-dotted border border-red-700">
 		{selected.name}
 	</div>
 </div>
