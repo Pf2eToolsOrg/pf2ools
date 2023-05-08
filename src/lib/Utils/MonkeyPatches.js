@@ -1,4 +1,42 @@
-// STRING ==============================================================================================================
+//#region Map
+
+/**
+ * @callback FilterFunction The function to use for filtering.
+ * @param {*} value The value of the individual Map entry.
+ * @param {string} key The key of the individual Map entry.
+ * @returns {boolean} Whether to keep the entry.
+ */
+
+/**
+ * A Filter monkeypatch for Map. It takes a function which returns true or false.
+ * @param {FilterFunction} func The function to use for filtering.
+ * @returns {Map} A new Map with the filtered values.
+ *
+ * @example map.filter((value, key) => value.hp === 8)
+ * map.filter((value, key) => key === "anadi_lome")
+ */
+Map.prototype.filter = Map.prototype.filter || function (func) {
+	const out = new Map();
+	for (const [k, v] of this) {
+		if (func(v, k)) out.set(k, v);
+	}
+	return out;
+};
+
+Map.prototype.toValueArray = Map.prototype.toValueArray || function () {
+	// eslint-disable-next-line no-unused-vars
+	return Array.from(this, ([key, value]) => value);
+};
+
+Map.prototype.toKeyArray = Map.prototype.toKeyArray || function () {
+	// eslint-disable-next-line no-unused-vars
+	return Array.from(this, (key) => key);
+};
+
+
+//#endregion
+
+//#region String
 String.prototype.remove = function (text) {
 	return this.replaceAll(text, '');
 };
@@ -331,3 +369,4 @@ let StrUtil = {
 			.join(' ');
 	}
 };
+//#endregion
