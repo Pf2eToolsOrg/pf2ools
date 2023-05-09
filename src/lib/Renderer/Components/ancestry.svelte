@@ -44,14 +44,15 @@
 		{#if entry.hp}
 			<div>
 				<b>Health Points</b>
-				{entry.hp}
 				{#if entry.extraHp}
-					<Note
+					{entry.hp}<Note
 						text={entry.extraHp.map(
 							(x) => `{@ancestry ${entry.heritages.get(x.hash).tag(`/${x.hp}`)}}`
 						)}
 						noItalics={true}
 					/>
+				{:else}
+					{entry.hp}
 				{/if}
 			</div>
 		{/if}

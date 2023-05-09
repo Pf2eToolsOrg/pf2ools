@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>PF2ools - Ancestries</title>
+	<title>PF2ools - Ancestries{selected ? `: ${selected.name}` : ''}</title>
 </svelte:head>
 
 <div class="container md:flex">

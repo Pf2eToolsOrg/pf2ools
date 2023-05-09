@@ -1,3 +1,4 @@
+//#region Formatting Tags
 export { default as actionsymbol, default as as } from './actionsymbol.svelte';
 export { default as color } from './color.svelte';
 export { default as highlight } from './highlight.svelte';
@@ -12,3 +13,8 @@ export { default as sup } from './supscript.svelte';
 export { default as sub } from './subscript.svelte';
 export { default as nostyle, default as n } from './nostyle.svelte';
 export { default as center, default as c } from './center.svelte';
+//#endregion
+
+//#region Hover Tags
+export { default as ancestry } from './ancestry.svelte';
+//#endregion

@@ -7,7 +7,7 @@ export default class DataEntry {
     }
 
     hashify(name, source) {
-        return `${name}_${source}`.toLowerCase()
+        return hashify(name ?? this.name, source ?? this.source)
     }
 
     get hash() {
@@ -17,4 +17,8 @@ export default class DataEntry {
     tag(displayText) {
         return `${this.name}|${this.source}${displayText ? `|${displayText}` : ''}`
     }
+}
+
+export function hashify(name, source) {
+    return `${name + (source ? `_${source}` : "")}`.toLowerCase()
 }
