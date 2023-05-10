@@ -15,24 +15,29 @@
  * @example map.filter((value, key) => value.hp === 8)
  * map.filter((value, key) => key === "anadi_lome")
  */
-Map.prototype.filter = Map.prototype.filter || function (func) {
-	const out = new Map();
-	for (const [k, v] of this) {
-		if (func(v, k)) out.set(k, v);
-	}
-	return out;
-};
+Map.prototype.filter =
+	Map.prototype.filter ||
+	function (func) {
+		const out = new Map();
+		for (const [k, v] of this) {
+			if (func(v, k)) out.set(k, v);
+		}
+		return out;
+	};
 
-Map.prototype.toValueArray = Map.prototype.toValueArray || function () {
-	// eslint-disable-next-line no-unused-vars
-	return Array.from(this, ([key, value]) => value);
-};
+Map.prototype.toValueArray =
+	Map.prototype.toValueArray ||
+	function () {
+		// eslint-disable-next-line no-unused-vars
+		return Array.from(this, ([key, value]) => value);
+	};
 
-Map.prototype.toKeyArray = Map.prototype.toKeyArray || function () {
-	// eslint-disable-next-line no-unused-vars
-	return Array.from(this, (key) => key);
-};
-
+Map.prototype.toKeyArray =
+	Map.prototype.toKeyArray ||
+	function () {
+		// eslint-disable-next-line no-unused-vars
+		return Array.from(this, (key) => key);
+	};
 
 //#endregion
 
@@ -74,12 +79,10 @@ String.prototype.toTitleCase =
 		);
 
 		// Require space surrounded, as title-case requires a full word on either side
-		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(
-			(it) => new RegExp(`\\s${it}\\s`, 'gi')
-		);
-		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(
-			(it) => new RegExp(`\\b${it}\\b`, 'g')
-		);
+		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil._TITLE_LOWER_WORDS_RE =
+			StrUtil.TITLE_LOWER_WORDS.map((it) => new RegExp(`\\s${it}\\s`, 'gi'));
+		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil._TITLE_UPPER_WORDS_RE =
+			StrUtil.TITLE_UPPER_WORDS.map((it) => new RegExp(`\\b${it}\\b`, 'g'));
 
 		const len = StrUtil.TITLE_LOWER_WORDS.length;
 		for (let i = 0; i < len; i++) {

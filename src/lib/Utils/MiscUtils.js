@@ -18,9 +18,9 @@ export function mobileCheck() {
 	return check;
 }
 
-export function pluralIf(entry = [], word = "") {
-	if (typeof entry === "object") {
-		entry = Object.keys(entry)
-	};
+export function pluralIf(entry = [], word = '') {
+	if (typeof entry === 'object') {
+		entry = Object.keys(entry);
+	}
 	return entry.length === 1 ? word : `${word}s`;
 }

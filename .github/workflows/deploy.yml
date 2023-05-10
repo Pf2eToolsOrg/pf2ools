@@ -1,40 +1,40 @@
 name: Deploy
 
 on:
-   workflow_run:
-      workflows: ['Tests']
-      branches: [main]
-      types:
-         - completed
+    workflow_run:
+        workflows: ['Tests']
+        branches: [main]
+        types:
+            - completed
 
 jobs:
-   release:
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
-      runs-on: ubuntu-latest
-      permissions:
-         contents: write
-      steps:
-         - name: Checkout
-           uses: actions/checkout@v3
-           with:
-              submodules: recursive
+    release:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  submodules: recursive
 
-         - name: Extract tag version number
-           id: get_version
-           uses: battila7/get-version-action@v2
+            - name: Extract tag version number
+              id: get_version
+              uses: battila7/get-version-action@v2
 
-         - name: Install Dependencies
-           run: |
-              node --version
-              npm --version
-              npm i
+            - name: Install Dependencies
+              run: |
+                  node --version
+                  npm --version
+                  npm i
 
-         - name: Build Site
-           run: |
-              npm run build
-              touch build/.nojekyll
+            - name: Build Site
+              run: |
+                  npm run build
+                  touch build/.nojekyll
 
-         - name: Deploy
-           uses: JamesIves/github-pages-deploy-action@releases/v4
-           with:
-              folder: build
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v4
+              with:
+                  folder: build
