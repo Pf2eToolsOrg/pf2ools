@@ -4,6 +4,11 @@
 
 The Next Version of PF2ools, based on SkeletonUI and SvelteKit.
 
+Other Repositories Include:
+
+- [PF2ools-Data](https://github.com/Pf2eToolsOrg/pf2ools-data)
+- [PF2ools-Utils](https://github.com/Pf2eToolsOrg/pf2ools-utils)
+
 ## Developing
 
 1. `git clone https://github.com/Pf2eToolsOrg/pf2ools.git --recurse-submodules` (if you do not `--recurse-submodules`, you won't get the [data](https://github.com/Pf2eToolsOrg/pf2ools-data)!)

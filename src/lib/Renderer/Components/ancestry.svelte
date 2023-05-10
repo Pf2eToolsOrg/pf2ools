@@ -79,10 +79,10 @@
 		{/if}
 	</div>
 
-	{#if entry.flavor?.length}
+	{#if entry.entries?.length}
 		<hr />
 		<div>
-			<Renderer entries={entry.flavor} />
+			<Renderer entries={entry.entries} />
 		</div>
 	{/if}
 </div>
