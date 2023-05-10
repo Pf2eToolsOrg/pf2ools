@@ -1,5 +1,5 @@
 <script>
-	import Ancestry from '$lib/Renderer/Components/Ancestry.svelte';
+	import Ancestry from '$lib/Renderer/Components/ancestry.svelte';
 	import { hashify } from '$lib/Utils/DataUtils.js';
 	import { splitTagByPipe } from '$lib/Utils/SplitTags.js';
 	import Tagger from 'tagger';
