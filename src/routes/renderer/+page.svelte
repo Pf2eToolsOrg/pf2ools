@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>PF2ools - Renderer Demo</title>
+	<title>Renderer Demo - PF2ools</title>
 </svelte:head>
 
 <div class="pf2ools md:flex flex-row">
@@ -56,7 +56,11 @@
 			/>
 		</div>
 		<div class="float-right absolute top-3 right-5">
-			<button type="button" class="px-2 pb-2 btn variant-ghost-surface" on:click={refreshCode}>
+			<button
+				type="button"
+				class="px-2 pb-2 btn variant-ghost-surface"
+				on:click={refreshCode}
+			>
 				<span><Fa icon={faRefresh} /></span>
 				<span>Reset</span>
 			</button>

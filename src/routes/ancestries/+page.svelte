@@ -10,7 +10,8 @@
 	let selected;
 
 	page.subscribe((value) => {
-		let hash = value.url.hash.replace('#', '');
+		let hash = value.url.hash.replaceAll(/\#|\?.+/g, '');
+		// TODO: Expand to heritages
 
 		if (hash && ancestries.has(hash)) {
 			selected = ancestries.get(hash);
@@ -21,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>PF2ools - Ancestries{selected ? `: ${selected.name}` : ''}</title>
+	<title>{selected ? selected.name : 'Ancestries'} - PF2ools</title>
 </svelte:head>
 
 <div class="container md:flex">

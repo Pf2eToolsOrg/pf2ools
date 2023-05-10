@@ -62,7 +62,7 @@
 </script>
 
 <svelte:head>
-	<title>PF2ools - Licenses</title>
+	<title>Licenses - PF2ools</title>
 </svelte:head>
 
 <div class="container pf2ools space-y-3">
