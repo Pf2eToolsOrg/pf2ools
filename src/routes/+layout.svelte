@@ -17,6 +17,8 @@
 	import { hotkey } from 'svelte-gh-hotkey';
 	import '../app.postcss';
 	import '../css/index.scss';
+	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
 	function drawerOpen() {
 		drawerStore.open({
@@ -24,6 +26,7 @@
 		});
 	}
 
+	//#region Restart Console Logs on Navigation
 	import { navigating } from '$app/stores';
 	navigating.subscribe((value) => {
 		if (value === null) return;
@@ -33,10 +36,9 @@
 			console.log(`%cNavigating to ${value.to.route.id}`, 'color: #ff0000; font-size: 20px;');
 		}
 	});
+	//#endregion
 
-	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-
+	//#region Swipe to Open Drawer Handler
 	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
 	function handler(event) {
 		if (!mobileCheck())
@@ -45,12 +47,17 @@
 		if (direction === 'left') drawerStore.close();
 		if (direction === 'right') drawerOpen();
 	}
+	//#endregion
 </script>
 
 <button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
 
 <!-- Swipe to Open Drawer Handler-->
-<div use:swipe={{ timeframe: 500, minSwipeDistance: 100 }} on:swipe={handler} class="h-screen">
+<div
+	use:swipe={{ timeframe: 500, minSwipeDistance: 100 }}
+	on:swipe={handler}
+	class="h-screen w-screen"
+>
 	<!-- Toast -->
 	<Toast />
 
