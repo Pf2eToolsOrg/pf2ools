@@ -20,10 +20,12 @@
 		return Components[type];
 	}
 
-	$: {
-		if (!Array.isArray(entries)) {
-			entries = [entries];
-		}
+	$: if (!Array.isArray(entries)) {
+		entries = [entries];
+	}
+
+	$: if (entries.filter((x) => !!x).length === 0) {
+		entries = ['{@note No entries found.}'];
 	}
 </script>
 

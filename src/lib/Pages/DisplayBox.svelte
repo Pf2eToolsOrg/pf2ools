@@ -5,7 +5,7 @@
 
 <div class="wrp-stats stats">
 	<!-- TODO: Tabs, Buttons, etc, make it a slot -->
-	<div class="m-2">
+	<div class="m-1.5">
 		<Renderer entries={selected} />
 	</div>
 </div>

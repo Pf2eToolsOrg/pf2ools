@@ -1,4 +1,5 @@
 <script>
+	import Traits from './Misc/traits.svelte';
 	import Renderer from '../Renderer.svelte';
 	import { note as Note } from '../Tags/index.js';
 	import Tagger from '../Tagger.svelte';
@@ -32,15 +33,8 @@
 	</div>
 	<hr />
 
-	<div class="traits">
-		{#each entry.traits as trait}
-			<span class="trait">
-				{trait}
-			</span>
-		{/each}
-	</div>
-
 	<div class="stat-line">
+		<Traits traits={entry.traits} classes="my-1" />
 		{#if entry.hp}
 			<div>
 				<b>Health Points</b>
@@ -79,22 +73,25 @@
 		{/if}
 	</div>
 
-	{#if entry.entries?.length}
-		<hr />
-		<div>
-			<Renderer entries={entry.entries} />
-		</div>
-	{/if}
+	<hr />
+	<div>
+		<Renderer entries={entry.entries} />
+	</div>
 </div>
 
-<style style="scss">
+<style lang="scss">
 	.stat-line {
 		line-height: 1.3em;
 		margin: 0.25em 0;
 	}
+
 	hr {
 		border: 0;
-		border-top: 1px solid #ccc;
-		margin: 0.1em -0.3em;
+		border-top: 1px solid #000;
+		margin: 0.1em -0.05em;
+
+		:global(html.dark) & {
+			border-top-color: #aaa;
+		}
 	}
 </style>
