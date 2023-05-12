@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
 	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
@@ -50,6 +51,10 @@
 	}
 	//#endregion
 </script>
+
+<svelte:head>
+	<meta content={$page.url.href} property="og:url" />
+</svelte:head>
 
 <button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
 

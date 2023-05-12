@@ -14,10 +14,14 @@
 	let tabSet = writable('data');
 </script>
 
-<TabGroup regionPanel="!mt-0 pf2ools">
-	<Tab bind:group={$tabSet} name="tab1" value={'data'} padding="px-2">Stats</Tab>
+<TabGroup regionPanel="!mt-0 pf2ools" active="border-primary-500 border-b-4 mt-[-4px]">
+	<Tab bind:group={$tabSet} value={'data'} padding="px-2 select-none">Stats</Tab>
 	{#if selected?.fluff?.length}
-		<Tab bind:group={$tabSet} name="tab1" value={'fluff'} padding="px-2">Fluff</Tab>
+		<Tab bind:group={$tabSet} value={'fluff'} padding="px-2 select-none">Fluff</Tab>
+	{/if}
+
+	{#if selected?.images?.length}
+		<Tab bind:group={$tabSet} value={'images'} padding="px-2 select-none">Images</Tab>
 	{/if}
 
 	<!-- Tabs To the Right -->
