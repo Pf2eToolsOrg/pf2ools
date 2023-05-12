@@ -49,7 +49,7 @@
 			</svelte:fragment>
 		</FilterBox>
 	</div>
-	<div class="view-col max-h-[90vh] md:w-2/5 pf2ools">
+	<div class="view-col max-h-[90vh] md:w-2/5">
 		<DisplayBox {selected} />
 	</div>
 </div>
