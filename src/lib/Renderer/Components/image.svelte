@@ -16,7 +16,7 @@
 
 {#if entry.href.path.includes('aonprd')}
 	<div class="flex">
-		{#await preload(`NethysMask.png`)}
+		{#await preload(`images/AoN.webp`)}
 			Image is loading!
 		{:then base64}
 			<img src={base64} alt={entry.alt} class="w-24 h-24 p-1" />
@@ -29,8 +29,8 @@
 					class="unstyled"
 					target="_blank"
 				>
-					Archives of Nethys
-				</a>.
+					Archives of Nethys</a
+				>.
 			</i>
 		{/await}
 	</div>
