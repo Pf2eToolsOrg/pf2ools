@@ -7,7 +7,7 @@ export default class Toasts {
 		toastStore.trigger({
 			message: "Placeholder",
 			duration: 3000,
-			timeout: 5000 + this.toasts().length * 1000,
+			timeout: 5000 + this.toasts().length * 750,
 			position: 'b',
 			isClosable: true,
 			...options

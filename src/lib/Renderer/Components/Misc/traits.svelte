@@ -10,10 +10,62 @@
 			case 'rare':
 			case 'uncommon':
 				return trait;
+			case 'small':
+			case 'medium':
+			case 'large':
+			case 'huge':
+			case 'gargantuan':
+				return 'size';
 			default:
 				return '';
 		}
 	}
+
+	$: traits = traits
+		.filter((x) => x.toLowerCase() !== 'common')
+		.sort((a, b) => {
+			// Sort so that the Rarity Traits are first, followed by the Alignment Traits, followed by the Size Traits, followed by the Settlement Traits, followed by the rest
+			const aType = type(a);
+			const bType = type(b);
+
+			if (aType === bType) {
+				return a.localeCompare(b);
+			}
+
+			if (aType === 'rare' || aType === 'uncommon' || aType === 'unique') {
+				return -1;
+			}
+
+			if (bType === 'rare' || bType === 'uncommon' || bType === 'unique') {
+				return 1;
+			}
+
+			if (aType === 'alignment') {
+				return -1;
+			}
+
+			if (bType === 'alignment') {
+				return 1;
+			}
+
+			if (aType === 'size') {
+				return -1;
+			}
+
+			if (bType === 'size') {
+				return 1;
+			}
+
+			if (aType === 'settlement') {
+				return -1;
+			}
+
+			if (bType === 'settlement') {
+				return 1;
+			}
+
+			return a.localeCompare(b);
+		});
 </script>
 
 <div class="traits {classes}">
@@ -32,6 +84,10 @@
 
 <style lang="scss">
 	div.traits {
+		.trait.size + .size {
+			border-left-width: 0;
+		}
+
 		& .trait {
 			margin: 0;
 			padding: 0.3rem 1rem 0.2rem;
@@ -45,6 +101,10 @@
 			background: #5e0000;
 			border: 0.12em solid #d9c484;
 
+			&:first-of-type + .trait.size {
+				border-right-width: 0;
+			}
+
 			&:first-child {
 				border-left-width: 0.33em;
 			}
@@ -57,28 +117,28 @@
 				color: yellow;
 			}
 
-			& unique {
+			&.unique {
 				background: #54166e;
 			}
 
-			& rare {
+			&.rare {
 				background: #002664;
 			}
 
-			& uncommon {
+			&.uncommon {
 				background: #98513d;
 			}
 
-			& alignment {
+			&.alignment {
 				background: #576293;
 				min-width: 2em;
 			}
 
-			& size {
+			&.size {
 				background: #3b7b59;
 			}
 
-			& settlement {
+			&.settlement {
 				background: #004416;
 			}
 
@@ -92,27 +152,27 @@
 					color: gold;
 				}
 
-				& alignment {
+				&.alignment {
 					background: #4c505e;
 				}
 
-				& size {
+				&.size {
 					background: #334f40;
 				}
 
-				& settlement {
+				&.settlement {
 					background: #263d2d;
 				}
 
-				& uncommon {
+				&.uncommon {
 					background: #664e47;
 				}
 
-				& rare {
+				&.rare {
 					background: #29364a;
 				}
 
-				& unique {
+				&.unique {
 					background: #44354a;
 				}
 			}

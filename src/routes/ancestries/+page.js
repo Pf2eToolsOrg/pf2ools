@@ -1,4 +1,4 @@
-import Ancestry from './class.js';
+import Ancestry from './ancestriesClass.js';
 
 const modules = import.meta.glob([
 	'$data/ancestries/*.json',

@@ -9,6 +9,7 @@
 	import { page } from '$app/stores';
 	let selected;
 
+	// Select from Hash
 	page.subscribe((value) => {
 		let hash = value.url.hash.replaceAll(/\#|\?.+/g, '');
 		// TODO: Expand to heritages

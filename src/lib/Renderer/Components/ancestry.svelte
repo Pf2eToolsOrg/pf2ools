@@ -99,7 +99,9 @@
 		<hr />
 		<div>
 			<div class="stat-line">
-				<Renderer entries={entry.features} />
+				<Renderer
+					entries={entry.features.map((x) => (x.type ? x : { ...x, type: 'ability' }))}
+				/>
 			</div>
 		</div>
 	{/if}
