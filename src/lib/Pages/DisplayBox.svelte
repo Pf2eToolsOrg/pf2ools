@@ -1,5 +1,5 @@
 <script>
-	import html2canvas from 'html2canvas';
+	import domtoimage from 'dom-to-image';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	import { writable } from 'svelte/store';
@@ -26,17 +26,16 @@
 			on:click={(e) => {
 				const entry = document.querySelector('.wrp-stats');
 
-				html2canvas(entry).then((canvas) => {
-					const image = canvas.toDataURL();
+				domtoimage.toPng(entry).then((dataUrl) => {
 					if (!e.shiftKey) {
 						modalStore.trigger({
 							title: 'Screenshot',
-							image
+							image: dataUrl
 						});
 					} else {
 						const link = document.createElement('a');
 						link.download = 'screenshot.png';
-						link.href = image;
+						link.href = dataUrl;
 						link.click();
 					}
 				});
