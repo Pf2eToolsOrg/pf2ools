@@ -1,15 +1,14 @@
 <script>
+	import { renderdemo } from '$data/renderdemo.json';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
 	import { json } from '@codemirror/lang-json';
 	import { oneDark } from '@codemirror/theme-one-dark';
-	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
-	import { faItalic } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
+	import { faItalic, faRefresh } from '@fortawesome/free-solid-svg-icons';
 	import { localStorageStore, modeUserPrefers } from '@skeletonlabs/skeleton';
 	import { EditorView } from 'codemirror';
 	import CodeMirror from 'svelte-codemirror-editor';
-	import Fa from 'svelte-fa';
 	import { pf2oolsPlugin } from './pf2ools-codemirror.js';
-	import { renderdemo } from '$data/renderdemo.json';
 
 	const store = localStorageStore('renderdemo', JSON.stringify(renderdemo[0], null, 2));
 

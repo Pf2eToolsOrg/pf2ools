@@ -10,7 +10,8 @@
 		LightSwitch,
 		Toast,
 		drawerStore,
-		storePopup
+		storePopup,
+		Modal
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import { swipe } from 'svelte-gestures';
@@ -58,6 +59,7 @@
 	on:swipe={handler}
 	class="h-screen w-screen"
 >
+	<Modal />
 	<!-- Toast -->
 	<Toast />
 
