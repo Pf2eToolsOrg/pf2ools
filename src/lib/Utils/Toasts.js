@@ -1,30 +1,41 @@
 import { toastStore } from '@skeletonlabs/skeleton';
+import { browser } from '$app/environment'
+import { get } from 'svelte/store';
 
 export default class Toasts {
-	trigger({ message, options = {} }) {
+	trigger(options) {
 		toastStore.trigger({
-			message: message,
+			message: "Placeholder",
 			duration: 3000,
+			timeout: 5000 + this.toasts().length * 1000,
 			position: 'b',
 			isClosable: true,
 			...options
 		});
 	}
 
-	error(message) {
+	lastToast() {
+		return get(toastStore).at(-1);
+	}
+
+	toasts() {
+		return get(toastStore);
+	}
+
+	async error(message) {
 		console.error(message);
 		this.trigger({ message: message, background: 'variant-filled-error' });
 	}
 
-	success(message) {
+	async success(message) {
 		this.trigger({ message: message, background: 'variant-filled-success' });
 	}
 
-	warn(message) {
+	async warn(message) {
 		this.warning(message);
 	}
 
-	warning(message) {
+	async warning(message) {
 		console.warn(message);
 		this.trigger({ message: message, background: 'variant-filled-warning' });
 	}
@@ -32,4 +43,8 @@ export default class Toasts {
 	clear() {
 		toastStore.clear();
 	}
+}
+
+if (browser) {
+	window.toasts = new Toasts();
 }

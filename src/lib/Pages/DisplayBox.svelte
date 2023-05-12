@@ -6,7 +6,7 @@
 	import Renderer from '$lib/Renderer/Renderer.svelte';
 	import PhotoWrapper from './PhotoWrapper.svelte';
 	import Fa from 'svelte-fa';
-	import { faCamera } from '@fortawesome/free-solid-svg-icons';
+	import { faCamera, faCode } from '@fortawesome/free-solid-svg-icons';
 	export let selected;
 	import Toasts from '$lib/Utils/Toasts.js';
 
@@ -67,6 +67,17 @@
 			}}
 		>
 			<Fa icon={faCamera} />
+		</button>
+		<button
+			id="code"
+			class="btn btn-sm m-0 p-1 variant-ghost-surface rounded-b-none"
+			title="Show JSON Data"
+			on:click={(e) => {
+				console.log(selected);
+				toast.success('Pasted to Console');
+			}}
+		>
+			<Fa icon={faCode} />
 		</button>
 	</div>
 	<!-- Tab Panels --->

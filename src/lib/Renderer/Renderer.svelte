@@ -4,17 +4,22 @@
 	import Tagger from './Tagger.svelte';
 	export let entries;
 
+	let error = false;
 	function getComponent(entry) {
+		let type = 'entries';
 		if (!entry.type) {
-			throw new Error('Entry type is not defined!');
+			new Toast().error('Entry type is not defined!');
+			error = true;
+		} else {
+			type = entry.type.replaceAll('-', '_').toLowerCase();
 		}
-
-		const type = entry.type.replaceAll('-', '_').toLowerCase();
 
 		if (!Object.keys(Components).includes(type)) {
 			new Toast().error(
-				new Error(`Entry type "${entry.type}" is not recognized by the component renderer!`)
+				`Entry type "${entry.type}" is not recognized by the component renderer!`
 			);
+			type = 'entries';
+			error = true;
 		}
 
 		return Components[type];
@@ -33,6 +38,6 @@
 	{#if typeof entry === 'string'}
 		<Tagger {entry} />
 	{:else if typeof entry === 'object'}
-		<svelte:component this={getComponent(entry)} {entry} />
+		<svelte:component this={getComponent(entry)} {entry} {error} />
 	{/if}
 {/each}

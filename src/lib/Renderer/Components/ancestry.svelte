@@ -71,12 +71,38 @@
 				{speedArray(entry.speed).joinConjunct(', ', ' and ')}
 			</div>
 		{/if}
+		{#if entry.languages}
+			<div>
+				<b>Language{pluralIf(entry.languages)}</b>
+				<Renderer
+					entries={entry.languages
+						.map((x) => `{@languages ${x}}`)
+						.joinConjunct(', ', ' and ')}
+				/>{#if entry.additionalLanguages};
+					<b>Additional Language{pluralIf(entry.additionalLanguages)}</b>
+					<Renderer
+						entries={entry.additionalLanguages
+							.map((x) => `{@languages ${x}}`)
+							.joinConjunct(', ', ' and ')}
+					/>
+				{/if}
+			</div>
+		{/if}
 	</div>
 
 	<hr />
 	<div>
 		<Renderer entries={entry.entries} />
 	</div>
+
+	{#if entry.features?.length}
+		<hr />
+		<div>
+			<div class="stat-line">
+				<Renderer entries={entry.features} />
+			</div>
+		</div>
+	{/if}
 </div>
 
 <style lang="scss">

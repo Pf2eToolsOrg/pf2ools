@@ -2,9 +2,10 @@
 	import Renderer from '../Renderer.svelte';
 	import Tagger from '../Tagger.svelte';
 	export let entry;
+	export let error;
 </script>
 
-<div>
+<div class={error ? 'bg-error-900/50' : ''}>
 	{#if entry.name}
 		<span class="text-2xl font-bold"><Tagger entry={entry.name} /></span>
 	{/if}
