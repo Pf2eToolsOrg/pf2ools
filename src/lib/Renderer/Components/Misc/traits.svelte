@@ -85,6 +85,16 @@
 <style lang="scss">
 	div.traits {
 		.trait.size + .size {
+			&::after {
+				color: white !important;
+				content: '/';
+				position: fixed;
+				font-size: 1.5em;
+				margin: 0 -3rem;
+				:global(html.dark) & {
+					color: #dedada !important;
+				}
+			}
 			border-left-width: 0;
 		}
 
@@ -146,7 +156,6 @@
 				color: #dedada;
 				background: #472c2c;
 				border-color: #c99d51;
-				color: #dbdbdb;
 
 				&:hover:not(.notag) {
 					color: gold;
