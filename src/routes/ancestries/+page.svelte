@@ -20,26 +20,15 @@
 			selected = ancestries.entries().next().value[1];
 		}
 	});
+
+	const grid = 'grid-cols-[minmax(5rem,_30rem)_2rem_minmax(5rem,_10rem)_4rem] gap-2';
 </script>
-
-<svelte:window
-	on:hashchange={(e) => {
-		let hash = e.newURL.split('#')[1];
-		selected = ancestries.has(hash)
-			? ancestries.get(hash)
-			: ancestries.entries().next().value[1];
-	}}
-/>
-
-<svelte:head>
-	<title>{selected ? selected.name : 'Ancestries'} - PF2ools</title>
-</svelte:head>
 
 <div class="container md:flex">
 	<div class="view-col md:w-3/5">
 		<FilterBox data={data.ancestries} field="name" let:item={row} {selected}>
 			<svelte:fragment slot="header">
-				<div class="grid grid-cols-4 gap-1">
+				<div class="pl-0.5 grid {grid}">
 					<div id="name">Name</div>
 					<div id="hp">HP</div>
 					<div id="size">Size</div>
@@ -48,7 +37,7 @@
 			</svelte:fragment>
 
 			<svelte:fragment slot="list">
-				<div class="grid grid-cols-4 gap-1">
+				<div class="pl-0.5 grid {grid}">
 					<span id="name">{row.name}</span>
 					<span id="hp">{row.hp}</span>
 					<span id="size">
@@ -63,3 +52,17 @@
 		<DisplayBox {selected} />
 	</div>
 </div>
+
+<svelte:window
+	on:hashchange={(e) => {
+		// TODO: Expand to heritages
+		let hash = e.newURL.remove(/\?.+/g).split('#')[1];
+		selected = ancestries.has(hash)
+			? ancestries.get(hash)
+			: ancestries.entries().next().value[1];
+	}}
+/>
+
+<svelte:head>
+	<title>{selected ? selected.name : 'Ancestries'} - PF2ools</title>
+</svelte:head>
