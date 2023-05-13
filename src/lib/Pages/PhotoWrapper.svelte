@@ -8,7 +8,7 @@
 	let toast = new Toasts();
 
 	function options(entry) {
-		let scale = 1;
+		let scale = 4;
 		return {
 			width: entry.clientWidth * scale,
 			height: entry.clientHeight * scale,
