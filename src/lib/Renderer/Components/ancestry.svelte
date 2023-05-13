@@ -6,6 +6,9 @@
 	import { pluralIf } from '$lib/Utils/MiscUtils.js';
 	export let entry;
 
+	import Fa from 'svelte-fa';
+	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+
 	function copy(text) {
 		navigator.clipboard.writeText(text);
 	}
@@ -74,15 +77,22 @@
 		{#if entry.languages}
 			<div>
 				<b>Language{pluralIf(entry.languages)}</b>
+				{#if entry.languageNote}
+					<!-- TODO: On Hover Tag -->
+					<Fa icon={faCircleInfo} class="inline text-sm pb-0.5 px-0 m-0" />
+					<span class="text-0-width">
+						(Note: <Note text={entry.languageNote} />)
+					</span>
+				{/if}
 				<Renderer
 					entries={entry.languages
-						.map((x) => `{@languages ${x}}`)
+						.map((x) => `{@language ${x.toTitleCase()}}`)
 						.joinConjunct(', ', ' and ')}
 				/>{#if entry.additionalLanguages};
 					<b>Additional Language{pluralIf(entry.additionalLanguages)}</b>
 					<Renderer
 						entries={entry.additionalLanguages
-							.map((x) => `{@languages ${x}}`)
+							.map((x) => `{@language ${x.toTitleCase()}}`)
 							.joinConjunct(', ', ' and ')}
 					/>
 				{/if}

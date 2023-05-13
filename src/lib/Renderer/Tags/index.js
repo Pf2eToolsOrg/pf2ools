@@ -17,4 +17,5 @@ export { default as center, default as c } from './center.svelte';
 
 //#region Hover Tags
 export { default as ancestry } from './ancestry.svelte';
+export { default as language } from './language.svelte';
 //#endregion

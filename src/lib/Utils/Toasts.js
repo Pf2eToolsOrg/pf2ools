@@ -1,11 +1,11 @@
 import { toastStore } from '@skeletonlabs/skeleton';
-import { browser } from '$app/environment'
+import { browser } from '$app/environment';
 import { get } from 'svelte/store';
 
 export default class Toasts {
 	trigger(options) {
 		toastStore.trigger({
-			message: "Placeholder",
+			message: 'Placeholder',
 			duration: 3000,
 			timeout: 5000 + this.toasts().length * 750,
 			position: 'b',

@@ -10,9 +10,9 @@
 
 	const h = (a, b) => hashify(a, b);
 
-	let href = h(ancestry, source) + (heritage ? '?' + h(heritage, heritageSource) : '');
+	const href = h(ancestry, source) + (heritage ? '?' + h(heritage, heritageSource) : '');
 </script>
 
-<a href={'ancestries#' + href}>
+<a href={'ancestries#' + href} class="unstyled">
 	<Tagger entry={displayText ?? ancestry} />
 </a>

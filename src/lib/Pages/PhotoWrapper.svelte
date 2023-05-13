@@ -47,7 +47,7 @@
 		<button class="btn variant-ghost-surface my-0 mr-auto" on:click={copy}>Copy</button>
 	</div>
 	<div class="pf2ools">
-		<div class="wrp-stats stats !overflow-hidden resize w-96 min-h-min min-w-min">
+		<div class="wrp-stats stats !overflow-hidden resize-x w-96 min-h-min min-w-min">
 			<div class="m-1.5">
 				<Renderer {entries} />
 			</div>

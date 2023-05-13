@@ -35,4 +35,4 @@
 </script>
 
 <span class="font-action" data-symbol={text} />
-<span class="opacity-0 text-[0px] left-2 absolute">{stringToActionCopyPaste(text)}</span>
+<span class="text-0-width">{stringToActionCopyPaste(text)}</span>

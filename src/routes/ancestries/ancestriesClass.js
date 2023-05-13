@@ -5,12 +5,11 @@ export default class Ancestry extends DataEntry {
 		this.traitsPrototype = data.traits;
 
 		// How to override existing properties
-		Object.defineProperty(this, "traits", {
+		Object.defineProperty(this, 'traits', {
 			get() {
-
-				return [this.traitsPrototype, this.size, this.rarity ?? "common"].flat()
+				return [this.traitsPrototype, this.size, this.rarity ?? 'common'].flat();
 			}
-		})
+		});
 	}
 
 	get type() {
@@ -53,7 +52,8 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestry.name}|${this.ancestry.source}|${displayText ? displayText : this.name
-			}|${this.shortName}|${this.source}`;
+		return `${this.ancestry.name}|${this.ancestry.source}|${
+			displayText ? displayText : this.name
+		}|${this.shortName}|${this.source}`;
 	}
 }
