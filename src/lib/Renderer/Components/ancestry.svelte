@@ -1,11 +1,11 @@
 <script>
-	import Traits from './Misc/traits.svelte';
-	import Renderer from '../Renderer.svelte';
-	import { note as Note } from '../Tags/index.js';
-	import Tagger from '../Tagger.svelte';
 	import { pluralIf } from '$lib/Utils/MiscUtils.js';
-	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
+	import Renderer from '../Renderer.svelte';
+	import Tagger from '../Tagger.svelte';
+	import { note as Note } from '../Tags/index.js';
+	import Traits from './Misc/traits.svelte';
 	export let entry;
 
 	function copy(text) {

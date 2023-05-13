@@ -80,7 +80,7 @@
 			<Fa icon={faCode} />
 		</button>
 	</div>
-	<!-- Tab Panels --->
+	<!-- Selected Panel --->
 	<svelte:fragment slot="panel">
 		<div class="wrp-stats stats">
 			<div class="m-1.5">

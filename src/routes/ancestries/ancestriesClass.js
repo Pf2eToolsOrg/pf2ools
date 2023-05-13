@@ -19,9 +19,9 @@ export default class Ancestry extends DataEntry {
 	get extraHp() {
 		let array = [];
 		this.heritage.forEach((h) => {
-			if (h?.modif?.hp) {
+			if (h?.modif?.hp?.ancestry) {
 				array.push({
-					hp: h.modif.hp,
+					hp: h.modif.hp.ancestry,
 					name: h.name,
 					source: h.source,
 					hash: this.hashify(h.name, h.source)
@@ -52,8 +52,7 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestry.name}|${this.ancestry.source}|${
-			displayText ? displayText : this.name
-		}|${this.shortName}|${this.source}`;
+		return `${this.ancestry.name}|${this.ancestry.source}|${displayText ? displayText : this.name
+			}|${this.shortName}|${this.source}`;
 	}
 }

@@ -22,6 +22,15 @@
 	});
 </script>
 
+<svelte:window
+	on:hashchange={(e) => {
+		let hash = e.newURL.split('#')[1];
+		selected = ancestries.has(hash)
+			? ancestries.get(hash)
+			: ancestries.entries().next().value[1];
+	}}
+/>
+
 <svelte:head>
 	<title>{selected ? selected.name : 'Ancestries'} - PF2ools</title>
 </svelte:head>
