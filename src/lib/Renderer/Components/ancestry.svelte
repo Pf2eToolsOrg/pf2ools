@@ -4,10 +4,9 @@
 	import { note as Note } from '../Tags/index.js';
 	import Tagger from '../Tagger.svelte';
 	import { pluralIf } from '$lib/Utils/MiscUtils.js';
-	export let entry;
-
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+	export let entry;
 
 	function copy(text) {
 		navigator.clipboard.writeText(text);

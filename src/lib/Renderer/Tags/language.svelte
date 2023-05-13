@@ -3,7 +3,6 @@
 	import { splitTagByPipe } from '$lib/Utils/SplitTags.js';
 	import Tagger from 'tagger';
 	export let text;
-	import Hover from '$lib/Renderer/Hover.svelte';
 
 	const [language, source, displayText] = splitTagByPipe(text);
 
