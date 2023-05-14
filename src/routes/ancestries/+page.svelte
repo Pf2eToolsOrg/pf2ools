@@ -7,12 +7,18 @@
 	const ancestries = data.ancestries;
 
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	let selected;
 
 	// Select from Hash
 	page.subscribe((value) => {
 		let hash = value.url.hash.replaceAll(/\#|\?.+/g, '');
 		// TODO: Expand to heritages
+
+		// TODO: This can actually use closest-match instead, just make sure to make a toast that the hash in invalid and picked the closest one instead.
+		if (!hash.includes('_')) {
+			hash = hash + '_crb';
+		}
 
 		if (hash && ancestries.has(hash)) {
 			selected = ancestries.get(hash);
@@ -22,6 +28,10 @@
 	});
 
 	const grid = 'grid-cols-[minmax(5rem,_30rem)_2rem_minmax(5rem,_10rem)_4rem] gap-2';
+
+	onMount(() => {
+		window.ancestries = data.ancestries;
+	});
 </script>
 
 <div class="container md:flex">
@@ -55,8 +65,11 @@
 
 <svelte:window
 	on:hashchange={(e) => {
-		// TODO: Expand to heritages
 		let hash = e.newURL.remove(/\?.+/g).split('#')[1];
+		// TODO: This can actually use closest-match instead, just make sure to make a toast that the hash in invalid and picked the closest one instead.
+		if (!hash.includes('_')) {
+			hash = hash + '_crb';
+		}
 		selected = ancestries.has(hash)
 			? ancestries.get(hash)
 			: ancestries.entries().next().value[1];

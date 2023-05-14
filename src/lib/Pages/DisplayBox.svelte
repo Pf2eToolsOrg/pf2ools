@@ -7,8 +7,8 @@
 	import PhotoWrapper from './PhotoWrapper.svelte';
 	import Fa from 'svelte-fa';
 	import { faCamera, faCode } from '@fortawesome/free-solid-svg-icons';
-	export let selected;
 	import Toasts from '$lib/Utils/Toasts.js';
+	export let selected;
 
 	let toast = new Toasts();
 	let tabSet = writable('data');
@@ -84,7 +84,9 @@
 	<svelte:fragment slot="panel">
 		<div class="wrp-stats stats">
 			<div class="m-1.5">
-				<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
+				{#key selected}
+					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
+				{/key}
 			</div>
 		</div>
 	</svelte:fragment>

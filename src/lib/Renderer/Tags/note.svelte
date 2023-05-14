@@ -5,7 +5,11 @@
 </script>
 
 {#if noItalics}
-	<span class="text-zinc-600 opacity-75"><Tagger entry={text} /></span>
+	<span class="text-zinc-600 dark:opacity-75 grayscale-[.5] dark:grayscale-0"
+		><Tagger entry={text} /></span
+	>
 {:else}
-	<i class="text-zinc-600 opacity-75"><Tagger entry={text} /></i>
+	<i class="text-zinc-600 dark:opacity-75 grayscale-[.5] dark:grayscale-0"
+		><Tagger entry={text} /></i
+	>
 {/if}
