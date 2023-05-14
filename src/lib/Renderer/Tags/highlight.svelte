@@ -1,6 +1,6 @@
 <script>
 	import { getValidColor } from './color.svelte';
-	import { splitTagByPipe } from '$lib/Utils/SplitTags.js';
+	import { splitTagByPipe } from '$lib/Utils/Parser';
 	import Toast from '$lib/Utils/Toasts.js';
 	export let text;
 	export let error = false;

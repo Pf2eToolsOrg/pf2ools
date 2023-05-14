@@ -14,7 +14,7 @@
 </script>
 
 <script>
-	import { splitTagByPipe } from '$lib/Utils/SplitTags.js';
+	import { splitTagByPipe } from '$lib/Utils/Parser';
 	import Tagger from 'tagger';
 	export let text;
 

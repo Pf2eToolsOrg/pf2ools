@@ -1,7 +1,7 @@
 <script>
 	export let entry;
 	import * as Tags from './Tags/index.js';
-	import { splitByTags, splitFirstSpace } from '$lib/Utils/SplitTags.js';
+	import { splitByTags, splitFirstSpace } from '$lib/Utils/Parser.js';
 	import { isObject } from '$lib/Utils/MiscUtils.js';
 
 	function renderString(string) {

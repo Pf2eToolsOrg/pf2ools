@@ -1,3 +1,4 @@
+
 export function splitByTagsBase(leadingCharacter) {
 	return function (string) {
 		let tagDepth = 0;
@@ -106,3 +107,28 @@ export function splitByPipeBase(leadingCharacter) {
 export const splitByTags = splitByTagsBase('@');
 export const splitByPropertyInjectors = splitByTagsBase('=');
 export const splitTagByPipe = splitByPipeBase('@');
+
+const timeUnits = {};
+timeUnits.TM_A = 'action';
+timeUnits.TM_AA = 'two';
+timeUnits.TM_AAA = 'three';
+timeUnits.TM_R = 'reaction';
+timeUnits.TM_F = 'free';
+timeUnits.TM_ROUND = 'round';
+timeUnits.TM_MINS = 'minute';
+timeUnits.TM_HRS = 'hour';
+timeUnits.TM_DAYS = 'day';
+timeUnits.TM_VARIES = 'varies';
+timeUnits.TIME_ACTIONS = [timeUnits.TM_A, timeUnits.TM_R, timeUnits.TM_F];
+
+export function timeToFullEntry(time) {
+	if (time.entry != null) return time.entry;
+	if (timeUnits.TIME_ACTIONS.includes(time.unit)) {
+		if (time.number === 1 && time.unit === timeUnits.TM_F) return '{@as f}';
+		if (time.number === 1 && time.unit === timeUnits.TM_R) return '{@as r}';
+		if (time.number === 2 && time.unit === timeUnits.TM_A) return '{@as 2}';
+		if (time.number === 3 && time.unit === timeUnits.TM_A) return '{@as 3}';
+		return '{@as 1}';
+	}
+	return `${time.number} ${time.unit}${time.number >= 2 ? 's' : ''}`;
+}

@@ -1,6 +1,6 @@
 <script>
 	import { hashify } from '$lib/Utils/DataUtils.js';
-	import { splitTagByPipe } from '$lib/Utils/SplitTags.js';
+	import { splitTagByPipe } from '$lib/Utils/Parser';
 	import Tagger from 'tagger';
 	export let text;
 

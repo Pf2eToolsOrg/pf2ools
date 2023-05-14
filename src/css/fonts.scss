@@ -17,8 +17,9 @@
 	&-action {
 		@extend .font;
 		font-family: 'pathfinder2eactions';
-		font-size: 1.78em;
+		font-size: 1.8rem;
 		line-height: 0;
+		vertical-align: -0.1rem;
 
 		&::after {
 			content: attr(data-symbol);
