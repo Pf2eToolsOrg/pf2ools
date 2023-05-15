@@ -14,7 +14,8 @@
 			height: entry.clientHeight * scale,
 			style: {
 				transform: `scale(${scale})`,
-				transformOrigin: 'top left'
+				transformOrigin: 'top left',
+				resize: 'none'
 			}
 		};
 	}
