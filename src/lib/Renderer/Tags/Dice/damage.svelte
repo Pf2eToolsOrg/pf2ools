@@ -7,7 +7,13 @@
 	const [dice, displayText] = splitTagByPipe(text);
 
 	function roll(dice, e) {
-		new Roller().quickRoll(dice);
+		if (e.shiftKey) {
+			new Roller().quickRoll(`(${dice})*2`);
+		} else if (e.ctrlKey) {
+			new Roller().quickRoll(`max(floor((${dice})/2), 1)`);
+		} else {
+			new Roller().quickRoll(dice);
+		}
 	}
 </script>
 

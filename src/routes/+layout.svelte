@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page, navigating } from '$app/stores';
 	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';
 	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
@@ -29,7 +29,6 @@
 	}
 
 	//#region Restart Console Logs on Navigation
-	import { navigating } from '$app/stores';
 	navigating.subscribe((value) => {
 		if (value === null) return;
 		if (value.from.route.id !== value.to.route.id) {

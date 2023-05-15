@@ -13,6 +13,8 @@ export { default as sup } from './Formatting/supscript.svelte';
 export { default as sub } from './Formatting/subscript.svelte';
 export { default as nostyle, default as n } from './Formatting/nostyle.svelte';
 export { default as center, default as c } from './Formatting/center.svelte';
+export { default as indentFirst, default as indentF } from './Formatting/indentFirst.svelte';
+export { default as indentSubsequent, default as indentS } from './Formatting/indentSubsequent.svelte';
 //#endregion
 
 //#region Hover Tags
@@ -23,7 +25,11 @@ export { default as language } from './Hover/language.svelte';
 export { default as condition } from './Hover/condition.svelte';
 export { default as skill } from './Hover/skill.svelte';
 export { default as item } from './Hover/item.svelte';
+export { default as place } from './Hover/place.svelte';
+export { default as feat } from './Hover/feat.svelte';
+export { default as filter } from './Hover/filter.svelte';
 export { default as group } from './Hover/group.svelte';
+export { default as domain } from './Hover/domain.svelte';
 //#endregion
 
 //#region Inline Tags (No Real Page Behind Them)
@@ -32,4 +38,5 @@ export { default as group } from './Hover/group.svelte';
 
 //#region Dice Tags
 export { default as dice } from './Dice/dice.svelte';
+export { default as damage } from './Dice/damage.svelte';
 //#endregion

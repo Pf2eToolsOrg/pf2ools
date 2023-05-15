@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<div
-		class="render md:w-2/4 stats view-col font-sabonltstd variant-ghost-surface px-2 max-height-[90vh] height-[90vh]"
+		class="render md:w-2/4 stats view-col font-sabonltstd variant-ghost-surface px-2 max-height-[90vh] height-[90vh] pt-2"
 	>
 		<Renderer entries={rendered} />
 	</div>

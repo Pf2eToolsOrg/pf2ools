@@ -24,7 +24,15 @@
 	$: traits = traits
 		.filter((x) => x.toLowerCase() !== 'common')
 		.sort((a, b) => {
-			// Sort so that the Rarity Traits are first, followed by the Alignment Traits, followed by the Size Traits, followed by the Settlement Traits, followed by the rest
+			const order = {
+				rare: 0,
+				uncommon: 0,
+				unique: 0,
+				alignment: 1,
+				size: 2,
+				settlement: 3
+			};
+
 			const aType = type(a);
 			const bType = type(b);
 
@@ -32,39 +40,10 @@
 				return a.localeCompare(b);
 			}
 
-			if (aType === 'rare' || aType === 'uncommon' || aType === 'unique') {
-				return -1;
-			}
+			const aOrder = order[aType] !== undefined ? order[aType] : Object.keys(order).length;
+			const bOrder = order[bType] !== undefined ? order[bType] : Object.keys(order).length;
 
-			if (bType === 'rare' || bType === 'uncommon' || bType === 'unique') {
-				return 1;
-			}
-
-			if (aType === 'alignment') {
-				return -1;
-			}
-
-			if (bType === 'alignment') {
-				return 1;
-			}
-
-			if (aType === 'size') {
-				return -1;
-			}
-
-			if (bType === 'size') {
-				return 1;
-			}
-
-			if (aType === 'settlement') {
-				return -1;
-			}
-
-			if (bType === 'settlement') {
-				return 1;
-			}
-
-			return a.localeCompare(b);
+			return aOrder - bOrder;
 		});
 </script>
 
