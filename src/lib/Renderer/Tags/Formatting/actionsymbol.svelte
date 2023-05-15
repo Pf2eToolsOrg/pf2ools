@@ -25,11 +25,7 @@
 	export let text;
 	import Toast from '$lib/Utils/Toasts.js';
 
-	$: if (
-		![...stringToActionCopyPaste.toString().matchAll(/case '(\w+?)':/g)]
-			.map((m) => m[1])
-			.includes(text)
-	) {
+	$: if (stringToActionCopyPaste(text) === '[?]') {
 		new Toast().warn(`Unknown action string <b>"${text}"</b>!`);
 	}
 </script>

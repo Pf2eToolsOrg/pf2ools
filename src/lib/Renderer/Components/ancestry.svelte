@@ -6,6 +6,7 @@
 	import Tagger from '../Tagger.svelte';
 	import { note as Note } from '../Tags/index.js';
 	import Traits from './Misc/traits.svelte';
+	import Source from './Misc/source.svelte';
 	export let entry;
 
 	function copy(text) {
@@ -114,6 +115,10 @@
 			</div>
 		</div>
 	{/if}
+
+	<footer>
+		<Source {entry} />
+	</footer>
 </div>
 
 <style lang="scss">
