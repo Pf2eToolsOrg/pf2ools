@@ -27,11 +27,11 @@
 		}
 	});
 
-	const grid = 'grid-cols-[minmax(5rem,_30rem)_2rem_minmax(5rem,_10rem)_4rem] gap-2';
-
 	onMount(() => {
 		window.ancestries = data.ancestries;
 	});
+
+	const grid = 'grid-cols-[minmax(5rem,_30rem)_2rem_minmax(5rem,_10rem)_4rem] gap-2';
 </script>
 
 <div class="container md:flex">

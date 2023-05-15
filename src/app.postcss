@@ -111,6 +111,20 @@ html.dark body {
 	--color-surface-900: 48 48 48; /* ⬅ #303030 */
 }
 
+.clickable {
+	cursor: pointer;
+	color: #337ab7;
+	text-decoration: none;
+}
+
+html.dark .clickable {
+	color: #7db6e8;
+}
+
 .text-0-width {
 	@apply opacity-0 text-[0px] absolute z-[-1];
+}
+
+.pf2ools a {
+	@apply clickable;
 }
