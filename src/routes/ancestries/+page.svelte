@@ -7,12 +7,14 @@
 	const ancestries = data.ancestries;
 
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+
 	let selected;
 
-	// Select from Hash
-	page.subscribe((value) => {
-		let hash = value.url.hash.replaceAll(/\#|\?.+/g, '');
+	onMount(() => {
+		// Select from Hash
+		let hash = $page.url.hash.replaceAll(/\#|\?.+/g, '');
 		// TODO: Expand to heritages
 
 		// TODO: This can actually use closest-match instead, just make sure to make a toast that the hash in invalid and picked the closest one instead.
@@ -23,12 +25,8 @@
 		if (hash && ancestries.has(hash)) {
 			selected = ancestries.get(hash);
 		} else {
-			selected = ancestries.entries().next().value[1];
+			window.location = '#' + ancestries.entries().next().value[1].hash;
 		}
-	});
-
-	onMount(() => {
-		window.ancestries = data.ancestries;
 	});
 
 	const grid =
@@ -37,39 +35,9 @@
 
 <div class="container lg:flex">
 	<div class="view-col lg:w-3/5 lg:h-full h-[30vh]">
-		<FilterBox data={data.ancestries} field="name" let:item={row} {selected}>
-			<svelte:fragment slot="header">
-				<div class="pl-0.5 grid {grid}">
-					<div id="name">Name</div>
-					<div id="hp">HP</div>
-					<div id="boosts">Boosts</div>
-					<div id="flaws">Flaws</div>
-					<div id="size">Size</div>
-					<div id="source">Source</div>
-				</div>
-			</svelte:fragment>
-
-			<svelte:fragment slot="list">
-				<div class="pl-0.5 grid {grid}">
-					<div id="name">{row.name}</div>
-					<div id="hp">{row.hp}</div>
-					<div id="boosts">
-						{row.boosts
-							? row.boosts.map((x) => x.toTitleCase()).joinConjunct(', ', ' and ')
-							: '—'}
-					</div>
-					<div id="flaws">
-						{row.flaws
-							? row.flaws.map((x) => x.toTitleCase()).joinConjunct(', ', ' and ')
-							: '—'}
-					</div>
-					<div id="size">
-						{row.size.map((x) => x[0].toTitleCase()).join('/')}
-					</div>
-					<div id="source">{row.source}</div>
-				</div>
-			</svelte:fragment>
-		</FilterBox>
+		Here once stood a FilterBox.
+		<p />
+		It was janky and needed rewriting.
 	</div>
 	<div class="view-col max-h-[90vh] lg:w-2/5">
 		<DisplayBox {selected} />
@@ -80,12 +48,14 @@
 	on:hashchange={(e) => {
 		let hash = e.newURL.remove(/\?.+/g).split('#')[1];
 		// TODO: This can actually use closest-match instead, just make sure to make a toast that the hash in invalid and picked the closest one instead.
-		if (!hash.includes('_')) {
+		if (!(hash.includes('_') && ancestries.has(hash))) {
 			hash = hash + '_crb';
 		}
-		selected = ancestries.has(hash)
-			? ancestries.get(hash)
-			: ancestries.entries().next().value[1];
+		if (hash && ancestries.has(hash)) {
+			selected = ancestries.get(hash);
+		} else {
+			window.location = '#' + ancestries.entries().next().value[1].hash;
+		}
 	}}
 />
 
