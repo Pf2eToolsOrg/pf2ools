@@ -7,7 +7,6 @@
 	const ancestries = data.ancestries;
 
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	let selected;
@@ -35,9 +34,7 @@
 
 <div class="container lg:flex">
 	<div class="view-col lg:w-3/5 lg:h-full h-[30vh]">
-		Here once stood a FilterBox.
-		<p />
-		It was janky and needed rewriting.
+		<FilterBox {selected} data={ancestries} />
 	</div>
 	<div class="view-col max-h-[90vh] lg:w-2/5">
 		<DisplayBox {selected} />
