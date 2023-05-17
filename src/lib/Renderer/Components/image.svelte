@@ -14,9 +14,10 @@
 	};
 </script>
 
+<!-- aonprd -->
 {#if entry.href.path.includes('aonprd')}
 	<div class="flex">
-		<img src="images/AoN.webp" alt={entry.alt} class="w-24 h-24 p-1" />
+		<img src="images/AoN.webp" alt={entry.altText} class="w-24 h-24 p-1" />
 		<i class="p-1">
 			You can see the
 			<a href={entry.href.path} class="unstyled" target="_blank"> image </a>
@@ -28,14 +29,16 @@
 			>
 				Archives of Nethys</a
 			>.
+			{#if entry.title}<p class="text-center underline underline-offset-2 pt-3">
+					{entry.title}
+				</p>{/if}
 		</i>
 	</div>
 {:else}
 	<div>
-		{#await preload('https://picsum.photos/200/200')}
-			Image is loading!
-		{:then base64}
-			<img src={base64} alt={entry.alt} />
-		{/await}
+		<a href={entry.href.path} target="_blank">
+			<img src={entry.href.path} alt={entry.altText} />
+		</a>
+		{#if entry.title}<p class="text-center underline underline-offset-2">{entry.title}</p>{/if}
 	</div>
 {/if}
