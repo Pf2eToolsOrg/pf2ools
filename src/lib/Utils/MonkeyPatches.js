@@ -41,6 +41,39 @@ Map.prototype.toKeyArray =
 
 //#endregion
 
+//#region Array
+
+Array.prototype.toTitleCase =
+	Array.prototype.toTitleCase ||
+	function () {
+		return this.map((s) => s.toTitleCase());
+	};
+
+/**
+ * @param {string} joiner First Joiner, usually a Comma
+ * @param {string} lastJoiner Second Joiner, usually an " and " or " or "
+ * @param {boolean} nonOxford If true, will not add a comma before the lastJoiner, resulting in strings like "a, b or c"
+ * @returns {string}
+ */
+Array.prototype.joinConjunct =
+	Array.prototype.joinConjunct ||
+	function (joiner, lastJoiner, nonOxford) {
+		if (this.length === 0) return '';
+		if (this.length === 1) return this[0];
+		if (this.length === 2) return this.join(lastJoiner);
+		else {
+			let outStr = '';
+			for (let i = 0; i < this.length; ++i) {
+				outStr += this[i];
+				if (i < this.length - 2) outStr += joiner;
+				else if (i === this.length - 2)
+					outStr += `${!nonOxford && this.length > 2 ? joiner.trim() : ''}${lastJoiner}`;
+			}
+			return outStr;
+		}
+	};
+//#endregion
+
 //#region String
 String.prototype.remove = function (text) {
 	return this.replaceAll(text, '');
@@ -279,30 +312,6 @@ String.prototype.trimAnyChar =
 		while (start < end && chars.indexOf(this[start]) >= 0) ++start;
 		while (end > start && chars.indexOf(this[end - 1]) >= 0) --end;
 		return start > 0 || end < this.length ? this.substring(start, end) : this;
-	};
-
-/**
- * @param {string} joiner First Joiner, usually a Comma
- * @param {string} lastJoiner Second Joiner, usually an " and " or " or "
- * @param {boolean} nonOxford If true, will not add a comma before the lastJoiner, resulting in strings like "a, b or c"
- * @returns {string}
- */
-Array.prototype.joinConjunct =
-	Array.prototype.joinConjunct ||
-	function (joiner, lastJoiner, nonOxford) {
-		if (this.length === 0) return '';
-		if (this.length === 1) return this[0];
-		if (this.length === 2) return this.join(lastJoiner);
-		else {
-			let outStr = '';
-			for (let i = 0; i < this.length; ++i) {
-				outStr += this[i];
-				if (i < this.length - 2) outStr += joiner;
-				else if (i === this.length - 2)
-					outStr += `${!nonOxford && this.length > 2 ? joiner.trim() : ''}${lastJoiner}`;
-			}
-			return outStr;
-		}
 	};
 
 let StrUtil = {

@@ -31,9 +31,11 @@
 			<a href={entry.href.path} target="_blank">
 				<img src={entry.href.path} alt={entry.altText} />
 			</a>
-			{#if entry.title}<p class="text-center underline underline-offset-2">
+			{#if entry.title}
+				<p class="text-center underline underline-offset-2">
 					{entry.title}
-				</p>{/if}
+				</p>
+			{/if}
 		</div>
 	{/if}
 </Lazy>

@@ -1,4 +1,5 @@
 <script>
+	import FilterOption from './FilterOption.svelte';
 	import FilterBox from '$lib/Pages/FilterBox.svelte';
 	import DisplayBox from '$lib/Pages/DisplayBox.svelte';
 
@@ -9,7 +10,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 
-	let selected;
+	let selected = ancestries.entries().next().value[1];
 
 	onMount(() => {
 		// Select from Hash
@@ -28,13 +29,36 @@
 		}
 	});
 
-	const grid =
-		'grid-cols-[minmax(2rem,_12rem)_2rem_minmax(6rem,_20rem)_minmax(4rem,_5rem)_3rem_4rem] gap-2';
+	const classes = {
+		btn: 'basis-8',
+		name: 'basis-32',
+		hp: 'basis-8',
+		boosts: 'basis-64',
+		flaws: 'basis-24',
+		size: 'basis-36',
+		source: 'basis-16'
+	};
 </script>
 
 <div class="container lg:flex">
-	<div class="view-col lg:w-3/5 lg:h-full h-[30vh]">
-		<FilterBox {selected} data={ancestries} />
+	<div class="view-col h-[30vh] lg:w-3/5 lg:h-full">
+		<FilterBox {selected} data={ancestries}>
+			<svelte:fragment slot="header">
+				<div class="pl-0.5 flex">
+					<div class={classes['btn']} id="btn" />
+					<div class={classes['name']} id="name">Name</div>
+					<div class={classes['hp']} id="hp">HP</div>
+					<div class={classes['boosts']} id="boosts">Boosts</div>
+					<div class={classes['flaws']} id="flaws">Flaws</div>
+					<div class={classes['size']} id="size">Size</div>
+					<div class={classes['source']} id="source">Source</div>
+				</div>
+			</svelte:fragment>
+
+			<svelte:fragment slot="list" let:item>
+				<FilterOption {item} {classes} {selected} />
+			</svelte:fragment>
+		</FilterBox>
 	</div>
 	<div class="view-col max-h-[90vh] lg:w-2/5">
 		<DisplayBox {selected} />

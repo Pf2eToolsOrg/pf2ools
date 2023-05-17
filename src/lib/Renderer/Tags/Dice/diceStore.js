@@ -34,7 +34,7 @@ export class Roller {
 import { dev, browser } from '$app/environment';
 if (dev) {
     diceStore.subscribe((value) => {
-        if (!value.at(-1)) return;
+        if (!value.at(-1) || typeof value === "object") return;
         console.log(`You rolled ${value.at(-1)}`, value.at(-1));
     });
 

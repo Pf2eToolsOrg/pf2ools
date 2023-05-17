@@ -2,19 +2,23 @@
 	import domtoimage from 'dom-to-image';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
-	import { writable } from 'svelte/store';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
 	import PhotoWrapper from './PhotoWrapper.svelte';
 	import Fa from 'svelte-fa';
 	import { faCamera, faCode } from '@fortawesome/free-solid-svg-icons';
 	import Toasts from '$lib/Utils/Toasts.js';
+	import { localStorageStore } from '@skeletonlabs/skeleton';
 	export let selected;
 
 	let toast = new Toasts();
-	let tabSet = writable('data');
+	let tabSet = localStorageStore('tab', 'data');
 </script>
 
-<TabGroup regionPanel="!mt-0 pf2ools" active="border-primary-500 border-b-4 mt-[-4px]">
+<TabGroup
+	regionPanel="!mt-6 pf2ools"
+	active="border-primary-500 border-b-4 mt-[-4px]"
+	regionList="absolute z-10 w-full"
+>
 	<Tab bind:group={$tabSet} value={'data'} padding="px-2 select-none">Stats</Tab>
 	{#if selected?.fluff?.length}
 		<Tab bind:group={$tabSet} value={'fluff'} padding="px-2 select-none">Fluff</Tab>
@@ -82,7 +86,7 @@
 	</div>
 	<!-- Selected Panel --->
 	<svelte:fragment slot="panel">
-		<div class="wrp-stats stats">
+		<div class="wrp-stats stats max-h-[86vh] overflow-y-auto">
 			<div class="m-1.5">
 				{#key selected}
 					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />

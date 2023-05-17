@@ -51,6 +51,10 @@ export class Heritage extends DataEntry {
 		return 'heritage';
 	}
 
+	get hash() {
+		return (this.hashify(this.ancestry.name, this.ancestry.source) + "?" + this.hashify(this.shortName, this.source))
+	}
+
 	tag(displayText) {
 		return `${this.ancestry.name}|${this.ancestry.source}|${displayText ? displayText : this.name
 			}|${this.shortName}|${this.source}`;
