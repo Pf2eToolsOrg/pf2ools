@@ -14,7 +14,10 @@ export { default as sub } from './Formatting/subscript.svelte';
 export { default as nostyle, default as n } from './Formatting/nostyle.svelte';
 export { default as center, default as c } from './Formatting/center.svelte';
 export { default as indentFirst, default as indentF } from './Formatting/indentFirst.svelte';
-export { default as indentSubsequent, default as indentS } from './Formatting/indentSubsequent.svelte';
+export {
+	default as indentSubsequent,
+	default as indentS
+} from './Formatting/indentSubsequent.svelte';
 //#endregion
 
 //#region Hover Tags

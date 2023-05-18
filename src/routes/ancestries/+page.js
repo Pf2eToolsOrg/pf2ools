@@ -1,4 +1,4 @@
-import { Storage } from "Storage"
+import { Storage } from 'Storage';
 
 // lookup https://vitejs.dev/guide/features.html#json
 

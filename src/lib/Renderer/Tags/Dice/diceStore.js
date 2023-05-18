@@ -4,42 +4,42 @@ import { get } from 'svelte/store';
 export const diceStore = localStorageStore('diceStore', []);
 
 export class Roller {
-    constructor() {
-        this.store = diceStore;
-        this.rolls = get(diceStore);
-    }
+	constructor() {
+		this.store = diceStore;
+		this.rolls = get(diceStore);
+	}
 
-    clean() {
-        this.rolls = [];
-        diceStore.set(this.rolls);
-    }
+	clean() {
+		this.rolls = [];
+		diceStore.set(this.rolls);
+	}
 
-    roll(dice) {
-        return new DiceRoll(dice)
-    }
+	roll(dice) {
+		return new DiceRoll(dice);
+	}
 
-    quickRoll() {
-        const roll = this.roll(...arguments);
-        this.addRoll(roll);
-        return roll;
-    }
+	quickRoll() {
+		const roll = this.roll(...arguments);
+		this.addRoll(roll);
+		return roll;
+	}
 
-    addRoll(roll) {
-        this.rolls = [...this.rolls, roll];
-        diceStore.set(this.rolls);
-    }
+	addRoll(roll) {
+		this.rolls = [...this.rolls, roll];
+		diceStore.set(this.rolls);
+	}
 }
 
 // DEBUG
 import { dev, browser } from '$app/environment';
 if (dev) {
-    diceStore.subscribe((value) => {
-        if (!value.at(-1) || typeof value === "object") return;
-        console.log(`You rolled ${value.at(-1)}`, value.at(-1));
-    });
+	diceStore.subscribe((value) => {
+		if (!value.at(-1) || typeof value === 'object') return;
+		console.log(`You rolled ${value.at(-1)}`, value.at(-1));
+	});
 
-    if (browser) {
-        window.Roller = Roller;
-        window.DiceRoller = DiceRoll;
-    }
+	if (browser) {
+		window.Roller = Roller;
+		window.DiceRoller = DiceRoll;
+	}
 }

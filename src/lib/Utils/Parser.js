@@ -1,4 +1,3 @@
-
 export function splitByTagsBase(leadingCharacter) {
 	return function (string) {
 		let tagDepth = 0;
