@@ -15,6 +15,7 @@ export default {
 			strict: true
 		}),
 		alias: {
+			Storage: './src/lib/Data/Storage.js',
 			$data: './src/data/core',
 			tagger: './src/lib/Renderer/Tagger.svelte',
 			renderer: './src/lib/Renderer/Renderer.svelte'

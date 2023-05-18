@@ -21,6 +21,7 @@
 	import '../css/index.scss';
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+	import 'Storage';
 
 	function drawerOpen() {
 		drawerStore.open({
