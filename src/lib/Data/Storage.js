@@ -1,4 +1,4 @@
-import Ancestry from './ancestriesClass.js';
+import Ancestry from './ancestryClass.js';
 
 class Storage {
 	constructor() {

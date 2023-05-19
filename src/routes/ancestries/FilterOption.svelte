@@ -9,7 +9,7 @@
 		<a href={'#' + item.hash} class="unstyled">
 			<div class="flex row">
 				<button
-					class="mr-0.5 {classes['btn']}"
+					class={classes['btn']}
 					id="btn"
 					on:click|stopPropagation={() => {
 						item.hidden = !item.hidden;
@@ -50,8 +50,9 @@
 		{#each item.heritages.toValueArray() as heritage}
 			<a href={'#' + heritage.hash} class="unstyled">
 				<div class="pl-7 flex row" class:selected={selected.hash.includes(heritage.hash)}>
-					<div class="grow" id="name">{heritage.name}</div>
-					<div class={classes['source']} id="source">{heritage.source}</div>
+					<div class={classes['btn']} id="btn" />
+					<div class="-ml-3 basis-full" id="name">{heritage.name}</div>
+					<div class="pl-0.5 {classes['source']}" id="source">{heritage.source}</div>
 				</div>
 			</a>
 		{/each}

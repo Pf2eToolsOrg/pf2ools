@@ -31,6 +31,10 @@ export default class Ancestry extends DataEntry {
 		return array.length ? array : null;
 	}
 
+	get selectedHeritage() {
+		return this.heritage.find((h) => h.selected);
+	}
+
 	get heritages() {
 		const heritages = new Map();
 		this.heritage.map((h) => {
@@ -60,8 +64,7 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestry.name}|${this.ancestry.source}|${
-			displayText ? displayText : this.name
-		}|${this.shortName}|${this.source}`;
+		return `${this.ancestry.name}|${this.ancestry.source}|${displayText ? displayText : this.name
+			}|${this.shortName}|${this.source}`;
 	}
 }

@@ -70,11 +70,15 @@
 
 	<!-- Mobile Sidebar -->
 	<Drawer duration="250">
-		<div class="m-1">
+		<div class="m-1.5">
 			<Search />
 		</div>
 		<hr />
-		<DrawerNavigation />
+		<!-- Drawer Navigation -->
+		<nav class="list-nav m-1.5">
+			<DrawerNavigation />
+		</nav>
+		<!-- Bottom Text ("Esc, D, Tabs" Tips) -->
 		<div class="fixed bottom-0 p-2">
 			<span class="text-sm hidden md:contents">
 				<kbd>Esc</kbd> to close. <kbd>D</kbd> to open. <kbd>Tabs</kbd> to navigate.
@@ -150,7 +154,12 @@
 					</svelte:fragment>
 				</AppBar>
 			</div>
-			<AppBar background={null} padding={null} class="container z-10">
+			<AppBar
+				background={null}
+				padding={null}
+				class="container"
+				slotDefault="z-10 font-medium hidden md:flex flex-nowrap flex-row"
+			>
 				<TopNavigation />
 			</AppBar>
 		</svelte:fragment>

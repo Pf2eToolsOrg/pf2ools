@@ -7,6 +7,7 @@
 	{
 		"label": "Rules",
 		"icon": "faBook",
+		"offline": true,
 		"pages": [
 			{
 				"label": "Quick Reference",
@@ -37,25 +38,30 @@
 			{
 				"label": "Backgrounds",
 				"href": "/backgrounds",
-				"icon": "faPersonCircleQuestion"
+				"icon": "faPersonCircleQuestion",
+				"offline": true
 			},
 			{
 				"label": "Classes",
 				"href": "/classes",
-				"icon": "faHatWizard"
+				"icon": "faHatWizard",
+				"offline": true
 			},
 			{
 				"label": "Feats",
 				"href": "/feats",
-				"icon": "faAward"
+				"icon": "faAward",
+				"offline": true
 			},
 			{
-				"type": "divider"
+				"type": "divider",
+				"offline": true
 			},
 			{
 				"label": "Archetypes",
 				"href": "/archetypes",
-				"icon": "faPersonCirclePlus"
+				"icon": "faPersonCirclePlus",
+				"offline": true
 			},
 			{
 				"label": "Companions & Familiars",
@@ -70,18 +76,21 @@
 					"faDog",
 					"faHorse",
 					"faOtter"
-				]
+				],
+				"offline": true
 			},
 			{
 				"label": "Optional Features",
 				"href": "/optionalfeatures",
-				"icon": "faSquarePlus"
+				"icon": "faSquarePlus",
+				"offline": true
 			}
 		]
 	},
 	{
 		"label": "Game Master",
 		"icon": "faDiceD20",
+		"offline": true,
 		"pages": [
 			{
 				"label": "GM Screen",
@@ -111,6 +120,7 @@
 	{
 		"label": "References",
 		"icon": "faAsterisk",
+		"offline": true,
 		"pages": [
 			{
 				"label": "Actions",
@@ -200,10 +210,12 @@
 			{
 				"label": "Search",
 				"href": "/search",
-				"icon": "faMagnifyingGlass"
+				"icon": "faMagnifyingGlass",
+				"offline": true
 			},
 			{
-				"type": "divider"
+				"type": "divider",
+				"offline": true
 			},
 			{
 				"label": "Renderer Demo",
@@ -211,12 +223,14 @@
 				"icon": "faTextHeight"
 			},
 			{
-				"type": "divider"
+				"type": "divider",
+				"offline": true
 			},
 			{
 				"label": "Changelog",
 				"href": "/changelog",
-				"icon": "faCodeMerge"
+				"icon": "faCodeMerge",
+				"offline": true
 			},
 			{
 				"type": "divider"

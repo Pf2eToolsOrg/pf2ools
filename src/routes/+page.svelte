@@ -1,14 +1,7 @@
 <script>
 </script>
 
-<div class="container">
-	Currently functioning pages:
-	<ul class="list-disc pl-6">
-		<li><a href="/ancestries"> Ancestries</a></li>
-		<li><a href="/renderer"> Renderer</a></li>
-		<li><a href="/licenses"> Licenses</a></li>
-	</ul>
-</div>
+<div class="container"><h1 class="pt-4">Apologies for not having a home page yet.</h1></div>
 
 <svelte:head>
 	<title>PF2ools</title>

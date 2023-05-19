@@ -3,8 +3,8 @@
 	import * as fort from '@fortawesome/free-solid-svg-icons';
 	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
 	import Fa from 'svelte-fa';
-	import NavigationOption from './NavigationOption.svelte';
-	import pages from './pages.json';
+	import { default as JSON } from './pages.json';
+	export let pages = JSON;
 
 	function drawerClose() {
 		drawerStore.close();
@@ -19,14 +19,18 @@
 	}
 </script>
 
-<nav class="list-nav p-1">
-	{#each pages as link}
-		<div class="py-1">
-			{#if link.type === 'divider'}
-				<hr />
-			{:else if link.pages}
+<!-- Each Link -->
+{#each pages as link}
+	<!-- Don't Show if Offline -->
+	{#if !link.offline}
+		{#if link.type === 'divider'}
+			<hr />
+		{:else if link.pages}
+			<!-- Actual Good Stuff -->
+			<div class="py-1">
 				<Accordion regionPanel="space-y-1">
 					<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
+						<!-- Lead Icon -->
 						<svelte:fragment slot="lead">
 							{#if fort[pickRandom(link.icon)]}
 								<Fa icon={fort[pickRandom(link.icon)]} />
@@ -34,19 +38,33 @@
 								{@html link.icon}
 							{/if}
 						</svelte:fragment>
+						<!-- The Actual Text -->
 						<svelte:fragment slot="summary">
 							{link.label}
 						</svelte:fragment>
+						<!-- The Actual Content -->
 						<svelte:fragment slot="content">
-							{#each link.pages as sublink}
-								<NavigationOption link={sublink} openFunction={drawerClose} />
-							{/each}
+							<svelte:self pages={link.pages} />
 						</svelte:fragment>
 					</AccordionItem>
 				</Accordion>
-			{:else}
-				<NavigationOption {link} openFunction={drawerClose} />
-			{/if}
-		</div>
-	{/each}
-</nav>
+			</div>
+		{:else}
+			<a
+				id="navigation-option"
+				on:click={drawerClose}
+				class:!variant-ghost-surface={link.href === $page.url.pathname}
+				href={link.href}
+			>
+				<span>
+					{#if fort[pickRandom(link.icon)]}
+						<Fa icon={fort[pickRandom(link.icon)]} />
+					{:else}
+						{@html link.icon}
+					{/if}
+				</span>
+				<span>{link.label}</span>
+			</a>
+		{/if}
+	{/if}
+{/each}

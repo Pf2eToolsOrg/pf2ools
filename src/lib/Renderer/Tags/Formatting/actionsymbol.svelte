@@ -11,8 +11,10 @@
 			case '3':
 			case 't':
 				return '[>>>]';
+			case '4':
 			case 'f':
 				return '[F]';
+			case '5':
 			case 'r':
 				return '[R]';
 			default:
