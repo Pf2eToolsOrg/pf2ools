@@ -6,9 +6,9 @@
 <!-- aonprd -->
 <Lazy>
 	{#if entry.href.path.includes('aonprd')}
-		<div class="flex">
+		<div class="flex justify-center">
 			<img src="images/AoN.webp" alt={entry.altText} class="w-24 h-24 p-1" />
-			<i class="p-1">
+			<i class="p-1 pt-4">
 				You can see the
 				<a href={entry.href.path} class="unstyled" target="_blank"> image </a>
 				over at

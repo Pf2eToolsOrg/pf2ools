@@ -108,7 +108,7 @@
 		</div>
 		<div class="pf2ools">
 			<div
-				class="wrp-stats stats !overflow-hidden resize-x w-96 {$aspect} max-h-screen max-w-screen"
+				class="wrp-stats !overflow-hidden resize-x w-96 {$aspect} max-h-screen max-w-screen"
 			>
 				<div class="m-1.5">
 					<Renderer {entries} />

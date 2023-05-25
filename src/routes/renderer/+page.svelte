@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<div
-		class="mx-0.5 md:w-2/4 stats font-sabonltstd variant-ghost-surface px-2 pt-2 h-[90vh] overflow-hidden overflow-y-auto"
+		class="mx-0.5 md:w-2/4 font-sabonltstd variant-ghost-surface px-2 pt-2 h-[90vh] overflow-hidden overflow-y-auto"
 	>
 		<Renderer entries={rendered} />
 	</div>

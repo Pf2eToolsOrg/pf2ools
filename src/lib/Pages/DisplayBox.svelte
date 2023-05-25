@@ -11,13 +11,11 @@
 	export let selected;
 
 	let tabSet = localStorageStore('tab', 'data');
+
+	// I need to rewrite this, ffs
 </script>
 
-<TabGroup
-	regionPanel="pf2ools !mt-0"
-	active="border-primary-500 border-b-4"
-	regionList="border-b-0"
->
+<TabGroup regionPanel="!mt-0" active="border-primary-500 border-b-4" regionList="border-b-0">
 	<!-- Data Tab -->
 	<Tab bind:group={$tabSet} value={'data'} padding="px-2 select-none">Stats</Tab>
 	<!-- Fluff Tab -->
@@ -87,14 +85,12 @@
 	</div>
 	<!-- Selected Panel --->
 	<svelte:fragment slot="panel">
-		<slot>
-			<div class="wrp-stats stats">
-				<div class="m-1.5">
-					{#key selected}
-						<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
-					{/key}
+		{#key selected}
+			<slot>
+				<div class="wrp-stats">
+					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
 				</div>
-			</div>
-		</slot>
+			</slot>
+		{/key}
 	</svelte:fragment>
 </TabGroup>

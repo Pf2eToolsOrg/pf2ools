@@ -1,5 +1,6 @@
 <script>
 	import DisplayBox from '$lib/Pages/DisplayBox.svelte';
+	import Renderer from 'renderer';
 	import { browser } from '$app/environment';
 	import { Storage } from 'Storage';
 	import { onMount } from 'svelte';
@@ -10,16 +11,9 @@
 	});
 </script>
 
-<div class="container">
+<div class="container h-[90vh] flex">
 	{#if browser}
-		<div class="flex">
-			<div class="m-2 w-2/5">
-				<DisplayBox {selected} />
-			</div>
-			<div class="m-2 w-3/5">
-				<DisplayBox {selected} />
-			</div>
-		</div>
+		<Renderer entries={selected} />
 	{/if}
 </div>
 

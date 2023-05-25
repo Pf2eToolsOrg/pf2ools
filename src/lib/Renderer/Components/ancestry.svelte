@@ -9,7 +9,7 @@
 	import Source from './Misc/source.svelte';
 	export let entry;
 
-	function copy(text) {
+	function copy(text, event) {
 		navigator.clipboard.writeText(text);
 	}
 
@@ -20,17 +20,17 @@
 	}
 </script>
 
-<div class="font-good-pro">
+<div class="pf2ools wrp-stats font-good-pro">
 	<div class="flex font-good-pro-condensed text-[1.35em] uppercase leading-[1] font-bold">
 		<span
-			class="stats-name cursor-copy"
-			on:click={copy(entry.name)}
-			on:keypress
+			class="cursor-copy"
+			on:click={(e) => copy(entry.name, e)}
+			on:keypress={(e) => copy(entry.name, e)}
 			title="Copy to Clipboard"
 		>
 			<Tagger entry={entry.name} />
 		</span>
-		<span class="stats-type ml-auto pl-4">
+		<span class="ml-auto pl-4">
 			{entry.type}
 		</span>
 	</div>
@@ -120,20 +120,3 @@
 		<Source {entry} />
 	</footer>
 </div>
-
-<style lang="scss">
-	.stat-line {
-		line-height: 1.3em;
-		margin: 0.25em 0;
-	}
-
-	hr {
-		border: 0;
-		border-top: 1px solid #000;
-		margin: 0.1em -0.05em;
-
-		:global(html.dark) & {
-			border-top-color: #aaa;
-		}
-	}
-</style>

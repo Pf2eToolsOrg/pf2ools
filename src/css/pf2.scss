@@ -1,4 +1,4 @@
-ul {
+.pf2ools ul {
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
 	padding-left: 1.5rem;
@@ -9,21 +9,37 @@ ul {
 	}
 }
 
-.stats {
-	background: #f6f4f2;
-
-	html.dark & {
-		background: #222;
-	}
-}
-
 .wrp-stats {
+	padding: 0.375rem;
 	border-top: 2px solid #5e0000;
 	border-bottom: 2px solid #5e0000;
 	background: #f6f4f2;
 
+	&>.wrp-stats {
+		padding: revert !important;
+		border-top: revert !important;
+		border-bottom: revert !important;
+		background: revert !important;
+	}
+
 	html.dark & {
+		background: #222;
 		border-top: 2px solid #565656;
 		border-bottom: 2px solid #565656;
+	}
+
+	.stat-line {
+		line-height: 1.3em;
+		margin: 0.25em 0;
+	}
+
+	hr {
+		border: 0;
+		border-top: 1px solid #000;
+		margin: 0.1em -0.05em;
+
+		html.dark & {
+			border-top-color: #aaa;
+		}
 	}
 }
