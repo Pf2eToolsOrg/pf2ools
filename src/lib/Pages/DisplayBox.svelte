@@ -6,11 +6,10 @@
 	import PhotoWrapper from './PhotoWrapper.svelte';
 	import Fa from 'svelte-fa';
 	import { faCamera, faCode } from '@fortawesome/free-solid-svg-icons';
-	import Toasts from '$lib/Utils/Toasts.js';
+	import toast from '$lib/Utils/Toasts.js';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	export let selected;
 
-	let toast = new Toasts();
 	let tabSet = localStorageStore('tab', 'data');
 </script>
 
@@ -88,12 +87,14 @@
 	</div>
 	<!-- Selected Panel --->
 	<svelte:fragment slot="panel">
-		<div class="wrp-stats stats">
-			<div class="m-1.5">
-				{#key selected}
-					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
-				{/key}
+		<slot>
+			<div class="wrp-stats stats">
+				<div class="m-1.5">
+					{#key selected}
+						<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
+					{/key}
+				</div>
 			</div>
-		</div>
+		</slot>
 	</svelte:fragment>
 </TabGroup>

@@ -1,14 +1,14 @@
 <script>
 	import { getValidColor } from './color.svelte';
 	import { splitTagByPipe } from '$lib/Utils/Parser';
-	import Toast from '$lib/Utils/Toasts.js';
+	import toast from '$lib/Utils/Toasts.js';
 	export let text;
 	export let error = false;
 	import Tagger from 'tagger';
 
 	$: [entry, color] = [...splitTagByPipe(text)];
 	$: if (error) {
-		new Toast().warn(`Unknown tag <b>"@${error}"</b>!`);
+		toast.warn(`Unknown tag <b>"@${error}"</b>!`);
 	}
 </script>
 

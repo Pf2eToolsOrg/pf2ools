@@ -25,10 +25,10 @@
 
 <script>
 	export let text;
-	import Toast from '$lib/Utils/Toasts.js';
+	import toast from '$lib/Utils/Toasts.js';
 
 	$: if (stringToActionCopyPaste(text) === '[?]') {
-		new Toast().warn(`Unknown action string <b>"${text}"</b>!`);
+		toast.warn(`Unknown action string <b>"${text}"</b>!`);
 	}
 </script>
 

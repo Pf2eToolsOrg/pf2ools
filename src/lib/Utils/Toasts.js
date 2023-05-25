@@ -2,7 +2,7 @@ import { toastStore } from '@skeletonlabs/skeleton';
 import { browser } from '$app/environment';
 import { get } from 'svelte/store';
 
-export default class Toasts {
+export class Toasts {
 	trigger(options) {
 		toastStore.trigger({
 			message: 'Placeholder',
@@ -45,6 +45,10 @@ export default class Toasts {
 	}
 }
 
+const toasts = new Toasts();
+
+export { toasts as default };
+
 if (browser) {
-	window.toasts = new Toasts();
+	window.toasts = toasts;
 }

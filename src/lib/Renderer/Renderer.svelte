@@ -1,5 +1,5 @@
 <script>
-	import Toast from '$lib/Utils/Toasts.js';
+	import toast from '$lib/Utils/Toasts.js';
 	import * as Components from './Components/index.js';
 	import Tagger from './Tagger.svelte';
 	export let entries;
@@ -8,16 +8,14 @@
 	function getComponent(entry) {
 		let type = 'entries';
 		if (!entry.type) {
-			new Toast().error('Entry type is not defined!');
+			toast.error('Entry type is not defined!');
 			error = true;
 		} else {
 			type = entry.type.replaceAll('-', '_').toLowerCase();
 		}
 
 		if (!Object.keys(Components).includes(type)) {
-			new Toast().error(
-				`Entry type "${entry.type}" is not recognized by the component renderer!`
-			);
+			toast.error(`Entry type "${entry.type}" is not recognized by the component renderer!`);
 			type = 'entries';
 			error = true;
 		}

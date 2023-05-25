@@ -15,12 +15,12 @@
 		Modal
 	} from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
-	import { swipe } from 'svelte-gestures';
 	import { hotkey } from 'svelte-gh-hotkey';
 	import '../app.postcss';
 	import '../css/index.scss';
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+	import toast from '$lib/Utils/Toasts.js';
 	import 'Storage';
 
 	function drawerOpen() {
@@ -35,19 +35,9 @@
 		if (value.from.route.id !== value.to.route.id) {
 			console.clear();
 			console.log(`%cNavigating to ${value.to.route.id}`, 'font-size: 20px;');
+			toast.clear();
 		}
 	});
-	//#endregion
-
-	//#region Swipe to Open Drawer Handler
-	import { mobileCheck } from '$lib/Utils/MiscUtils.js';
-	function handler(event) {
-		if (!mobileCheck())
-			return console.warn('Not a mobile device. Ignoring swipe motion to open drawer.');
-		let direction = event.detail.direction;
-		if (direction === 'left') drawerStore.close();
-		if (direction === 'right') drawerOpen();
-	}
 	//#endregion
 </script>
 

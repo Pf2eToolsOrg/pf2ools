@@ -28,12 +28,14 @@
 	},
 	{
 		"label": "Player",
+		"offline": true,
 		"icon": "faUser",
 		"pages": [
 			{
 				"label": "Ancestries",
 				"href": "/ancestries",
-				"icon": "faUsers"
+				"icon": "faUsers",
+				"offline": true
 			},
 			{
 				"label": "Backgrounds",

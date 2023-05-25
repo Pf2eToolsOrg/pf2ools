@@ -1,11 +1,10 @@
 <script>
 	import domtoimage from 'dom-to-image';
 	import Renderer from '$lib/Renderer/Renderer.svelte';
-	import Toasts from '$lib/Utils/Toasts.js';
+	import toast from '$lib/Utils/Toasts.js';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 
 	export let entries;
-	let toast = new Toasts();
 
 	function options(entry) {
 		let scale = 2;

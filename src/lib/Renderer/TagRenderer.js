@@ -1,6 +1,5 @@
-import Toasts from '../Utils/Toasts';
+import toasts from '../Utils/Toasts';
 import { getValidColor, stringToActionCopyPaste } from './RendererUtils';
-const toasts = new Toasts();
 
 /**
  *
