@@ -1,25 +1,23 @@
 const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c = [
-  a + "/_app/immutable/entry/app.eef5e5ba.js",
-  a + "/_app/immutable/assets/0.7c5c4170.css",
-  a + "/_app/immutable/nodes/0.598d5d2b.js",
-  a + "/_app/immutable/nodes/1.5ebbd966.js",
-  a + "/_app/immutable/nodes/2.44d346f3.js",
-  a + "/_app/immutable/assets/3.4652be6f.css",
-  a + "/_app/immutable/nodes/3.ad6e77cb.js",
-  a + "/_app/immutable/nodes/4.fb2fdabe.js",
-  a + "/_app/immutable/assets/5.c9c22b2a.css",
-  a + "/_app/immutable/nodes/5.95148f14.js",
-  a + "/_app/immutable/assets/MiscUtils.a5e346fc.css",
+  a + "/_app/immutable/entry/app.d97a9cc1.js",
+  a + "/_app/immutable/assets/0.03552415.css",
+  a + "/_app/immutable/nodes/0.c5b5b280.js",
+  a + "/_app/immutable/nodes/1.a219ddce.js",
+  a + "/_app/immutable/nodes/2.c9f5257c.js",
+  a + "/_app/immutable/nodes/3.6faccc5c.js",
+  a + "/_app/immutable/assets/4.e1fa6f69.css",
+  a + "/_app/immutable/nodes/4.29b23dbe.js",
   a + "/_app/immutable/assets/Renderer.84ce5749.css",
-  a + "/_app/immutable/chunks/MiscUtils.12d7ee67.js",
-  a + "/_app/immutable/chunks/Renderer.6ea15412.js",
-  a + "/_app/immutable/chunks/index.c3c44774.js",
-  a + "/_app/immutable/chunks/index.d78afbfb.js",
-  a + "/_app/immutable/chunks/index.e248da5c.js",
+  a + "/_app/immutable/assets/Toasts.a5e346fc.css",
+  a + "/_app/immutable/chunks/Renderer.c7a31f39.js",
+  a + "/_app/immutable/chunks/Toasts.1bd195c0.js",
+  a + "/_app/immutable/chunks/index.46c9842c.js",
+  a + "/_app/immutable/chunks/index.4d214b47.js",
   a + "/_app/immutable/chunks/preload-helper.41c905a7.js",
-  a + "/_app/immutable/chunks/singletons.05723c06.js",
-  a + "/_app/immutable/chunks/stores.f5f3756c.js",
-  a + "/_app/immutable/entry/start.79cf9167.js",
+  a + "/_app/immutable/chunks/singletons.84901397.js",
+  a + "/_app/immutable/chunks/stores.545a5d30.js",
+  a + "/_app/immutable/chunks/stores.a0824a6d.js",
+  a + "/_app/immutable/entry/start.97f0adab.js",
   a + "/_app/immutable/chunks/ancestry-anadi.c9147a4b.js",
   a + "/_app/immutable/chunks/ancestry-android.22dcb6be.js",
   a + "/_app/immutable/chunks/ancestry-automaton.fee60d93.js",
@@ -55,8 +53,9 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/_app/immutable/chunks/ancestry-strix.41a15f4b.js",
   a + "/_app/immutable/chunks/ancestry-tengu.d6b302cb.js",
   a + "/_app/immutable/chunks/ancestry-vanara.f23f4f4a.js",
-  a + "/_app/immutable/chunks/ancestry-vishkanya.7c187811.js"
-], i = [
+  a + "/_app/immutable/chunks/ancestry-vishkanya.7c187811.js",
+  a + "/_app/immutable/chunks/versatile-heritages.2ef7b789.js"
+], r = [
   a + "/fonts/AlbertusMT.ttf",
   a + "/fonts/Basing.ttf",
   a + "/fonts/Blambot-Casual-Regular.ttf",
@@ -159,10 +158,10 @@ const a = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), c
   a + "/icons/NoBackground.svg",
   a + "/icons/safari-pinned-tab.svg",
   a + "/images/AoN.webp"
-], u = "1684411418102", f = `cache-${u}`, l = [
+], u = "1685026735105", f = `cache-${u}`, l = [
   ...c,
   // the app itself
-  ...i.filter((t) => !t.startsWith("/data"))
+  ...r.filter((t) => !t.startsWith("/data"))
   // everything in `static` but the actual data
 ];
 self.addEventListener("install", (t) => {
