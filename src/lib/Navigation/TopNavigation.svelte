@@ -29,12 +29,6 @@
 		currentPage = value.url.pathname;
 		tab = {};
 	});
-
-	const popupFeatured = {
-		event: 'click',
-		target: 'dropdown',
-		placement: 'bottom-start'
-	};
 </script>
 
 <div class="flex flex-row flex-wrap whitespace-normal">
@@ -45,13 +39,41 @@
 					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
 						? 'variant-filled-primary'
 						: ''}"
-					use:popup={popupFeatured}
+					use:popup={{
+						event: 'click',
+						target: 'dropdown-' + link.label,
+						placement: 'bottom-start'
+					}}
 					on:click={() => (tab = link)}
 					id="navbtn"
 				>
 					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
 					{link.label}
 				</button>
+				<div class="absolute card shadow-md" data-popup="dropdown-{link.label}">
+					<div class="flex flex-col backdrop-blur-md p-1 rounded-md">
+						{#each link.pages as sublink}
+							{#if !(sublink.offline || sublink.type === 'divider')}
+								<div
+									name={sublink.label}
+									value={sublink}
+									class="rounded-md hover:variant-soft-primary p-1 {selected(
+										sublink
+									)
+										? 'variant-filled-primary selected-sub'
+										: ''}"
+									id="dropdown"
+								>
+									<a class="flex" href={sublink.href}>
+										<Fa icon={fort[pickRandom(sublink.icon)]} class="m-1" />
+										{sublink.label}
+									</a>
+								</div>
+							{/if}
+						{/each}
+					</div>
+					<div class="arrow bg-surface-300 dark:bg-surface-500" />
+				</div>
 			{:else}
 				<a
 					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
@@ -65,29 +87,4 @@
 			{/if}
 		{/if}
 	{/each}
-</div>
-
-<div class="absolute card shadow-md" data-popup="dropdown">
-	{#if tab.pages}
-		<div class="flex flex-col backdrop-blur-md p-1 rounded-md">
-			{#each tab.pages as link}
-				{#if !(link.offline || link.type === 'divider')}
-					<div
-						name={link.label}
-						value={link}
-						class="rounded-md hover:variant-soft-primary p-1 {selected(link)
-							? 'variant-filled-primary selected-sub'
-							: ''}"
-						id="dropdown"
-					>
-						<a class="flex" href={link.href}>
-							<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
-							{link.label}
-						</a>
-					</div>
-				{/if}
-			{/each}
-		</div>
-	{/if}
-	<div class="arrow bg-surface-300 dark:bg-surface-500" />
 </div>
