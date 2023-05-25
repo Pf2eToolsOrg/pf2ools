@@ -8,4 +8,4 @@
 	if (!outUrl.startsWith('http')) outUrl = `http://${outUrl}`;
 </script>
 
-<a href={outUrl}><Tagger entry={displayText} /></a>
+<a class="unstyled pf2ools" href={outUrl}><Tagger entry={displayText} /></a>

@@ -3,16 +3,11 @@
 	import * as fort from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import { default as JSON } from './pages.json';
-	import { popup } from '@skeletonlabs/skeleton';
+	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
+	import { computePosition } from '@floating-ui/dom';
 	export let pages = JSON;
 
 	// Dropdowns: https://flowbite.com/docs/components/dropdowns/#multi-level-dropdown
-
-	let popupCombobox = {
-		event: 'click',
-		placement: 'bottom',
-		closeQuery: '#navigation-option'
-	};
 
 	function pickRandom(icons) {
 		if (Array.isArray(icons)) {
@@ -21,57 +16,84 @@
 			return icons;
 		}
 	}
+
+	let currentPage = $page.url.pathname;
+	let selected;
+	let tab = {};
+
+	$: selected = (link) =>
+		currentPage === link.href || link?.pages?.find((page) => currentPage === page.href);
+
+	page.subscribe((value) => {
+		currentPage = value.url.pathname;
+		tab = {};
+	});
+
+	let subpages, xPos, yPos;
+	function floatingUI(selected) {
+		computePosition(selected, subpages, {
+			placement: 'bottom-start'
+		}).then(({ x, y }) => {
+			xPos = `${x}px`;
+			yPos = `${y}px`;
+		});
+	}
 </script>
 
-{#each pages as link}
-	{#if !link.offline}
-		{#if link.type === 'divider'}
-			<hr />
-		{:else if link.pages}
-			<!-- svelte-ignore missing-declaration -->
-			<button
-				class="unstyled px-4 py-2 rounded-lg
-					text-gray-900 dark:text-gray-400
-					variant-ghost-surface flex items-center
-					justify-center h-8 mr-0.5 whitespace-nowrap"
-				use:popup={{ ...popupCombobox, target: link.label }}
-			>
-				<span class="pr-2">
-					{#if fort[pickRandom(link.icon)]}
-						<Fa icon={fort[pickRandom(link.icon)]} />
-					{:else}
-						{@html link.icon}
+<div class="flex flex-col flex-wrap whitespace-normal">
+	<TabGroup padding="p-1 pr-2" hover="hover:variant-soft-primary" rounded="" border="" active="">
+		{#each pages as link}
+			{#if !(link.offline || link.type === 'divider')}
+				{#if link.pages}
+					<Tab
+						name={link.label}
+						value={link}
+						class={selected(link) ? 'variant-filled-primary selected-top' : ''}
+						bind:group={tab}
+						on:click={(e) => floatingUI(e.target.closest('label'))}
+					>
+						<div class="flex flex-row">
+							<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
+							{link.label}
+						</div>
+					</Tab>
+				{:else}
+					<Tab
+						name={link.label}
+						value={link}
+						class={selected(link) ? 'variant-filled-primary selected-top' : ''}
+						bind:group={tab}
+					>
+						<a class="flex flex-row" href={link.href}>
+							<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
+							{link.label}
+						</a>
+					</Tab>
+				{/if}
+			{/if}
+		{/each}
+	</TabGroup>
+</div>
+
+<div class="absolute variant-ghost-primary" bind:this={subpages} style="left: {xPos}; top: {yPos}">
+	<TabGroup padding="p-1 pr-2" hover="hover:variant-soft-primary" rounded="" border="" active="">
+		{#if tab.pages}
+			<div class="flex flex-col backdrop-blur-md">
+				{#each tab.pages as link}
+					{#if !(link.offline || link.type === 'divider')}
+						<Tab
+							name={link.label}
+							value={link}
+							class={selected(link) ? 'variant-filled-primary selected-sub' : ''}
+						>
+							<a class="flex" href={link.href}>
+								<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
+								{link.label}
+							</a>
+						</Tab>
 					{/if}
-				</span>
-				{link.label}
-			</button>
-			<div
-				class="bg-surface-300/95 dark:bg-surface-800/95 rounded-lg min-w-20
-					text-gray-900 dark:text-gray-400"
-				data-popup={link.label}
-			>
-				<div class="flex flex-col">
-					<svelte:self pages={link.pages} />
-				</div>
-			</div>
-		{:else}
-			<div class="mr-0.5">
-				<a
-					id="navigation-option"
-					class="unstyled px-4 py-2 rounded-lg variant-ghost-surface flex text-gray-900 dark:text-gray-400 items-center justify-center h-8"
-					class:!variant-ghost-surface={link.href === $page.url.pathname}
-					href={link.href}
-				>
-					<span class="pr-2">
-						{#if fort[pickRandom(link.icon)]}
-							<Fa icon={fort[pickRandom(link.icon)]} />
-						{:else}
-							{@html link.icon}
-						{/if}
-					</span>
-					<span>{link.label}</span>
-				</a>
+				{/each}
 			</div>
 		{/if}
-	{/if}
-{/each}
+	</TabGroup>
+</div>

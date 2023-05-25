@@ -1,5 +1,7 @@
-import DataEntry from '$lib/Utils/DataUtils';
-export default class Ancestry extends DataEntry {
+import DataEntry from '$lib/Data/DataUtils';
+import { Storage } from '$lib/Data/Storage';
+
+export class Ancestry extends DataEntry {
 	constructor(data) {
 		super(data);
 		this.traitsPrototype = data.traits;
@@ -31,40 +33,34 @@ export default class Ancestry extends DataEntry {
 		return array.length ? array : null;
 	}
 
-	get selectedHeritage() {
-		return this.heritage.find((h) => h.selected);
-	}
-
 	get heritages() {
-		const heritages = new Map();
-		this.heritage.map((h) => {
-			const heritage = new Heritage(h, this);
-			heritages.set(heritage.hash, heritage);
-		});
-		return heritages;
+		return (async () => await Storage.heritages)().then(x => x.filter((h) => h.ancestryName === this.name && h.ancestrySource === this.source));
 	}
 }
 
 export class Heritage extends DataEntry {
 	constructor(data, ancestry) {
 		super(data);
-		this.ancestry = { name: ancestry.name, source: ancestry.source };
+
+		if (ancestry) {
+			this.ancestryName = ancestry.name;
+			this.ancestrySource = ancestry.source;
+		}
 	}
 
 	get type() {
 		return 'heritage';
 	}
 
-	get hash() {
-		return (
-			this.hashify(this.ancestry.name, this.ancestry.source) +
-			'?' +
-			this.hashify(this.shortName, this.source)
-		);
-	}
-
 	tag(displayText) {
-		return `${this.ancestry.name}|${this.ancestry.source}|${displayText ? displayText : this.name
-			}|${this.shortName}|${this.source}`;
+		return `${this.ancestryName ?? "Human"}|${this.ancestrySource ?? "CRB"}|${displayText ?? this.name}|${this.name}|${this.source}`;
 	}
+}
+
+// DEV
+import { dev, browser } from '$app/environment';
+if (dev && browser) {
+	window.pf2ools = window.pf2ools || {};
+	window.pf2ools.Classes = { ...window.pf2ools.Classes, Ancestry, Heritage };
+	console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added pf2ools.Classes.Ancestry and pf2ools.Classes.Heritage", window.pf2ools.Classes)
 }

@@ -34,8 +34,7 @@
 		if (value === null) return;
 		if (value.from.route.id !== value.to.route.id) {
 			console.clear();
-			console.log(`%cPF2ools`, 'color: #ff1111; font-size: 30px;');
-			console.log(`%cNavigating to ${value.to.route.id}`, 'color: #ff0000; font-size: 20px;');
+			console.log(`%cNavigating to ${value.to.route.id}`, 'font-size: 20px;');
 		}
 	});
 	//#endregion

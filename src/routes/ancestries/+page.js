@@ -5,6 +5,7 @@ import { Storage } from 'Storage';
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	return {
-		ancestries: await Storage.ancestries
+		ancestries: await Storage.ancestries,
+		heritages: await Storage.heritages
 	};
 }
