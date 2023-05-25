@@ -33,50 +33,10 @@
 		}
 	}
 
-	const classes = {
-		btn: '-mt-0.5 basis-8',
-		name: 'text-left basis-32',
-		hp: 'text-left basis-8',
-		boosts: 'text-left basis-64',
-		flaws: 'text-left basis-24',
-		size: 'text-left basis-36',
-		source: 'text-left basis-16'
-	};
-
 	// TODO: Refactor this to use https://vincjo.fr/datatables/home instead.
 </script>
 
-<div class="container lg:flex">
-	<div class="view-col h-[30vh] lg:w-3/5 lg:h-full">
-		<FilterBox {selected} data={ancestries}>
-			<svelte:fragment slot="header">
-				<div class="flex text-sm -ml-0.5">
-					<button class={classes['btn']} id="btn" />
-					<button class={classes['name']} id="name">Name</button>
-					<button class={classes['hp']} id="hp">HP</button>
-					<button class={classes['boosts']} id="boosts">Boosts</button>
-					<button class={classes['flaws']} id="flaws">Flaws</button>
-					<button class={classes['size']} id="size">Size</button>
-					<button class={classes['source']} id="source">Source</button>
-				</div>
-			</svelte:fragment>
-
-			<svelte:fragment slot="list" let:item>
-				<FilterOption {item} {classes} {selected} />
-			</svelte:fragment>
-		</FilterBox>
-	</div>
-	<div class="flex flex-col max-h-[90vh] lg:w-2/5 pf2ools">
-		<div class="view-col h-2/3">
-			<DisplayBox {selected} />
-		</div>
-		<div class="view-col h-1/3 wrp-stats stats">
-			<div class="m-1.5">
-				<Renderer entries={selected} />
-			</div>
-		</div>
-	</div>
-</div>
+<div class="container lg:flex">aaaaaaaaaaaaaaaaa</div>
 
 <svelte:window
 	on:hashchange={(e) => {

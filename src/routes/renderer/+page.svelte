@@ -38,9 +38,9 @@
 	<title>Renderer Demo - PF2ools</title>
 </svelte:head>
 
-<div class="pf2ools md:flex flex-row">
-	<div class="md:w-2/4 relative">
-		<div class="view-col variant-ghost-surface max-height-[90vh] height-[90vh]">
+<div class="pf2ools md:flex flex-row pt-1">
+	<div class="mx-0.5 md:w-2/4 relative">
+		<div class="variant-ghost-surface">
 			<CodeMirror
 				bind:value={$store}
 				lang={json()}
@@ -70,14 +70,8 @@
 		</div>
 	</div>
 	<div
-		class="render md:w-2/4 stats view-col font-sabonltstd variant-ghost-surface px-2 max-height-[90vh] height-[90vh] pt-2"
+		class="mx-0.5 md:w-2/4 stats font-sabonltstd variant-ghost-surface px-2 pt-2 h-[90vh] overflow-hidden overflow-y-auto"
 	>
 		<Renderer entries={rendered} />
 	</div>
 </div>
-
-<style>
-	.render {
-		max-height: 90vh;
-	}
-</style>

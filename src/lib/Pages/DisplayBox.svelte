@@ -15,15 +15,17 @@
 </script>
 
 <TabGroup
-	regionPanel="!mt-6 pf2ools"
-	active="border-primary-500 border-b-4 mt-[-4px]"
-	regionList="absolute z-10 w-full"
+	regionPanel="pf2ools !mt-0"
+	active="border-primary-500 border-b-4"
+	regionList="border-b-0"
 >
+	<!-- Data Tab -->
 	<Tab bind:group={$tabSet} value={'data'} padding="px-2 select-none">Stats</Tab>
+	<!-- Fluff Tab -->
 	{#if selected?.fluff?.length}
 		<Tab bind:group={$tabSet} value={'fluff'} padding="px-2 select-none">Fluff</Tab>
 	{/if}
-
+	<!-- Image Tab -->
 	{#if selected?.images?.length}
 		<Tab bind:group={$tabSet} value={'images'} padding="px-2 select-none">Images</Tab>
 	{/if}
@@ -32,7 +34,7 @@
 	<div class="ml-auto">
 		<button
 			id="screenshot"
-			class="btn btn-sm p-1 variant-ghost-surface rounded-b-none"
+			class="btn btn-sm px-1 variant-ghost-surface rounded-b-none"
 			title="Screenshot the Current Tab (+ Ctrl to Copy to Clipboard, + Shift to Download)"
 			on:click={(e) => {
 				const entry = document.querySelector('.wrp-stats');
@@ -74,7 +76,7 @@
 		</button>
 		<button
 			id="code"
-			class="btn btn-sm m-0 p-1 variant-ghost-surface rounded-b-none"
+			class="btn btn-sm px-1 variant-ghost-surface rounded-b-none"
 			title="Show JSON Data"
 			on:click={(e) => {
 				console.log(selected);
@@ -86,7 +88,7 @@
 	</div>
 	<!-- Selected Panel --->
 	<svelte:fragment slot="panel">
-		<div class="wrp-stats stats max-h-[86vh] overflow-y-auto">
+		<div class="wrp-stats stats">
 			<div class="m-1.5">
 				{#key selected}
 					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />

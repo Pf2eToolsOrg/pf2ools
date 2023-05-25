@@ -4,8 +4,9 @@
 	import Fa from 'svelte-fa';
 	import { default as JSON } from './pages.json';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
-	import { computePosition } from '@floating-ui/dom';
 	export let pages = JSON;
+
+	import { popup } from '@skeletonlabs/skeleton';
 
 	// Dropdowns: https://flowbite.com/docs/components/dropdowns/#multi-level-dropdown
 
@@ -29,71 +30,64 @@
 		tab = {};
 	});
 
-	let subpages, xPos, yPos;
-	function floatingUI(selected) {
-		computePosition(selected, subpages, {
-			placement: 'bottom-start'
-		}).then(({ x, y }) => {
-			xPos = `${x}px`;
-			yPos = `${y}px`;
-		});
-	}
+	const popupFeatured = {
+		event: 'click',
+		target: 'dropdown',
+		placement: 'bottom-start'
+	};
 </script>
 
-<div class="flex flex-col flex-wrap whitespace-normal">
-	<TabGroup padding="p-1 pr-2" hover="hover:variant-soft-primary" rounded="" border="" active="">
-		{#each pages as link}
-			{#if !(link.offline || link.type === 'divider')}
-				{#if link.pages}
-					<Tab
+<div class="flex flex-row flex-wrap whitespace-normal">
+	{#each pages as link}
+		{#if !(link.offline || link.type === 'divider')}
+			{#if link.pages}
+				<button
+					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
+						? 'variant-filled-primary'
+						: ''}"
+					use:popup={popupFeatured}
+					on:click={() => (tab = link)}
+					id="navbtn"
+				>
+					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
+					{link.label}
+				</button>
+			{:else}
+				<a
+					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
+						? 'variant-filled-primary'
+						: ''}"
+					href={link.href}
+				>
+					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
+					{link.label}
+				</a>
+			{/if}
+		{/if}
+	{/each}
+</div>
+
+<div class="absolute card shadow-md" data-popup="dropdown">
+	{#if tab.pages}
+		<div class="flex flex-col backdrop-blur-md p-1 rounded-md">
+			{#each tab.pages as link}
+				{#if !(link.offline || link.type === 'divider')}
+					<div
 						name={link.label}
 						value={link}
-						class={selected(link) ? 'variant-filled-primary selected-top' : ''}
-						bind:group={tab}
-						on:click={(e) => floatingUI(e.target.closest('label'))}
+						class="rounded-md hover:variant-soft-primary p-1 {selected(link)
+							? 'variant-filled-primary selected-sub'
+							: ''}"
+						id="dropdown"
 					>
-						<div class="flex flex-row">
-							<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
-							{link.label}
-						</div>
-					</Tab>
-				{:else}
-					<Tab
-						name={link.label}
-						value={link}
-						class={selected(link) ? 'variant-filled-primary selected-top' : ''}
-						bind:group={tab}
-					>
-						<a class="flex flex-row" href={link.href}>
+						<a class="flex" href={link.href}>
 							<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
 							{link.label}
 						</a>
-					</Tab>
+					</div>
 				{/if}
-			{/if}
-		{/each}
-	</TabGroup>
-</div>
-
-<div class="absolute variant-ghost-primary" bind:this={subpages} style="left: {xPos}; top: {yPos}">
-	<TabGroup padding="p-1 pr-2" hover="hover:variant-soft-primary" rounded="" border="" active="">
-		{#if tab.pages}
-			<div class="flex flex-col backdrop-blur-md">
-				{#each tab.pages as link}
-					{#if !(link.offline || link.type === 'divider')}
-						<Tab
-							name={link.label}
-							value={link}
-							class={selected(link) ? 'variant-filled-primary selected-sub' : ''}
-						>
-							<a class="flex" href={link.href}>
-								<Fa icon={fort[pickRandom(link.icon)]} class="m-1" />
-								{link.label}
-							</a>
-						</Tab>
-					{/if}
-				{/each}
-			</div>
-		{/if}
-	</TabGroup>
+			{/each}
+		</div>
+	{/if}
+	<div class="arrow bg-surface-300 dark:bg-surface-500" />
 </div>

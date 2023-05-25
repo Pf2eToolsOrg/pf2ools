@@ -28,17 +28,26 @@ Map.prototype.filter =
 Map.prototype.toValueArray =
 	Map.prototype.toValueArray ||
 	function () {
-		// eslint-disable-next-line no-unused-vars
-		return Array.from(this, ([key, value]) => value);
+		return [...this.values()];
 	};
 
 Map.prototype.toKeyArray =
 	Map.prototype.toKeyArray ||
 	function () {
-		// eslint-disable-next-line no-unused-vars
-		return Array.from(this, (key) => key);
+		return [...this.keys()];
 	};
 
+Map.prototype.firstKey =
+	Map.prototype.firstKey ||
+	function () {
+		return this.toKeyArray()[0];
+	};
+
+Map.prototype.firstValue =
+	Map.prototype.firstValue ||
+	function () {
+		return this.toValueArray()[0];
+	};
 //#endregion
 
 //#region Array
