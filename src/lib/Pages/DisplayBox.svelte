@@ -87,7 +87,7 @@
 	<svelte:fragment slot="panel">
 		{#key selected}
 			<slot>
-				<div class="wrp-stats">
+				<div class="pf2ools wrp-stats overflow-y-auto overflow-x-hidden">
 					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
 				</div>
 			</slot>

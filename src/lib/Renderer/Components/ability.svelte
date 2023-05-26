@@ -1,9 +1,10 @@
 <script>
+	import Fa from 'svelte-fa';
+	import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 	import Renderer from '../Renderer.svelte';
 	import Tagger from '../Tagger.svelte';
-	export let entry;
-
 	import { timeToFullEntry } from '$lib/Utils/Parser';
+	export let entry;
 
 	// Matches the standard "1 round" and "2 hours", as well as "until it stops raining", but not "{@as 1} to {@as 3}"
 	let wordyActivation =
@@ -44,6 +45,8 @@
 			} else componentTraitString += ' ';
 		}
 	}
+
+	let visible = entry.visible ?? true;
 </script>
 
 <div class="-indent-4 pl-4">
@@ -52,7 +55,22 @@
 		<Renderer entries={timeToFullEntry(entry.activity)} />
 	{/if}
 	<Renderer entries={componentTraitString} />
+
+	{#if entry.toggle}
+		<button
+			class="rounded-md p-[0.20rem] align-text-bottom {visible
+				? 'variant-ghost-surface'
+				: 'variant-ghost-primary'}"
+			on:click={() => (visible = !visible)}
+		>
+			<Fa icon={visible ? faEye : faEyeSlash} class="btn-icon-sm" />
+		</button>
+	{/if}
 	{#if entry?.entries?.length > 0}
-		<Renderer entries={entry.entries} />
+		{#if entry.toggle && visible}
+			<Renderer entries={entry.entries} />
+		{:else if !entry.toggle}
+			<Renderer entries={entry.entries} />
+		{/if}
 	{/if}
 </div>

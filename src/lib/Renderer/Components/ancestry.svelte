@@ -7,6 +7,7 @@
 	import { note as Note } from '../Tags/index.js';
 	import Traits from './Misc/traits.svelte';
 	import Source from './Misc/source.svelte';
+	import { popup } from '@skeletonlabs/skeleton';
 	export let entry;
 
 	function copy(text, event) {
@@ -20,7 +21,7 @@
 	}
 </script>
 
-<div class="pf2ools wrp-stats font-good-pro">
+<div class="font-good-pro">
 	<div class="flex font-good-pro-condensed text-[1.35em] uppercase leading-[1] font-bold">
 		<span
 			class="cursor-copy"
@@ -78,11 +79,21 @@
 			<div>
 				<b>Language{pluralIf(entry.languages)}</b>
 				{#if entry.languageNote}
-					<!-- TODO: On Hover Tag -->
-					<Fa icon={faCircleInfo} class="inline text-sm pb-0.5 px-0 m-0" />
-					<span class="text-0-width">
-						(Note: <Note text={entry.languageNote} />)
-					</span>
+					<button
+						class="align-text-top text-sm"
+						use:popup={{
+							event: 'focus-click',
+							placement: 'top',
+							target: `language-note-pop-${entry.hash}`
+						}}
+					>
+						<Fa icon={faCircleInfo} />
+					</button>
+					<div class="card p-2 w-60" data-popup={`language-note-pop-${entry.hash}`}>
+						<b>Note:</b>
+						<Renderer entries={entry.languageNote} />
+						<div class="arrow bg-surface-100-800-token" />
+					</div>
 				{/if}
 				<Renderer
 					entries={entry.languages
@@ -110,7 +121,7 @@
 		<div>
 			<div class="stat-line">
 				<Renderer
-					entries={entry.features.map((x) => (x.type ? x : { ...x, type: 'ability' }))}
+					entries={entry.features.map((x) => ({ type: 'ability', toggle: true, ...x }))}
 				/>
 			</div>
 		</div>

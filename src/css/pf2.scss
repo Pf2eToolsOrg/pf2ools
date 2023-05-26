@@ -15,13 +15,6 @@
 	border-bottom: 2px solid #5e0000;
 	background: #f6f4f2;
 
-	&>.wrp-stats {
-		padding: revert !important;
-		border-top: revert !important;
-		border-bottom: revert !important;
-		background: revert !important;
-	}
-
 	html.dark & {
 		background: #222;
 		border-top: 2px solid #565656;

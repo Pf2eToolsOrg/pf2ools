@@ -1,5 +1,4 @@
 import DataEntry from '$lib/Data/DataUtils';
-import { Storage } from '$lib/Data/Storage';
 
 export class Ancestry extends DataEntry {
 	constructor(data) {
@@ -20,7 +19,7 @@ export class Ancestry extends DataEntry {
 
 	get extraHp() {
 		let array = [];
-		this.heritage.forEach((h) => {
+		this.heritages.forEach((h) => {
 			if (h?.modif?.hp?.ancestry) {
 				array.push({
 					hp: h.modif.hp.ancestry,
@@ -33,9 +32,11 @@ export class Ancestry extends DataEntry {
 		return array.length ? array : null;
 	}
 
-	get heritages() {
-		return (async () => await Storage.heritages)().then(x => x.filter((h) => h.ancestryName === this.name && h.ancestrySource === this.source));
-	}
+	// get heritages() {
+	// 	return Storage.heritages.filter(
+	// 		(h) => h.ancestryName === this.name && h.ancestrySource === this.source
+	// 	);
+	// }
 }
 
 export class Heritage extends DataEntry {
@@ -53,7 +54,8 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestryName ?? "Human"}|${this.ancestrySource ?? "CRB"}|${displayText ?? this.name}|${this.name}|${this.source}`;
+		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${displayText ?? this.name
+			}|${this.name}|${this.source}`;
 	}
 }
 
@@ -62,5 +64,10 @@ import { dev, browser } from '$app/environment';
 if (dev && browser) {
 	window.pf2ools = window.pf2ools || {};
 	window.pf2ools.Classes = { ...window.pf2ools.Classes, Ancestry, Heritage };
-	console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added pf2ools.Classes.Ancestry and pf2ools.Classes.Heritage", window.pf2ools.Classes)
+	console.log(
+		'%cDEV MODE',
+		'font-weight: bold; color: red',
+		'| Added Ancestry & Heritage Classes',
+		window.pf2ools.Classes
+	);
 }

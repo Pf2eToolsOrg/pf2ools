@@ -33,5 +33,10 @@ import { dev, browser } from '$app/environment';
 if (dev && browser) {
 	window.pf2ools = window.pf2ools || {};
 	window.pf2ools.Classes = { ...window.pf2ools.Classes, DataEntry };
-	console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added pf2ools.Classes.DataEntry", window.pf2ools.Classes)
+	console.log(
+		'%cDEV MODE',
+		'font-weight: bold; color: red',
+		'| Added pf2ools.Classes.DataEntry',
+		window.pf2ools.Classes
+	);
 }

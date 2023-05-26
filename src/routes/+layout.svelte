@@ -66,7 +66,6 @@
 		<span class="text-sm hidden md:contents">
 			<kbd>Esc</kbd> to close. <kbd>D</kbd> to open. <kbd>Tabs</kbd> to navigate.
 		</span>
-		<span class="text-sm md:hidden px-14"> You can also swipe to open. </span>
 	</div>
 </Drawer>
 <!-- Where Everything Happens -->

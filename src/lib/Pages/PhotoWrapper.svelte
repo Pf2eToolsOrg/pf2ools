@@ -53,7 +53,7 @@
 			});
 	}
 
-	let aspect = localStorageStore('');
+	let aspect = localStorageStore('aspect-ratio', '');
 </script>
 
 <div class="relative scale-75 sm:scale-100">
@@ -107,12 +107,8 @@
 			</button>
 		</div>
 		<div class="pf2ools">
-			<div
-				class="wrp-stats !overflow-hidden resize-x w-96 {$aspect} max-h-screen max-w-screen"
-			>
-				<div class="m-1.5">
-					<Renderer {entries} />
-				</div>
+			<div class="wrp-stats !overflow-hidden resize-x w-96 {$aspect} max-h-[90vh]">
+				<Renderer {entries} />
 			</div>
 		</div>
 	</div>
