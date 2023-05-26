@@ -8,6 +8,9 @@
 <div class="card bg-surface-100-800-token px-4 py-2">
 	<div class="text-center">
 		<h2 class="text-2xl pb-2">Data Manager</h2>
+		<!-- Note to Self: Don't overcomplicate everything. -->
+		<!-- Don't do it, if not just for my sanity's sake. -->
+		<!-- Sometimes you just have to accept hard-coding. -->
 		<div>
 			{$ancestries.size || '❌'}
 			<b>Ancestries</b>
