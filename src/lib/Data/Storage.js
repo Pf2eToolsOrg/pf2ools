@@ -12,7 +12,7 @@ const mapSerializer = {
 	stringify: (data) => {
 		return JSON.stringify([...data]);
 	}
-}
+};
 
 class Storage {
 	constructor() {
@@ -28,7 +28,9 @@ class Storage {
 
 const ancestries = new Ancestries();
 function Ancestries(key = 'ancestries', initialValue = new Map()) {
-	const { subscribe, set, update } = localStorageStore(key, initialValue, { serializer: mapSerializer });
+	const { subscribe, set, update } = localStorageStore(key, initialValue, {
+		serializer: mapSerializer
+	});
 
 	function load() {
 		const modules = import.meta.glob([
@@ -43,9 +45,14 @@ function Ancestries(key = 'ancestries', initialValue = new Map()) {
 				ancestriesData.forEach((a) => {
 					a._path = path;
 					const ancestry = new Ancestry(a);
-					this.update(x => {
-						if (dev) console.log('%cDEV MODE', 'font-weight: bold; color: red', '| Added ' + ancestry.name);
-						x.set(ancestry.hash, ancestry)
+					this.update((x) => {
+						if (dev)
+							console.log(
+								'%cDEV MODE',
+								'font-weight: bold; color: red',
+								'| Added ' + ancestry.name
+							);
+						x.set(ancestry.hash, ancestry);
 						return x;
 					});
 				});
@@ -58,12 +65,14 @@ function Ancestries(key = 'ancestries', initialValue = new Map()) {
 		set,
 		update,
 		load
-	}
+	};
 }
 
 const heritages = new Heritages();
 function Heritages(key = 'heritages', initialValue = new Map()) {
-	const { subscribe, set, update } = localStorageStore(key, initialValue, { serializer: mapSerializer });
+	const { subscribe, set, update } = localStorageStore(key, initialValue, {
+		serializer: mapSerializer
+	});
 
 	function load() {
 		import('$data/ancestries/versatile-heritages.json').then((mod) => {
@@ -73,9 +82,14 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 			});
 			mod.versatileHeritage.forEach((h) => {
 				const heritage = new Heritage(h);
-				this.update(x => {
-					if (dev) console.log('%cDEV MODE', 'font-weight: bold; color: red', '| Added ' + heritage.name);
-					x.set(heritage.hash, heritage)
+				this.update((x) => {
+					if (dev)
+						console.log(
+							'%cDEV MODE',
+							'font-weight: bold; color: red',
+							'| Added ' + heritage.name
+						);
+					x.set(heritage.hash, heritage);
 					return x;
 				});
 			});
@@ -87,9 +101,8 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 		set,
 		update,
 		load
-	}
+	};
 }
-
 
 // DEV
 import { dev, browser } from '$app/environment';

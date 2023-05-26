@@ -214,12 +214,13 @@ const JSON = [
 			{
 				label: 'Data Management',
 				icon: 'faDatabase',
-				func: () => modalStore.trigger({
-					type: 'component',
-					component: {
-						ref: DataManager
-					}
-				})
+				func: () =>
+					modalStore.trigger({
+						type: 'component',
+						component: {
+							ref: DataManager
+						}
+					})
 			},
 			{
 				type: 'divider'

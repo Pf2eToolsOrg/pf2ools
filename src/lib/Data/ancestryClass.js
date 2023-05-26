@@ -54,8 +54,9 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${displayText ?? this.name
-			}|${this.name}|${this.source}`;
+		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${
+			displayText ?? this.name
+		}|${this.name}|${this.source}`;
 	}
 }
 
