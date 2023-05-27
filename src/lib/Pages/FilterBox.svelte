@@ -28,11 +28,19 @@
 						class="bg-[#cbcbcb] hover:bg-[#d3d3d3] dark:bg-[#222] dark:hover:bg-[#333]"
 						class:selected={selected.hash === row.hash ?? false}
 					>
-						<td class="px-5">
-							<a href="#{row.hash}" class="flex unstyled">{row.name}</a>
+						<td>
+							<a href="#{row.hash}" class="px-5 flex flex-grow unstyled">
+								{row.name}
+							</a>
 						</td>
-						<td class="px-5">
-							<a href="#{row.hash}" class="flex unstyled">{row.source}</a>
+						<td>
+							<a
+								href="#{row.hash}"
+								class="px-5 flex flex-grow unstyled"
+								tabindex="-1"
+							>
+								{row.source}
+							</a>
 						</td>
 					</tr>
 				</slot>

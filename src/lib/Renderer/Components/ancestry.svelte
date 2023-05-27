@@ -89,7 +89,7 @@
 					>
 						<Fa icon={faCircleInfo} />
 					</button>
-					<div class="card p-2 w-60" data-popup={`language-note-pop-${entry.hash}`}>
+					<div class="card p-2 w-60 z-10" data-popup={`language-note-pop-${entry.hash}`}>
 						<b>Note:</b>
 						<Renderer entries={entry.languageNote} />
 						<div class="arrow bg-surface-100-800-token" />

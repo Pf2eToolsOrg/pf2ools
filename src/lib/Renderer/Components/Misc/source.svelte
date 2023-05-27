@@ -7,6 +7,6 @@
 	}
 </script>
 
-<p class="font-good-pro text-xs -mb-1 mt-1.5 text-right italic">
+<p class="font-good-pro text-xs -mb-0.5 mt-1.5 text-right italic">
 	— {toFullSource(entry.source)}{#if entry.page}, p. {entry.page}{/if}
 </p>
