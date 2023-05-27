@@ -25,6 +25,14 @@ Map.prototype.filter =
 		return out;
 	};
 
+Map.prototype.map = Map.prototype.map || function (func) {
+	const out = new Map();
+	for (const [k, v] of this) {
+		out.set(k, func(v, k));
+	}
+	return out;
+};
+
 Map.prototype.toValueArray =
 	Map.prototype.toValueArray ||
 	function () {
@@ -48,6 +56,7 @@ Map.prototype.firstValue =
 	function () {
 		return this.toValueArray()[0];
 	};
+
 //#endregion
 
 //#region Array

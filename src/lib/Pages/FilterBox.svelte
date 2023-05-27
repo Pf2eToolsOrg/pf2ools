@@ -1,36 +1,53 @@
 <script>
-	export let data;
-	export let field;
-	export let selected;
+	import { Datatable, Th, ThFilter } from '@vincjo/datatables';
+	export let selected = {};
+	export let handler;
 
-	import { DataHandler, Datatable, Th, ThFilter } from '@vincjo/datatables';
-
-	const handler = new DataHandler(data.toValueArray());
-	const rows = handler.getRows();
-
-	console.log(handler);
 	// https://vincjo.fr/datatables/home
+	const rows = handler.getRows();
 </script>
 
 <Datatable {handler} rowsPerPage={false} rowCount={false} pagination={false}>
 	<table>
 		<thead>
-			<tr>
-				<Th {handler} orderBy="name">Name</Th>
-				<Th {handler} orderBy="source">Source</Th>
-			</tr>
-			<tr>
-				<ThFilter {handler} filterBy="name" />
-				<ThFilter {handler} filterBy="source" />
-			</tr>
+			<slot name="header" {handler}>
+				<tr class="bg-surface-300-600-token">
+					<Th {handler} orderBy="name">Name</Th>
+					<Th {handler} orderBy="source">Source</Th>
+				</tr>
+				<tr class="bg-surface-200-700-token">
+					<ThFilter {handler} filterBy="name" />
+					<ThFilter {handler} filterBy="source" />
+				</tr>
+			</slot>
 		</thead>
 		<tbody>
 			{#each $rows as row}
-				<tr>
-					<td>{row.name}</td>
-					<td>{row.source}</td>
-				</tr>
+				<slot name="row" {row}>
+					<tr
+						class="bg-[#cbcbcb] hover:bg-[#d3d3d3] dark:bg-[#222] dark:hover:bg-[#333]"
+						class:selected={selected.hash === row.hash ?? false}
+					>
+						<td class="px-5">
+							<a href="#{row.hash}" class="flex unstyled">{row.name}</a>
+						</td>
+						<td class="px-5">
+							<a href="#{row.hash}" class="flex unstyled">{row.source}</a>
+						</td>
+					</tr>
+				</slot>
 			{/each}
 		</tbody>
 	</table>
 </Datatable>
+
+<style lang="scss">
+	.selected {
+		background-color: #416482;
+		color: #fff;
+	}
+
+	:global(html.dark) .selected {
+		box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
+	}
+</style>

@@ -8,7 +8,7 @@ export class Ancestry extends DataEntry {
 		// How to override existing properties
 		Object.defineProperty(this, 'traits', {
 			get() {
-				return [this.traitsPrototype, this.size, this.rarity ?? 'common'].flat();
+				return [...new Set([this.traitsPrototype, this.size, this.rarity ?? 'common'].flat())];
 			}
 		});
 	}
@@ -18,6 +18,8 @@ export class Ancestry extends DataEntry {
 	}
 
 	get extraHp() {
+		return null;
+		// eslint-disable-next-line no-unreachable
 		let array = [];
 		this.heritages.forEach((h) => {
 			if (h?.modif?.hp?.ancestry) {
@@ -29,14 +31,15 @@ export class Ancestry extends DataEntry {
 				});
 			}
 		});
+		// eslint-disable-next-line no-unreachable
 		return array.length ? array : null;
 	}
 
-	// get heritages() {
-	// 	return Storage.heritages.filter(
-	// 		(h) => h.ancestryName === this.name && h.ancestrySource === this.source
-	// 	);
-	// }
+	get heritages() {
+		return Storage.heritages.filter(
+			(h) => h.ancestryName === this.name && h.ancestrySource === this.source
+		);
+	}
 }
 
 export class Heritage extends DataEntry {
@@ -54,9 +57,8 @@ export class Heritage extends DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${
-			displayText ?? this.name
-		}|${this.name}|${this.source}`;
+		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${displayText ?? this.name
+			}|${this.name}|${this.source}`;
 	}
 }
 

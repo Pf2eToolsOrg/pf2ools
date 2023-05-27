@@ -4,16 +4,6 @@ import { get } from 'svelte/store';
 
 export { ancestries, heritages, Storage as default };
 
-// Allows for Map Serialization
-const mapSerializer = {
-	parse: (data) => {
-		return new Map(JSON.parse(data));
-	},
-	stringify: (data) => {
-		return JSON.stringify([...data]);
-	}
-};
-
 class Storage {
 	constructor() {
 		this.ancestries = ancestries;
@@ -28,8 +18,17 @@ class Storage {
 
 const ancestries = new Ancestries();
 function Ancestries(key = 'ancestries', initialValue = new Map()) {
+	const ancSerializer = {
+		parse: (data) => {
+			return new Map(JSON.parse(data)).map((a) => new Ancestry(a));
+		},
+		stringify: (data) => {
+			return JSON.stringify([...data]);
+		}
+	};
+
 	const { subscribe, set, update } = localStorageStore(key, initialValue, {
-		serializer: mapSerializer
+		serializer: ancSerializer
 	});
 
 	function load() {
@@ -70,8 +69,17 @@ function Ancestries(key = 'ancestries', initialValue = new Map()) {
 
 const heritages = new Heritages();
 function Heritages(key = 'heritages', initialValue = new Map()) {
+	const herSerializer = {
+		parse: (data) => {
+			return new Map(JSON.parse(data)).map((h) => new Heritage(h));
+		},
+		stringify: (data) => {
+			return JSON.stringify([...data]);
+		}
+	};
+
 	const { subscribe, set, update } = localStorageStore(key, initialValue, {
-		serializer: mapSerializer
+		serializer: herSerializer
 	});
 
 	function load() {
