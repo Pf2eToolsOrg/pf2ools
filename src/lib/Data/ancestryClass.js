@@ -1,4 +1,5 @@
 import DataEntry from '$lib/Data/DataUtils';
+import { heritages } from 'Storage'
 
 export class Ancestry extends DataEntry {
 	constructor(data) {
@@ -11,6 +12,10 @@ export class Ancestry extends DataEntry {
 				return [...new Set([this.traitsPrototype, this.size, this.rarity ?? 'common'].flat())];
 			}
 		});
+
+		heritages.subscribe((heritages) => {
+			this.heritages = heritages.filter((h) => h.versatile || (h.ancestryName === this.name && h.ancestrySource === this.source));
+		});
 	}
 
 	get type() {
@@ -18,8 +23,6 @@ export class Ancestry extends DataEntry {
 	}
 
 	get extraHp() {
-		return null;
-		// eslint-disable-next-line no-unreachable
 		let array = [];
 		this.heritages.forEach((h) => {
 			if (h?.modif?.hp?.ancestry) {
@@ -31,14 +34,7 @@ export class Ancestry extends DataEntry {
 				});
 			}
 		});
-		// eslint-disable-next-line no-unreachable
 		return array.length ? array : null;
-	}
-
-	get heritages() {
-		return Storage.heritages.filter(
-			(h) => h.ancestryName === this.name && h.ancestrySource === this.source
-		);
 	}
 }
 

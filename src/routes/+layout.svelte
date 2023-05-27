@@ -1,7 +1,5 @@
 <script>
-	// MUST BE AT THE TOP \/\/\/
 	import '$lib/Utils/MonkeyPatches.js';
-	// MUST BE AT THE TOP /\/\/\
 	import { page, navigating } from '$app/stores';
 	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
 	import Search from '$lib/Navigation/Search.svelte';

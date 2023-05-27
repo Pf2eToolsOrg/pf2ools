@@ -8,6 +8,8 @@
 
 	const { ancestries, heritages } = new Storage();
 	ancestries.load();
+	heritages.load();
+
 	let selected;
 
 	$: $ancestries, handler.setRows($ancestries.toValueArray());

@@ -1,6 +1,7 @@
 import { Ancestry, Heritage } from './ancestryClass.js';
 import { localStorageStore } from '@skeletonlabs/skeleton';
 import { get } from 'svelte/store';
+import "$lib/Utils/MonkeyPatches.js"
 
 export { ancestries, heritages, Storage as default };
 
