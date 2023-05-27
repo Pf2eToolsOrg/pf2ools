@@ -21,50 +21,59 @@
 
 <!-- Each Link -->
 {#each pages as link}
-	<!-- Don't Show if Offline -->
-	{#if !link.offline}
-		{#if link.type === 'divider'}
-			<hr />
-		{:else if link.pages}
-			<!-- Actual Good Stuff -->
-			<div class="py-1">
-				<Accordion regionPanel="space-y-1">
-					<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
-						<!-- Lead Icon -->
-						<svelte:fragment slot="lead">
-							{#if fort[pickRandom(link.icon)]}
-								<Fa icon={fort[pickRandom(link.icon)]} />
-							{:else}
-								{@html link.icon}
-							{/if}
-						</svelte:fragment>
-						<!-- The Actual Text -->
-						<svelte:fragment slot="summary">
-							{link.label}
-						</svelte:fragment>
-						<!-- The Actual Content -->
-						<svelte:fragment slot="content">
-							<svelte:self pages={link.pages} />
-						</svelte:fragment>
-					</AccordionItem>
-				</Accordion>
-			</div>
-		{:else}
-			<a
-				id="navigation-option"
-				on:click={drawerClose}
-				class:!variant-ghost-surface={link.href === $page.url.pathname}
-				href={link.href}
-			>
-				<span>
-					{#if fort[pickRandom(link.icon)]}
-						<Fa icon={fort[pickRandom(link.icon)]} />
-					{:else}
-						{@html link.icon}
-					{/if}
-				</span>
-				<span>{link.label}</span>
-			</a>
-		{/if}
+	{#if link.type === 'divider'}
+		<hr />
+	{:else if link.pages}
+		<!-- Actual Good Stuff -->
+		<div class="py-1">
+			<Accordion regionPanel="space-y-1" disabled={link.offline}>
+				<AccordionItem open={link.pages.find((x) => x.href === $page.url.pathname)}>
+					<!-- Lead Icon -->
+					<svelte:fragment slot="lead">
+						{#if fort[pickRandom(link.icon)]}
+							<Fa icon={fort[pickRandom(link.icon)]} />
+						{:else}
+							{@html link.icon}
+						{/if}
+					</svelte:fragment>
+					<!-- The Actual Text -->
+					<svelte:fragment slot="summary">
+						{link.label}
+					</svelte:fragment>
+					<!-- The Actual Content -->
+					<svelte:fragment slot="content">
+						<svelte:self pages={link.pages} />
+					</svelte:fragment>
+				</AccordionItem>
+			</Accordion>
+		</div>
+	{:else if link.func}
+		<button class="flex w-full" on:click={link.func} disabled={link.offline}>
+			<span>
+				{#if fort[pickRandom(link.icon)]}
+					<Fa icon={fort[pickRandom(link.icon)]} />
+				{:else}
+					{@html link.icon}
+				{/if}
+			</span>
+			<span>{link.label}</span>
+		</button>
+	{:else}
+		<a
+			on:click={drawerClose}
+			class:!variant-ghost-surface={link.href === $page.url.pathname}
+			href={link.href}
+			class:disabled={link.offline}
+			tabindex={link.offline ? '-1' : null}
+		>
+			<span>
+				{#if fort[pickRandom(link.icon)]}
+					<Fa icon={fort[pickRandom(link.icon)]} />
+				{:else}
+					{@html link.icon}
+				{/if}
+			</span>
+			<span>{link.label}</span>
+		</a>
 	{/if}
 {/each}

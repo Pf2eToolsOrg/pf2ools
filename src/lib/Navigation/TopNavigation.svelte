@@ -5,6 +5,7 @@
 	import { default as JSON } from './pages.js';
 	export let pages = JSON;
 	export let rowOrCol = 'row';
+	export let top = 'top';
 
 	import { popup } from '@skeletonlabs/skeleton';
 
@@ -31,46 +32,70 @@
 
 <div class="flex flex-{rowOrCol} flex-wrap whitespace-normal">
 	{#each pages as link}
-		{#if !link.offline}
-			{#if link.pages}
-				<button
-					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
-						? 'variant-filled-primary'
-						: ''}"
-					use:popup={{
-						event: 'click',
-						target: 'dropdown-' + link.label,
-						placement: 'bottom-start'
-					}}
-					id="navbtn"
-				>
-					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
-					{link.label}
-				</button>
-				<div class="absolute card shadow-md" data-popup="dropdown-{link.label}">
-					<div class="flex flex-col backdrop-blur-md p-1 rounded-md">
-						<svelte:self pages={link.pages} rowOrCol="col" />
-					</div>
-					<div class="arrow bg-surface-300 dark:bg-surface-500" />
+		{#if link.pages}
+			<button
+				class="flex btn btn-sm hover:variant-soft-primary"
+				class:variant-filled-primary={selected(link)}
+				class:rounded-t-none={top}
+				disabled={link.offline}
+				use:popup={{
+					event: 'click',
+					target: 'dropdown-' + link.label,
+					placement: 'bottom-start'
+				}}
+				id="navbtn"
+			>
+				<span>
+					{#if fort[pickRandom(link.icon)]}
+						<Fa icon={fort[pickRandom(link.icon)]} />
+					{:else}
+						{@html link.icon}
+					{/if}
+				</span>
+				<span>{link.label}</span>
+			</button>
+			<div class="absolute card shadow-md" data-popup="dropdown-{link.label}">
+				<div class="flex flex-col p-1 rounded-md shadow-md">
+					<svelte:self pages={link.pages} rowOrCol="col" top={false} />
 				</div>
-			{:else if link.func}
-				<button class="flex btn btn-sm hover:variant-soft-primary" on:click={link.func}>
-					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
-					{link.label}
-				</button>
-			{:else if link.type === 'divider'}
-				<hr />
-			{:else}
-				<a
-					class="flex btn btn-sm hover:variant-soft-primary {selected(link)
-						? 'variant-filled-primary'
-						: ''}"
-					href={link.href}
-				>
-					<Fa icon={fort[pickRandom(link.icon)]} class="mr-1" />
-					{link.label}
-				</a>
-			{/if}
+				<div class="arrow bg-surface-300 dark:bg-surface-500" />
+			</div>
+		{:else if link.func}
+			<button
+				disabled={link.offline}
+				class="flex btn btn-sm hover:variant-soft-primary"
+				class:rounded-t-none={top}
+				on:click={link.func}
+			>
+				<span>
+					{#if fort[pickRandom(link.icon)]}
+						<Fa icon={fort[pickRandom(link.icon)]} />
+					{:else}
+						{@html link.icon}
+					{/if}
+				</span>
+				<span>{link.label}</span>
+			</button>
+		{:else if link.type === 'divider'}
+			<hr />
+		{:else}
+			<a
+				class="flex btn btn-sm hover:variant-soft-primary"
+				class:variant-filled-primary={selected(link)}
+				class:rounded-t-none={top}
+				class:disabled={link.offline}
+				tabindex={link.offline ? '-1' : null}
+				href={link.href}
+			>
+				<span>
+					{#if fort[pickRandom(link.icon)]}
+						<Fa icon={fort[pickRandom(link.icon)]} />
+					{:else}
+						{@html link.icon}
+					{/if}
+				</span>
+				<span>{link.label}</span>
+			</a>
 		{/if}
 	{/each}
 </div>

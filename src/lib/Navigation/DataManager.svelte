@@ -1,5 +1,6 @@
 <script>
 	import Storage from 'Storage';
+	import { fly } from 'svelte/transition';
 
 	const dataStorage = new Storage();
 	const { ancestries, heritages } = dataStorage;
@@ -12,11 +13,18 @@
 		<!-- Don't do it, if not just for my sanity's sake. -->
 		<!-- Sometimes you just have to accept hard-coding. -->
 		<div>
-			{$ancestries.size || '❌'}
+			{#key $ancestries}
+				<span>
+					{$ancestries.size || '❌'}
+				</span>
+			{/key}
 			<b>Ancestries</b>
-		</div>
-		<div>
-			{$heritages.size || '❌'}
+			-
+			{#key $heritages}
+				<span>
+					{$heritages.size || '❌'}
+				</span>
+			{/key}
 			<b>Heritages</b>
 		</div>
 	</div>
