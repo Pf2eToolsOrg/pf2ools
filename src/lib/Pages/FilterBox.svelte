@@ -11,7 +11,7 @@
 	<table>
 		<thead>
 			<slot name="header" {handler}>
-				<tr class="bg-surface-300-600-token">
+				<tr class="bg-surface-100-800-token">
 					<Th {handler} orderBy="name">Name</Th>
 					<Th {handler} orderBy="source">Source</Th>
 				</tr>
@@ -25,7 +25,7 @@
 			{#each $rows as row}
 				<slot name="row" {row}>
 					<tr
-						class="bg-[#cbcbcb] hover:bg-[#d3d3d3] dark:bg-[#222] dark:hover:bg-[#333]"
+						class="bg-surface-100-800-token hover:bg-surface-200-700-token"
 						class:selected={selected.hash === row.hash ?? false}
 					>
 						<td>
