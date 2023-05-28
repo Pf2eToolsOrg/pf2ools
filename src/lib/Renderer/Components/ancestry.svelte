@@ -7,6 +7,7 @@
 	import { note as Note } from '../Tags/index.js';
 	import Traits from './Misc/traits.svelte';
 	import Source from './Misc/source.svelte';
+	import Heritage from './heritage.svelte';
 	import { getContext } from 'svelte';
 	import { popup } from '@skeletonlabs/skeleton';
 	export let entry;
@@ -113,7 +114,8 @@
 			</div>
 		{/if}
 		{#if entry.heritages.size}
-			<div>
+			<hr />
+			<div class="stat-line">
 				<b>Heritage{pluralIf(entry.heritages)}</b>
 				<Tagger
 					entry={entry.heritages
@@ -144,7 +146,7 @@
 
 	{#if entry.selectedHeritage}
 		<div>
-			<Renderer entries={entry.selectedHeritage} />
+			<Heritage entry={entry.selectedHeritage} hideTraits={true} />
 		</div>
 	{/if}
 

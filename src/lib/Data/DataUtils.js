@@ -8,7 +8,6 @@ export default class DataEntry {
 				`DataEntry must have name and source properties: ${JSON.stringify(data)}`
 			);
 		}
-		this.data = data;
 	}
 
 	hashify(name, source) {

@@ -9,6 +9,7 @@
 	import Source from './Misc/source.svelte';
 	import { popup } from '@skeletonlabs/skeleton';
 	export let entry;
+	export let hideTraits = false;
 
 	function copy(text, event) {
 		navigator.clipboard.writeText(text);
@@ -31,11 +32,10 @@
 	</div>
 	<hr />
 
-	{#if entry.traits}
+	{#if entry.traits && !hideTraits}
 		<div class="stat-line">
 			<Traits traits={entry.traits} classes="my-1" />
 		</div>
-		<hr />
 	{/if}
 
 	<div>

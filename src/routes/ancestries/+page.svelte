@@ -2,7 +2,7 @@
 	import FilterBox from '$lib/Pages/FilterBox.svelte';
 	import { DataHandler, Th, ThFilter } from '@vincjo/datatables';
 	import Storage from 'Storage';
-	import DisplayBox from '../../lib/Pages/DisplayBox.svelte';
+	import DisplayBox from '$lib/Pages/DisplayBox.svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
@@ -68,7 +68,7 @@
 </svelte:head>
 
 <div class="container md:flex h-[90vh]">
-	<div class="view-col md:w-2/4 h-1/2 md:h-full bg-surface-100-800-token">
+	<div class="view-col md:w-1/2 xl:w-2/3 h-1/2 md:h-full bg-surface-100-800-token">
 		<FilterBox {handler} {selected}>
 			<svelte:fragment slot="header">
 				<thead>

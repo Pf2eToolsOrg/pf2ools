@@ -4,17 +4,25 @@ import { heritages } from 'Storage'
 export class Ancestry extends DataEntry {
 	constructor(data) {
 		super(data);
-		this.traitsPrototype = data.traits;
+
+		heritages.subscribe((heritages) => {
+			this.heritages = heritages.filter((h) => h.versatile || (h.ancestryName === this.name && h.ancestrySource === this.source));
+		});
 
 		// How to override existing properties
 		Object.defineProperty(this, 'traits', {
 			get() {
-				return [...new Set([this.traitsPrototype, this.size, this.rarity ?? 'common'].flat())];
+				return [...new Set([this.data.traits, this.size, this.rarity ?? 'common', this?.selectedHeritage?.traits ?? []].flat())];
 			}
 		});
 
-		heritages.subscribe((heritages) => {
-			this.heritages = heritages.filter((h) => h.versatile || (h.ancestryName === this.name && h.ancestrySource === this.source));
+		Object.defineProperty(this, 'images', {
+			get() {
+				const array = [];
+				if (this.data.images) array.push(...this.data.images);
+				if (this?.selectedHeritage?.images) array.push({ "type": "pf2-h3", "name": this.selectedHeritage.name, entries: [{ "type": "hr" }, ...this.selectedHeritage.images] });
+				return array;
+			}
 		});
 	}
 

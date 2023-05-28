@@ -33,6 +33,7 @@ export { default as feat } from './Hover/feat.svelte';
 export { default as filter } from './Hover/filter.svelte';
 export { default as group } from './Hover/group.svelte';
 export { default as domain } from './Hover/domain.svelte';
+export { default as ability } from './Hover/ability.svelte';
 //#endregion
 
 //#region Inline Tags (No Real Page Behind Them)
