@@ -66,10 +66,10 @@
 		</button>
 	{/if}
 
-	{#if entry?.entries?.length > 0}
-		{#if !entry.toggle || (entry.toggle && visible)}
-			<Renderer entries={componentTraitString} />
-			<Renderer entries={entry.entries} />
-		{/if}
+	{#if !entry.toggle || (entry.toggle && visible)}
+		<Renderer entries={componentTraitString} />
+		<Renderer entries={entry.entries} />
+	{:else if entry.summary}
+		<Tagger entry={entry.summary} />
 	{/if}
 </div>

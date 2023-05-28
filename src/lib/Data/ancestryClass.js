@@ -12,14 +12,14 @@ export class Ancestry extends DataEntry {
 		// How to override existing properties
 		Object.defineProperty(this, 'traits', {
 			get() {
-				return [...new Set([this.data.traits, this.size, this.rarity ?? 'common', this?.selectedHeritage?.traits ?? []].flat())];
+				return [...new Set([this.JSON.traits ?? [], this.size ?? [], this.rarity ?? 'common', this?.selectedHeritage?.traits ?? []].flat())];
 			}
 		});
 
 		Object.defineProperty(this, 'images', {
 			get() {
 				const array = [];
-				if (this.data.images) array.push(...this.data.images);
+				if (this.JSON?.images) array.push(...this.JSON.images);
 				if (this?.selectedHeritage?.images) array.push({ "type": "pf2-h3", "name": this.selectedHeritage.name, entries: [{ "type": "hr" }, ...this.selectedHeritage.images] });
 				return array;
 			}
