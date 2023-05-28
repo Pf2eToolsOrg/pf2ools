@@ -52,6 +52,8 @@
 			let preSelect = $ancestries.get(ancestry);
 			if (heritage && $heritages.has(heritage)) {
 				preSelect.selectedHeritage = $heritages.get(heritage);
+			} else {
+				preSelect.selectedHeritage = null;
 			}
 			selected = preSelect;
 		} else {
@@ -114,21 +116,21 @@
 					{#each row.heritages
 						.toValueArray()
 						.filter((x) => ($showVersatile ? true : !x.versatile)) as heritage}
-						{@const hash = row.hash + '@' + heritage.hash}
+						{@const ancHerHash = row.hash + '@' + heritage.hash}
 						<tr
 							class="bg-surface-200-700-token hover:bg-surface-300-600-token text-sm"
 							class:versatile={heritage.versatile}
-							class:selected={hash ===
+							class:selected={ancHerHash ===
 								row.hash + '@' + selected?.selectedHeritage?.hash ?? false}
 						>
 							<td>
-								<a href="#{hash}" class="px-10 flex flex-grow unstyled">
+								<a href="#{ancHerHash}" class="px-10 flex flex-grow unstyled">
 									{heritage.shortName ?? heritage.name}
 								</a>
 							</td>
 							<td>
 								<a
-									href="#{hash}"
+									href="#{ancHerHash}"
 									class="px-5 flex flex-grow unstyled"
 									tabindex="-1"
 								>
@@ -137,7 +139,7 @@
 							</td>
 							<td>
 								<a
-									href="#{hash}"
+									href="#{ancHerHash}"
 									class="px-5 flex flex-grow unstyled"
 									tabindex="-1"
 								>
@@ -146,7 +148,7 @@
 							</td>
 							<td>
 								<a
-									href="#{hash}"
+									href="#{ancHerHash}"
 									class="px-5 flex flex-grow unstyled"
 									tabindex="-1"
 								>
@@ -160,8 +162,8 @@
 		</FilterBox>
 	</div>
 	<div class="view-col md:w-2/4 md:px-4">
-		<DisplayBox {selected} />
-		<div class="p-1">
+		<DisplayBox {selected} maxHeight={'max-h-[85vh]'} />
+		<div class="p-0.5">
 			<span
 				class="chip {$showVersatile ? 'variant-ghost-surface' : 'variant-ghost-primary'}"
 				on:click={() => {

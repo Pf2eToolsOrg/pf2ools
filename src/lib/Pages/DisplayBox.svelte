@@ -9,6 +9,7 @@
 	import toast from '$lib/Utils/Toasts.js';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	export let selected;
+	export let maxHeight;
 
 	let tabSet = localStorageStore('tab', 'data');
 </script>
@@ -85,7 +86,7 @@
 	<svelte:fragment slot="panel">
 		{#key selected}
 			<slot>
-				<div class="overflow-y-auto overflow-x-hidden">
+				<div class="{maxHeight} overflow-y-auto overflow-x-hidden wrp-stats">
 					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
 				</div>
 			</slot>
