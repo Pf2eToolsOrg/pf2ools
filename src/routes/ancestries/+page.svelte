@@ -6,10 +6,13 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import { setContext } from 'svelte';
 
 	const { ancestries, heritages } = new Storage();
-	ancestries.load();
-	heritages.load();
+
+	// Do not LOAD every time you barely TOUCH the page!
+	if (!$ancestries.size) ancestries.load();
+	if (!$heritages.size) heritages.load();
 
 	let showVersatile = localStorageStore('showVersatile', false);
 	let selected;
@@ -21,12 +24,15 @@
 		hashToSelect($page.url.hash.replaceAll('#', ''));
 	});
 
+	setContext('ancestriesPage', {
+		showVersatile
+	});
+
 	// "if (selected)" basically checks if the page is loaded, as per code above.
-	// AI suggests to me this is a hack, but meh.
 	$: if (selected) hashToSelect($page.url.hash.replaceAll('#', ''));
 
 	function hashToSelect(hash) {
-		let [ancestry, extra] = hash.split('@');
+		let [ancestry, extra] = decodeURI(hash).split('@');
 		// TODO: This can actually use closest-match instead, just make sure to make a toast that the hash in invalid and picked the closest one instead.
 		if (!ancestry.includes('_')) {
 			ancestry = ancestry + '_crb';
@@ -34,16 +40,20 @@
 
 		let heritage;
 		if (extra) {
-			heritage = extra.split('@');
+			heritage = extra.split('?')[0];
 		}
 
-		if (!$ancestries.size) {
+		if (!$ancestries.size && !$heritages.size) {
 			// Give time to load the ancestries
 			setTimeout(() => {
 				hashToSelect(hash);
 			}, 100);
 		} else if (ancestry && $ancestries.has(ancestry)) {
-			selected = $ancestries.get(ancestry);
+			let preSelect = $ancestries.get(ancestry);
+			if (heritage && $heritages.has(heritage)) {
+				preSelect.selectedHeritage = $heritages.get(heritage);
+			}
+			selected = preSelect;
 		} else {
 			selected = $ancestries.firstValue();
 			return (window.location = '#' + selected.hash);
@@ -108,6 +118,8 @@
 						<tr
 							class="bg-surface-200-700-token hover:bg-surface-300-600-token text-sm"
 							class:versatile={heritage.versatile}
+							class:selected={hash ===
+								row.hash + '@' + selected?.selectedHeritage?.hash ?? false}
 						>
 							<td>
 								<a href="#{hash}" class="px-10 flex flex-grow unstyled">

@@ -1,5 +1,5 @@
 <script>
-	export let traits;
+	export let traits = [];
 	export let classes;
 	export let traitClasses;
 	export let options = {};
@@ -21,30 +21,33 @@
 		}
 	}
 
-	$: traits = traits
-		.filter((x) => x.toLowerCase() !== 'common')
-		.sort((a, b) => {
-			const order = {
-				rare: 0,
-				uncommon: 0,
-				unique: 0,
-				alignment: 1,
-				size: 2,
-				settlement: 3
-			};
+	$: if (traits)
+		traits = traits
+			.filter((x) => x.toLowerCase() !== 'common')
+			.sort((a, b) => {
+				const order = {
+					rare: 0,
+					uncommon: 0,
+					unique: 0,
+					alignment: 1,
+					size: 2,
+					settlement: 3
+				};
 
-			const aType = type(a);
-			const bType = type(b);
+				const aType = type(a);
+				const bType = type(b);
 
-			if (aType === bType) {
-				return a.localeCompare(b);
-			}
+				if (aType === bType) {
+					return a.localeCompare(b);
+				}
 
-			const aOrder = order[aType] !== undefined ? order[aType] : Object.keys(order).length;
-			const bOrder = order[bType] !== undefined ? order[bType] : Object.keys(order).length;
+				const aOrder =
+					order[aType] !== undefined ? order[aType] : Object.keys(order).length;
+				const bOrder =
+					order[bType] !== undefined ? order[bType] : Object.keys(order).length;
 
-			return aOrder - bOrder;
-		});
+				return aOrder - bOrder;
+			});
 </script>
 
 <div class="traits {classes}">

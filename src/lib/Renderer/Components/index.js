@@ -13,4 +13,5 @@ export { default as ability } from './ability.svelte';
 
 //#region Unique Renderers for Data
 export { default as ancestry } from './ancestry.svelte';
+export { default as heritage } from './heritage.svelte';
 //#endregion

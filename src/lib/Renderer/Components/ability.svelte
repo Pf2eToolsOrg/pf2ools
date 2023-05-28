@@ -54,7 +54,6 @@
 	{#if entry.activity}
 		<Renderer entries={timeToFullEntry(entry.activity)} />
 	{/if}
-	<Renderer entries={componentTraitString} />
 
 	{#if entry.toggle}
 		<button
@@ -66,10 +65,10 @@
 			<Fa icon={visible ? faEye : faEyeSlash} class="btn-icon-sm" />
 		</button>
 	{/if}
+
 	{#if entry?.entries?.length > 0}
-		{#if entry.toggle && visible}
-			<Renderer entries={entry.entries} />
-		{:else if !entry.toggle}
+		{#if !entry.toggle || (entry.toggle && visible)}
+			<Renderer entries={componentTraitString} />
 			<Renderer entries={entry.entries} />
 		{/if}
 	{/if}

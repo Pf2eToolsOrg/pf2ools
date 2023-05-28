@@ -8,7 +8,7 @@
 
 	const h = (a, b) => hashify(a, b);
 
-	const href = h(ancestry, source) + (heritage ? '?' + h(heritage, heritageSource) : '');
+	const href = h(ancestry, source) + (heritage ? '@' + h(heritage, heritageSource) : '');
 </script>
 
 <a href={'ancestries#' + href} class="unstyled">

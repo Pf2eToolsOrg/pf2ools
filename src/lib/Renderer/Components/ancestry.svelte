@@ -7,8 +7,11 @@
 	import { note as Note } from '../Tags/index.js';
 	import Traits from './Misc/traits.svelte';
 	import Source from './Misc/source.svelte';
+	import { getContext } from 'svelte';
 	import { popup } from '@skeletonlabs/skeleton';
 	export let entry;
+
+	const { showVersatile } = getContext('ancestriesPage');
 
 	function copy(text, event) {
 		navigator.clipboard.writeText(text);
@@ -21,7 +24,7 @@
 	}
 </script>
 
-<div class="font-good-pro">
+<div class="font-good-pro pf2ools wrp-stats">
 	<div class="flex font-good-pro-condensed text-[1.35em] uppercase leading-[1] font-bold">
 		<span
 			class="cursor-copy"
@@ -109,6 +112,18 @@
 				{/if}
 			</div>
 		{/if}
+		{#if entry.heritages.size}
+			<div>
+				<b>Heritage{pluralIf(entry.heritages)}</b>
+				<Tagger
+					entry={entry.heritages
+						.toValueArray()
+						.filter((x) => ($showVersatile ? true : !x.versatile))
+						.map((x) => `{@ancestry ${x.tag(x.shortName)}}`)
+						.join(', ')}
+				/>
+			</div>
+		{/if}
 	</div>
 
 	<hr />
@@ -124,6 +139,12 @@
 					entries={entry.features.map((x) => ({ type: 'ability', toggle: true, ...x }))}
 				/>
 			</div>
+		</div>
+	{/if}
+
+	{#if entry.selectedHeritage}
+		<div>
+			<Renderer entries={entry.selectedHeritage} />
 		</div>
 	{/if}
 

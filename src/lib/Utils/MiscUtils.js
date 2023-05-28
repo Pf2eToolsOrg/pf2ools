@@ -19,6 +19,10 @@ export function mobileCheck() {
 }
 
 export function pluralIf(entry = [], word = '') {
+	// Map() Support
+	if (entry.size) {
+		entry = entry.toValueArray();
+	}
 	if (typeof entry === 'object') {
 		entry = Object.keys(entry);
 	}

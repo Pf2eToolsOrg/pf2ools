@@ -11,8 +11,6 @@
 	export let selected;
 
 	let tabSet = localStorageStore('tab', 'data');
-
-	// I need to rewrite this, ffs
 </script>
 
 <TabGroup regionPanel="!mt-0" active="border-primary-500 border-b-4" regionList="border-b-0">
@@ -87,7 +85,7 @@
 	<svelte:fragment slot="panel">
 		{#key selected}
 			<slot>
-				<div class="pf2ools wrp-stats overflow-y-auto overflow-x-hidden">
+				<div class="overflow-y-auto overflow-x-hidden">
 					<Renderer entries={$tabSet === 'data' ? selected : selected[$tabSet]} />
 				</div>
 			</slot>
