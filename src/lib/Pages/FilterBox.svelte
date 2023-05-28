@@ -7,10 +7,10 @@
 	const rows = handler.getRows();
 </script>
 
-<Datatable {handler} rowsPerPage={false} rowCount={false} pagination={false}>
+<Datatable {handler} rowsPerPage={false} rowCount={false} pagination={false} search={false}>
 	<table>
-		<thead>
-			<slot name="header" {handler}>
+		<slot name="header" {handler}>
+			<thead>
 				<tr class="bg-surface-100-800-token">
 					<Th {handler} orderBy="name">Name</Th>
 					<Th {handler} orderBy="source">Source</Th>
@@ -19,11 +19,11 @@
 					<ThFilter {handler} filterBy="name" />
 					<ThFilter {handler} filterBy="source" />
 				</tr>
-			</slot>
-		</thead>
-		<tbody>
+			</thead>
+		</slot>
+		<tbody class="whitespace-pre">
 			{#each $rows as row}
-				<slot name="row" {row}>
+				<slot name="row" {row} {selected}>
 					<tr
 						class="bg-surface-100-800-token hover:bg-surface-200-700-token"
 						class:selected={selected.hash === row.hash ?? false}
@@ -48,14 +48,3 @@
 		</tbody>
 	</table>
 </Datatable>
-
-<style lang="scss">
-	.selected {
-		background-color: #416482;
-		color: #fff;
-	}
-
-	:global(html.dark) .selected {
-		box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
-	}
-</style>

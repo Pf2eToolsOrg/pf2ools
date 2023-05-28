@@ -95,7 +95,7 @@ function renderTag(options, tag, text) {
 			return (
 				(scrubbedColor
 					? `<span style="background-color: ${scrubbedColor}">`
-					: `<span class="bg-warning-300 dark:bg-warning-700">`) +
+					: `<span class="bg-warning-200-700-token">`) +
 				TagRenderer(toDisplay) +
 				`</span>`
 			);

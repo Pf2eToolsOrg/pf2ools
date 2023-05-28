@@ -14,7 +14,7 @@
 
 <span
 	style={color ? `background-color: ${getValidColor(color)}` : null}
-	class={!color ? 'bg-warning-300 dark:bg-warning-700 underline' : null}
+	class={!color ? 'bg-warning-300-600-token' : null}
 >
 	{#if error}
 		{entry}

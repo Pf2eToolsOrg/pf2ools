@@ -84,25 +84,53 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 	});
 
 	function load() {
-		import('$data/ancestries/versatile-heritages.json').then((mod) => {
-			mod.versatileHeritage.map((h) => {
-				h._path = '$data/ancestries/versatile-heritages.json';
-				return h;
+		const modules = import.meta.glob([
+			'$data/ancestries/*.json'
+		]);
+
+		for (const path in modules) {
+			// Note, impossible to do console.group, don't even try.
+			modules[path]().then((mod) => {
+				if (mod.versatileHeritage) {
+					let versatileHeritage = mod.versatileHeritage;
+					versatileHeritage.forEach((a) => {
+						a._path = path;
+						const heritage = new Heritage(a);
+						this.update((x) => {
+							if (dev)
+								console.log(
+									'%cDEV MODE',
+									'font-weight: bold; color: red',
+									'| Added ' + heritage.name + ' (Versatile Heritage)'
+								);
+							x.set(heritage.hash, heritage);
+							return x;
+						});
+					});
+				} else {
+					let ancestriesData = mod.ancestry;
+					ancestriesData.forEach((a) => {
+						let heritagesData = a.heritage;
+						heritagesData.forEach((h) => {
+							h.ancestryName = a.name
+							h.ancestrySource = a.source
+							h._path = path;
+							const heritage = new Heritage(h);
+							this.update((x) => {
+								if (dev)
+									console.log(
+										'%cDEV MODE',
+										'font-weight: bold; color: red',
+										'| Added ' + heritage.name + ` (Heritage)`
+									);
+								x.set(heritage.hash, heritage);
+								return x;
+							});
+						});
+					});
+				}
 			});
-			mod.versatileHeritage.forEach((h) => {
-				const heritage = new Heritage(h);
-				this.update((x) => {
-					if (dev)
-						console.log(
-							'%cDEV MODE',
-							'font-weight: bold; color: red',
-							'| Added ' + heritage.name
-						);
-					x.set(heritage.hash, heritage);
-					return x;
-				});
-			});
-		});
+		}
 	}
 
 	return {

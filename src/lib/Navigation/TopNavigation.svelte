@@ -58,7 +58,7 @@
 				<div class="flex flex-col p-1 rounded-md shadow-md">
 					<svelte:self pages={link.pages} rowOrCol="col" top={false} />
 				</div>
-				<div class="arrow bg-surface-300 dark:bg-surface-500" />
+				<div class="arrow bg-surface-300-600-token" />
 			</div>
 		{:else if link.func}
 			<button

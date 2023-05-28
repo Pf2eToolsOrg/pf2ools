@@ -72,7 +72,7 @@
 <AppShell slotSidebarLeft="bg-surface-500/10">
 	<!-- Header -->
 	<svelte:fragment slot="header">
-		<div class="bg-surface-300/75 dark:bg-surface-800/75 shadow-xl">
+		<div class="bg-surface-300-600-token shadow-xl">
 			<AppBar
 				class="container"
 				background={null}

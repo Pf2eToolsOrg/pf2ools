@@ -38,7 +38,7 @@
 	<title>Renderer Demo - PF2ools</title>
 </svelte:head>
 
-<div class="pf2ools md:flex flex-row pt-1">
+<div class="pf2ools md:flex pt-1">
 	<div class="mx-0.5 md:w-2/4 relative">
 		<div class="variant-ghost-surface">
 			<CodeMirror
