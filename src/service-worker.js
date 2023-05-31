@@ -1,5 +1,5 @@
 /// <reference types="@sveltejs/kit" />
-import { build, files, version } from '$service-worker';
+import { build, files, prerendered, version } from '$service-worker';
 
 // TODO: This is incredibly basic and copied from SvelteKit's documentation
 // This should be replaced with a more robust solution, at least give a notification that the user is offline.
@@ -9,7 +9,8 @@ const CACHE = `cache-${version}`;
 
 const ASSETS = [
 	...build, // the app itself
-	...files.filter((filePath) => !filePath.startsWith('/data')) // everything in `static` but the actual data
+	...prerendered, // prerendered HTML/CSS (e.g. for SSR)
+	...files // TODO: Remove images to not destroy our users storage
 ];
 
 self.addEventListener('install', (event) => {

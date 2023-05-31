@@ -22,6 +22,7 @@ export {
 
 //#region Hover Tags
 export { default as ancestry } from './Hover/ancestry.svelte';
+export { default as heritage } from './Hover/heritage.svelte';
 export { default as trait } from './Hover/trait.svelte';
 export { default as action } from './Hover/action.svelte';
 export { default as language } from './Hover/language.svelte';

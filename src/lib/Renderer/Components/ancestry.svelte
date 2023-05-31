@@ -121,7 +121,7 @@
 					entry={entry.heritages
 						.toValueArray()
 						.filter((x) => ($showVersatile ? true : !x.versatile))
-						.map((x) => `{@ancestry ${x.tag(x.shortName)}}`)
+						.map((x) => `{@heritage ${x.tag(x.shortName)}}`)
 						.join(', ')}
 				/>
 			</div>

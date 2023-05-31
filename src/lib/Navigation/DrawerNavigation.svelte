@@ -1,8 +1,8 @@
 <script>
 	import { page } from '$app/stores';
+	import Fa from 'svelte-fa';
 	import * as fort from '@fortawesome/free-solid-svg-icons';
 	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
-	import Fa from 'svelte-fa';
 	import { default as JSON } from './pages.js';
 	export let pages = JSON;
 
