@@ -40,7 +40,6 @@
 	on:mousemove={(e) => {
 		if (e.shiftKey) {
 			$windowed = true;
-			// document.querySelector(`[data-popup='${hashedHref}']`).focus();
 		}
 	}}
 	use:popup={{
