@@ -9,6 +9,7 @@
 	import { get } from 'svelte/store';
 	import Tagger from 'tagger';
 	export let text;
+	export let popupOpts = {};
 
 	const [ancestry, source, displayText, heritage, heritageSource] = splitTagByPipe(text);
 
@@ -22,6 +23,14 @@
 	let windowed = writable(false);
 
 	let hashedHref = href + '-' + randomHash;
+
+	let popupData = {
+		event: 'hover',
+		target: hashedHref,
+		middleware: { inline: {} },
+		closeQuery: 'close-' + hashedHref,
+		...popupOpts
+	};
 </script>
 
 <HoverWrapper dataPopup={hashedHref} {windowed}>
@@ -42,12 +51,7 @@
 			$windowed = true;
 		}
 	}}
-	use:popup={{
-		event: 'hover',
-		target: hashedHref,
-		middleware: { inline: {} },
-		closeQuery: 'close-' + hashedHref
-	}}
+	use:popup={popupData}
 >
 	<Tagger entry={displayText ?? heritage} />
 </a>

@@ -27,14 +27,14 @@
 
 <div class="font-good-pro pf2ools wrp-stats">
 	<div class="flex font-good-pro-condensed text-[1.35em] uppercase leading-[1] font-bold">
-		<span
-			class="cursor-copy"
+		<button
+			class="cursor-copy uppercase"
 			on:click={(e) => copy(entry.name, e)}
 			on:keypress={(e) => copy(entry.name, e)}
 			title="Copy to Clipboard"
 		>
 			<Tagger entry={entry.name} />
-		</span>
+		</button>
 		<span class="ml-auto pl-4">
 			{entry.type}
 		</span>
@@ -121,7 +121,7 @@
 					entry={entry.heritages
 						.toValueArray()
 						.filter((x) => ($showVersatile ? true : !x.versatile))
-						.map((x) => `{@heritage ${x.tag(x.shortName)}}`)
+						.map((x) => `{@heritage ${x.tag(x.shortName, entry.name, entry.source)}}`)
 						.join(', ')}
 				/>
 			</div>
@@ -136,17 +136,17 @@
 	{#if entry.features?.length}
 		<hr />
 		<div>
+			{#if entry.selectedHeritage}
+				<div class="stat-line">
+					<Heritage entry={entry.selectedHeritage} inline={true} />
+					<hr />
+				</div>
+			{/if}
 			<div class="stat-line">
 				<Renderer
 					entries={entry.features.map((x) => ({ type: 'ability', toggle: true, ...x }))}
 				/>
 			</div>
-		</div>
-	{/if}
-
-	{#if entry.selectedHeritage}
-		<div>
-			<Heritage entry={entry.selectedHeritage} hideTraits={true} />
 		</div>
 	{/if}
 

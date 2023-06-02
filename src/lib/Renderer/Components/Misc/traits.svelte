@@ -67,17 +67,19 @@
 <style lang="scss">
 	div.traits {
 		.trait.size + .size {
+			border-left-width: 0;
+			text-decoration: none;
 			&::after {
 				color: white !important;
 				content: '/';
-				position: fixed;
+				position: relative;
 				font-size: 1.5em;
-				margin: 0 -3rem;
+				top: 0.05rem;
+				left: -3rem;
 				:global(html.dark) & {
 					color: #dedada !important;
 				}
 			}
-			border-left-width: 0;
 		}
 
 		& .trait {

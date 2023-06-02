@@ -60,8 +60,8 @@ export class Heritage extends DataEntry {
 		return 'heritage';
 	}
 
-	tag(displayText) {
-		return `${this.ancestryName ?? 'Human'}|${this.ancestrySource ?? 'CRB'}|${displayText ?? this.name
+	tag(displayText, ancestryName, ancestrySource) {
+		return `${ancestryName ?? this.ancestryName ?? 'Human'}|${ancestrySource ?? this.ancestrySource ?? 'CRB'}|${displayText ?? this.name
 			}|${this.name}|${this.source}`;
 	}
 }
