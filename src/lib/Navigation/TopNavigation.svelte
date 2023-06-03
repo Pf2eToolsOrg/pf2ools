@@ -1,13 +1,13 @@
 <script>
-	import { page } from '$app/stores';
-	import * as fort from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
-	import { default as JSON } from './pages.js';
+	import { page } from "$app/stores";
+	import * as fort from "@fortawesome/free-solid-svg-icons";
+	import Fa from "svelte-fa";
+	import { default as JSON } from "./pages.js";
 	export let pages = JSON;
-	export let rowOrCol = 'row';
-	export let top = 'top';
+	export let rowOrCol = "row";
+	export let top = "top";
 
-	import { popup } from '@skeletonlabs/skeleton';
+	import { popup } from "@skeletonlabs/skeleton";
 
 	// Dropdowns: https://flowbite.com/docs/components/dropdowns/#multi-level-dropdown
 
@@ -22,8 +22,7 @@
 	let currentPage = $page.url.pathname;
 	let selected;
 
-	$: selected = (link) =>
-		currentPage === link.href || link?.pages?.find((page) => currentPage === page.href);
+	$: selected = (link) => currentPage === link.href || link?.pages?.find((page) => currentPage === page.href);
 
 	page.subscribe((value) => {
 		currentPage = value.url.pathname;
@@ -39,9 +38,9 @@
 				class:rounded-t-none={top}
 				disabled={link.offline}
 				use:popup={{
-					event: 'click',
-					target: 'dropdown-' + link.label,
-					placement: 'bottom-start'
+					event: "click",
+					target: "dropdown-" + link.label,
+					placement: "bottom-start",
 				}}
 				id="navbtn"
 			>
@@ -76,7 +75,7 @@
 				</span>
 				<span>{link.label}</span>
 			</button>
-		{:else if link.type === 'divider'}
+		{:else if link.type === "divider"}
 			<hr />
 		{:else}
 			<a
@@ -84,7 +83,7 @@
 				class:variant-filled-primary={selected(link)}
 				class:rounded-t-none={top}
 				class:disabled={link.offline}
-				tabindex={link.offline ? '-1' : null}
+				tabindex={link.offline ? "-1" : null}
 				href={link.href}
 			>
 				<span>

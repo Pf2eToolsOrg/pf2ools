@@ -1,9 +1,9 @@
 <script>
-	import '$lib/Utils/MonkeyPatches.js';
-	import { page, navigating } from '$app/stores';
-	import DrawerNavigation from '$lib/Navigation/DrawerNavigation.svelte';
-	import Search from '$lib/Navigation/Search.svelte';
-	import TopNavigation from '$lib/Navigation/TopNavigation.svelte';
+	import "$lib/Utils/MonkeyPatches.js";
+	import { page, navigating } from "$app/stores";
+	import DrawerNavigation from "$lib/Navigation/DrawerNavigation.svelte";
+	import Search from "$lib/Navigation/Search.svelte";
+	import TopNavigation from "$lib/Navigation/TopNavigation.svelte";
 	import {
 		AppBar,
 		AppShell,
@@ -12,20 +12,20 @@
 		Toast,
 		drawerStore,
 		storePopup,
-		Modal
-	} from '@skeletonlabs/skeleton';
-	import '@skeletonlabs/skeleton/styles/all.css';
-	import { hotkey } from 'svelte-gh-hotkey';
-	import '../app.postcss';
-	import '../css/index.scss';
-	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+		Modal,
+	} from "@skeletonlabs/skeleton";
+	import "@skeletonlabs/skeleton/styles/all.css";
+	import { hotkey } from "svelte-gh-hotkey";
+	import "../app.postcss";
+	import "../css/index.scss";
+	import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-	import toast from '$lib/Utils/Toasts.js';
-	import 'Storage';
+	import toast from "$lib/Utils/Toasts.js";
+	import "Storage";
 
 	function drawerOpen() {
 		drawerStore.open({
-			width: 'w-80'
+			width: "w-80",
 		});
 	}
 
@@ -34,7 +34,7 @@
 		if (value === null) return;
 		if (value.from.route.id !== value.to.route.id) {
 			console.clear();
-			console.log(`%cNavigating to ${value.to.route.id}`, 'font-size: 20px;');
+			console.log(`%cNavigating to ${value.to.route.id}`, "font-size: 20px;");
 			toast.clear();
 		}
 	});
@@ -45,7 +45,7 @@
 	<meta content={$page.url.href} property="og:url" />
 </svelte:head>
 
-<button class="hidden" on:click={drawerOpen} use:hotkey={'d'} />
+<button class="hidden" on:click={drawerOpen} use:hotkey={"d"} />
 
 <Modal />
 <!-- Toast -->
@@ -92,14 +92,12 @@
 								title="Open Sidebar (Hotkey: D)"
 							/>
 						</button>
-						<span class="font-gin md:hidden whitespace-nowrap">
-							&lt;- Click to navigate.
-						</span>
+						<span class="font-gin md:hidden whitespace-nowrap"> &lt;- Click to navigate. </span>
 					</div>
 				</svelte:fragment>
 
 				<div class="hidden md:flex">
-					<Search classes={'w-40 md:focus:w-80 z-100 transition-all max-h-8'} />
+					<Search classes={"w-40 md:focus:w-80 z-100 transition-all max-h-8"} />
 				</div>
 
 				<!-- Trailing Buttons (Dark Mode, Discord, GitHub, etc.) -->

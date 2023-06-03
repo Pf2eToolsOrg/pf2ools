@@ -1,27 +1,25 @@
 <script>
-	import { pluralIf } from '$lib/Utils/MiscUtils.js';
-	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
-	import Renderer from '../Renderer.svelte';
-	import Tagger from '../Tagger.svelte';
-	import { note as Note } from '../Tags/index.js';
-	import Traits from './Misc/traits.svelte';
-	import Source from './Misc/source.svelte';
-	import Heritage from './heritage.svelte';
-	import { getContext } from 'svelte';
-	import { popup } from '@skeletonlabs/skeleton';
+	import { pluralIf } from "$lib/Utils/MiscUtils.js";
+	import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+	import Fa from "svelte-fa";
+	import Renderer from "../Renderer.svelte";
+	import Tagger from "../Tagger.svelte";
+	import { note as Note } from "../Tags/index.js";
+	import Traits from "./Misc/traits.svelte";
+	import Source from "./Misc/source.svelte";
+	import Heritage from "./heritage.svelte";
+	import { getContext } from "svelte";
+	import { popup } from "@skeletonlabs/skeleton";
 	export let entry;
 
-	const { showVersatile } = getContext('ancestriesPage');
+	const { showVersatile } = getContext("ancestriesPage");
 
 	function copy(text, event) {
 		navigator.clipboard.writeText(text);
 	}
 
 	function speedArray(speeds) {
-		return Object.keys(speeds).map(
-			(s) => `${s === 'walk' ? '' : s.toTitleCase()} ${speeds[s]} feet`
-		);
+		return Object.keys(speeds).map((s) => `${s === "walk" ? "" : s.toTitleCase()} ${speeds[s]} feet`);
 	}
 </script>
 
@@ -48,9 +46,7 @@
 				<b>Health Points</b>
 				{#if entry.extraHp}
 					{entry.hp}<Note
-						text={entry.extraHp.map(
-							(x) => `{@ancestry ${entry.heritages.get(x.hash).tag(`/${x.hp}`)}}`
-						)}
+						text={entry.extraHp.map((x) => `{@ancestry ${entry.heritages.get(x.hash).tag(`/${x.hp}`)}}`)}
 						noItalics={true}
 					/>
 				{:else}
@@ -63,20 +59,17 @@
 				<b>Boost{pluralIf(entry.boosts)}</b>
 				{entry.boosts
 					?.map((x) => x.toTitleCase())
-					.joinConjunct(
-						', ',
-						' and '
-					)}{#if entry.boosts?.length && entry.flaws?.length};{/if}
+					.joinConjunct(", ", " and ")}{#if entry.boosts?.length && entry.flaws?.length};{/if}
 			{/if}
 			{#if entry.flaws?.length}
 				<b>Flaw{pluralIf(entry.flaws)}</b>
-				{entry.flaws?.map((x) => x.toTitleCase()).joinConjunct(', ', ' and ')}
+				{entry.flaws?.map((x) => x.toTitleCase()).joinConjunct(", ", " and ")}
 			{/if}
 		</div>
 		{#if entry.speed}
 			<div>
 				<b>Speed{pluralIf(entry.speed)}</b>
-				{speedArray(entry.speed).joinConjunct(', ', ' and ')}
+				{speedArray(entry.speed).joinConjunct(", ", " and ")}
 			</div>
 		{/if}
 		{#if entry.languages}
@@ -86,9 +79,9 @@
 					<button
 						class="align-text-top text-sm"
 						use:popup={{
-							event: 'focus-click',
-							placement: 'top',
-							target: `language-note-pop-${entry.hash}`
+							event: "focus-click",
+							placement: "top",
+							target: `language-note-pop-${entry.hash}`,
 						}}
 					>
 						<Fa icon={faCircleInfo} />
@@ -100,15 +93,13 @@
 					</div>
 				{/if}
 				<Renderer
-					entries={entry.languages
-						.map((x) => `{@language ${x.toTitleCase()}}`)
-						.joinConjunct(', ', ' and ')}
+					entries={entry.languages.map((x) => `{@language ${x.toTitleCase()}}`).joinConjunct(", ", " and ")}
 				/>{#if entry.additionalLanguages};
 					<b>Additional Language{pluralIf(entry.additionalLanguages)}</b>
 					<Renderer
 						entries={entry.additionalLanguages
 							.map((x) => `{@language ${x.toTitleCase()}}`)
-							.joinConjunct(', ', ' and ')}
+							.joinConjunct(", ", " and ")}
 					/>
 				{/if}
 			</div>
@@ -122,7 +113,7 @@
 						.toValueArray()
 						.filter((x) => ($showVersatile ? true : !x.versatile))
 						.map((x) => `{@heritage ${x.tag(x.shortName, entry.name, entry.source)}}`)
-						.join(', ')}
+						.join(", ")}
 				/>
 			</div>
 		{/if}
@@ -143,9 +134,7 @@
 				</div>
 			{/if}
 			<div class="stat-line">
-				<Renderer
-					entries={entry.features.map((x) => ({ type: 'ability', toggle: true, ...x }))}
-				/>
+				<Renderer entries={entry.features.map((x) => ({ type: "ability", toggle: true, ...x }))} />
 			</div>
 		</div>
 	{/if}

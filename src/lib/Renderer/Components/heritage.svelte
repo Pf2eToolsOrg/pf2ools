@@ -1,9 +1,9 @@
 <script>
-	import Ability from './ability.svelte';
-	import Renderer from '../Renderer.svelte';
-	import Tagger from '../Tagger.svelte';
-	import Traits from './Misc/traits.svelte';
-	import Source from './Misc/source.svelte';
+	import Ability from "./ability.svelte";
+	import Renderer from "../Renderer.svelte";
+	import Tagger from "../Tagger.svelte";
+	import Traits from "./Misc/traits.svelte";
+	import Source from "./Misc/source.svelte";
 	export let entry;
 	export let hideTraits = false;
 	export let inline = false;

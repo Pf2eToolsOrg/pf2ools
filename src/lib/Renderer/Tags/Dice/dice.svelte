@@ -1,7 +1,7 @@
 <script>
-	import Tagger from 'tagger';
-	import { splitTagByPipe } from '$lib/Utils/Parser';
-	import { Roller } from './diceStore';
+	import Tagger from "tagger";
+	import { splitTagByPipe } from "$lib/Utils/Parser";
+	import { Roller } from "./diceStore";
 	export let text;
 
 	const [dice, displayText] = splitTagByPipe(text);

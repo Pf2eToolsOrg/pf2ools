@@ -1,10 +1,10 @@
 <script>
-	import { getValidColor } from './color.svelte';
-	import { splitTagByPipe } from '$lib/Utils/Parser';
-	import toast from '$lib/Utils/Toasts.js';
+	import { getValidColor } from "./color.svelte";
+	import { splitTagByPipe } from "$lib/Utils/Parser";
+	import toast from "$lib/Utils/Toasts.js";
 	export let text;
 	export let error = false;
-	import Tagger from 'tagger';
+	import Tagger from "tagger";
 
 	$: [entry, color] = [...splitTagByPipe(text)];
 	$: if (error) {
@@ -14,7 +14,7 @@
 
 <span
 	style={color ? `background-color: ${getValidColor(color)}` : null}
-	class={!color ? 'bg-warning-300-600-token' : null}
+	class={!color ? "bg-warning-300-600-token" : null}
 >
 	{#if error}
 		{entry}

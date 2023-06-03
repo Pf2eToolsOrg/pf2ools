@@ -1,5 +1,5 @@
 <script>
-	import { Datatable, Th, ThFilter } from '@vincjo/datatables';
+	import { Datatable, Th, ThFilter } from "@vincjo/datatables";
 	export let selected = {};
 	export let handler;
 
@@ -34,11 +34,7 @@
 							</a>
 						</td>
 						<td>
-							<a
-								href="#{row.hash}"
-								class="px-5 flex flex-grow unstyled"
-								tabindex="-1"
-							>
+							<a href="#{row.hash}" class="px-5 flex flex-grow unstyled" tabindex="-1">
 								{row.source}
 							</a>
 						</td>

@@ -1,6 +1,6 @@
 <script>
-	import Renderer from '../Renderer.svelte';
-	import Tagger from '../Tagger.svelte';
+	import Renderer from "../Renderer.svelte";
+	import Tagger from "../Tagger.svelte";
 
 	export let entry;
 </script>

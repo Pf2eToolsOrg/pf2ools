@@ -1,22 +1,22 @@
 <script>
-	import toast from '$lib/Utils/Toasts.js';
-	import * as Components from './Components/index.js';
-	import Tagger from './Tagger.svelte';
+	import toast from "$lib/Utils/Toasts.js";
+	import * as Components from "./Components/index.js";
+	import Tagger from "./Tagger.svelte";
 	export let entries;
 
 	let error = false;
 	function getComponent(entry) {
-		let type = 'entries';
+		let type = "entries";
 		if (!entry.type) {
-			toast.error('Entry type is not defined!');
+			toast.error("Entry type is not defined!");
 			error = true;
 		} else {
-			type = entry.type.replaceAll('-', '_').toLowerCase();
+			type = entry.type.replaceAll("-", "_").toLowerCase();
 		}
 
 		if (!Object.keys(Components).includes(type)) {
 			toast.error(`Entry type "${entry.type}" is not recognized by the component renderer!`);
-			type = 'entries';
+			type = "entries";
 			error = true;
 		}
 
@@ -28,14 +28,14 @@
 	}
 
 	$: if (entries.filter((x) => !!x).length === 0) {
-		entries = ['{@note No entries found.}'];
+		entries = ["{@note No entries found.}"];
 	}
 </script>
 
 {#each entries as entry}
-	{#if typeof entry === 'string'}
+	{#if typeof entry === "string"}
 		<Tagger {entry} />
-	{:else if typeof entry === 'object'}
+	{:else if typeof entry === "object"}
 		<svelte:component this={getComponent(entry)} {entry} {error} />
 	{/if}
 {/each}

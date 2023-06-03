@@ -1,5 +1,5 @@
 /// <reference types="@sveltejs/kit" />
-import { build, files, prerendered, version } from '$service-worker';
+import { build, files, prerendered, version } from "$service-worker";
 
 // TODO: This is incredibly basic and copied from SvelteKit's documentation
 // This should be replaced with a more robust solution, at least give a notification that the user is offline.
@@ -10,10 +10,10 @@ const CACHE = `cache-${version}`;
 const ASSETS = [
 	...build, // the app itself
 	...prerendered, // prerendered HTML/CSS (e.g. for SSR)
-	...files // TODO: Remove images to not destroy our users storage
+	...files, // TODO: Remove images to not destroy our users storage
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
 	// Create a new cache and add all files to it
 	async function addFilesToCache() {
 		const cache = await caches.open(CACHE);
@@ -23,7 +23,7 @@ self.addEventListener('install', (event) => {
 	event.waitUntil(addFilesToCache());
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
 	// Remove previous cached data from disk
 	async function deleteOldCaches() {
 		for (const key of await caches.keys()) {
@@ -34,9 +34,9 @@ self.addEventListener('activate', (event) => {
 	event.waitUntil(deleteOldCaches());
 });
 
-self.addEventListener('fetch', (event) => {
-	if (event.request.method !== 'GET') return; // ignore POST requests etc
-	if (!event.request.url.startsWith('http')) return; // ignore requests from other origins like extensions
+self.addEventListener("fetch", (event) => {
+	if (event.request.method !== "GET") return; // ignore POST requests etc
+	if (!event.request.url.startsWith("http")) return; // ignore requests from other origins like extensions
 
 	async function respond() {
 		const url = new URL(event.request.url);

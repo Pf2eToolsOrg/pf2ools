@@ -1,6 +1,6 @@
 <script>
-	import Tagger from '../Tagger.svelte';
-	import Renderer from '../Renderer.svelte';
+	import Tagger from "../Tagger.svelte";
+	import Renderer from "../Renderer.svelte";
 	export let entry;
 </script>
 
@@ -23,7 +23,7 @@
 		left: 3%;
 		margin: 1.6em 0 0.6em;
 		padding: 0.6em 1.6em;
-		font-family: 'good-pro', sans-serif;
+		font-family: "good-pro", sans-serif;
 		width: 94%;
 		min-width: 120px;
 		border-radius: 2px;

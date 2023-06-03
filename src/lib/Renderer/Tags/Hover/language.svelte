@@ -1,7 +1,7 @@
 <script>
-	import { hashify } from '$lib/Data/DataUtils.js';
-	import { splitTagByPipe } from '$lib/Utils/Parser';
-	import Tagger from 'tagger';
+	import { hashify } from "$lib/Data/DataUtils.js";
+	import { splitTagByPipe } from "$lib/Utils/Parser";
+	import Tagger from "tagger";
 	export let text;
 
 	const [language, source, displayText] = splitTagByPipe(text);
@@ -11,6 +11,6 @@
 	const href = h(language, source);
 </script>
 
-<a href={'languages#' + href} class="unstyled">
+<a href={"languages#" + href} class="unstyled">
 	<Tagger entry={displayText ?? language} />
 </a>

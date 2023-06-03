@@ -1,6 +1,6 @@
 <script>
-	import { splitTagByPipe } from '$lib/Utils/Parser';
-	import Tagger from 'tagger';
+	import { splitTagByPipe } from "$lib/Utils/Parser";
+	import Tagger from "tagger";
 	export let text;
 
 	const [displayText, page, ...filters] = splitTagByPipe(text);

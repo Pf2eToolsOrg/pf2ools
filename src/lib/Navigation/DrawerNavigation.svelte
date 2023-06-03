@@ -1,9 +1,9 @@
 <script>
-	import { page } from '$app/stores';
-	import Fa from 'svelte-fa';
-	import * as fort from '@fortawesome/free-solid-svg-icons';
-	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
-	import { default as JSON } from './pages.js';
+	import { page } from "$app/stores";
+	import Fa from "svelte-fa";
+	import * as fort from "@fortawesome/free-solid-svg-icons";
+	import { Accordion, AccordionItem, drawerStore } from "@skeletonlabs/skeleton";
+	import { default as JSON } from "./pages.js";
 	export let pages = JSON;
 
 	function drawerClose() {
@@ -21,7 +21,7 @@
 
 <!-- Each Link -->
 {#each pages as link}
-	{#if link.type === 'divider'}
+	{#if link.type === "divider"}
 		<hr />
 	{:else if link.pages}
 		<!-- Actual Good Stuff -->
@@ -64,7 +64,7 @@
 			class:!variant-ghost-surface={link.href === $page.url.pathname}
 			href={link.href}
 			class:disabled={link.offline}
-			tabindex={link.offline ? '-1' : null}
+			tabindex={link.offline ? "-1" : null}
 		>
 			<span>
 				{#if fort[pickRandom(link.icon)]}

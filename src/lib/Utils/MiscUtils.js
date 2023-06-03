@@ -1,5 +1,5 @@
 export function isObject(obj) {
-	return obj && typeof obj === 'object' && !Array.isArray(obj);
+	return obj && typeof obj === "object" && !Array.isArray(obj);
 }
 
 export function mobileCheck() {
@@ -18,12 +18,12 @@ export function mobileCheck() {
 	return check;
 }
 
-export function pluralIf(entry = [], word = '') {
+export function pluralIf(entry = [], word = "") {
 	// Map() Support
 	if (entry.size) {
 		entry = entry.toValueArray();
 	}
-	if (typeof entry === 'object') {
+	if (typeof entry === "object") {
 		entry = Object.keys(entry);
 	}
 	return entry.length === 1 ? word : `${word}s`;

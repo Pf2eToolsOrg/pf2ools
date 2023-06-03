@@ -6,24 +6,24 @@
 
 	function type(trait) {
 		switch (trait) {
-			case 'unique':
-			case 'rare':
-			case 'uncommon':
+			case "unique":
+			case "rare":
+			case "uncommon":
 				return trait;
-			case 'small':
-			case 'medium':
-			case 'large':
-			case 'huge':
-			case 'gargantuan':
-				return 'size';
+			case "small":
+			case "medium":
+			case "large":
+			case "huge":
+			case "gargantuan":
+				return "size";
 			default:
-				return '';
+				return "";
 		}
 	}
 
 	$: if (traits)
 		traits = traits
-			.filter((x) => x.toLowerCase() !== 'common')
+			.filter((x) => x.toLowerCase() !== "common")
 			.sort((a, b) => {
 				const order = {
 					rare: 0,
@@ -31,7 +31,7 @@
 					unique: 0,
 					alignment: 1,
 					size: 2,
-					settlement: 3
+					settlement: 3,
 				};
 
 				const aType = type(a);
@@ -41,10 +41,8 @@
 					return a.localeCompare(b);
 				}
 
-				const aOrder =
-					order[aType] !== undefined ? order[aType] : Object.keys(order).length;
-				const bOrder =
-					order[bType] !== undefined ? order[bType] : Object.keys(order).length;
+				const aOrder = order[aType] !== undefined ? order[aType] : Object.keys(order).length;
+				const bOrder = order[bType] !== undefined ? order[bType] : Object.keys(order).length;
 
 				return aOrder - bOrder;
 			});
@@ -57,7 +55,7 @@
 				{trait}
 			</span>
 		{:else}
-			<a class="unstyled trait {traitClasses} {type(trait)}" href={'/traits#' + trait}>
+			<a class="unstyled trait {traitClasses} {type(trait)}" href={"/traits#" + trait}>
 				{trait}
 			</a>
 		{/if}
@@ -71,7 +69,7 @@
 			text-decoration: none;
 			&::after {
 				color: white !important;
-				content: '/';
+				content: "/";
 				position: relative;
 				font-size: 1.5em;
 				top: 0.05rem;
@@ -87,7 +85,7 @@
 			padding: 0.3rem 1rem 0.2rem;
 			min-width: 5em;
 			color: white;
-			font-family: 'good-pro-condensed', sans-serif;
+			font-family: "good-pro-condensed", sans-serif;
 			font-size: 0.75em;
 			font-weight: 700;
 			text-align: center;

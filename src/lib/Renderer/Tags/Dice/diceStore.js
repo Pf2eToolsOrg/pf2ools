@@ -1,7 +1,7 @@
-import { localStorageStore } from '@skeletonlabs/skeleton';
-import { DiceRoll } from '@dice-roller/rpg-dice-roller';
-import { get } from 'svelte/store';
-export const diceStore = localStorageStore('diceStore', []);
+import { localStorageStore } from "@skeletonlabs/skeleton";
+import { DiceRoll } from "@dice-roller/rpg-dice-roller";
+import { get } from "svelte/store";
+export const diceStore = localStorageStore("diceStore", []);
 
 export class Roller {
 	constructor() {
@@ -31,10 +31,10 @@ export class Roller {
 }
 
 // DEBUG
-import { dev, browser } from '$app/environment';
+import { dev, browser } from "$app/environment";
 if (dev) {
 	diceStore.subscribe((value) => {
-		if (!value.at(-1) || typeof value === 'object') return;
+		if (!value.at(-1) || typeof value === "object") return;
 		console.log(`You rolled ${value.at(-1)}`, value.at(-1));
 	});
 

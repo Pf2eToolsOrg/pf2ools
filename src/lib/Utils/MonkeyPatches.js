@@ -25,13 +25,15 @@ Map.prototype.filter =
 		return out;
 	};
 
-Map.prototype.map = Map.prototype.map || function (func) {
-	const out = new Map();
-	for (const [k, v] of this) {
-		out.set(k, func(v, k));
-	}
-	return out;
-};
+Map.prototype.map =
+	Map.prototype.map ||
+	function (func) {
+		const out = new Map();
+		for (const [k, v] of this) {
+			out.set(k, func(v, k));
+		}
+		return out;
+	};
 
 Map.prototype.toValueArray =
 	Map.prototype.toValueArray ||
@@ -76,16 +78,16 @@ Array.prototype.toTitleCase =
 Array.prototype.joinConjunct =
 	Array.prototype.joinConjunct ||
 	function (joiner, lastJoiner, nonOxford) {
-		if (this.length === 0) return '';
+		if (this.length === 0) return "";
 		if (this.length === 1) return this[0];
 		if (this.length === 2) return this.join(lastJoiner);
 		else {
-			let outStr = '';
+			let outStr = "";
 			for (let i = 0; i < this.length; ++i) {
 				outStr += this[i];
 				if (i < this.length - 2) outStr += joiner;
 				else if (i === this.length - 2)
-					outStr += `${!nonOxford && this.length > 2 ? joiner.trim() : ''}${lastJoiner}`;
+					outStr += `${!nonOxford && this.length > 2 ? joiner.trim() : ""}${lastJoiner}`;
 			}
 			return outStr;
 		}
@@ -94,7 +96,7 @@ Array.prototype.joinConjunct =
 
 //#region String
 String.prototype.remove = function (text) {
-	return this.replaceAll(text, '');
+	return this.replaceAll(text, "");
 };
 
 String.prototype.uppercaseFirst =
@@ -124,16 +126,15 @@ String.prototype.uq =
 String.prototype.toTitleCase =
 	String.prototype.toTitleCase ||
 	function () {
-		let str = this.replace(
-			/([^\W_]+[^\s-/]*) */g,
-			(m0) => m0.charAt(0).toUpperCase() + m0.substr(1).toLowerCase()
-		);
+		let str = this.replace(/([^\W_]+[^\s-/]*) */g, (m0) => m0.charAt(0).toUpperCase() + m0.substr(1).toLowerCase());
 
 		// Require space surrounded, as title-case requires a full word on either side
-		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil._TITLE_LOWER_WORDS_RE =
-			StrUtil.TITLE_LOWER_WORDS.map((it) => new RegExp(`\\s${it}\\s`, 'gi'));
-		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil._TITLE_UPPER_WORDS_RE =
-			StrUtil.TITLE_UPPER_WORDS.map((it) => new RegExp(`\\b${it}\\b`, 'g'));
+		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(
+			(it) => new RegExp(`\\s${it}\\s`, "gi")
+		);
+		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(
+			(it) => new RegExp(`\\b${it}\\b`, "g")
+		);
 
 		const len = StrUtil.TITLE_LOWER_WORDS.length;
 		for (let i = 0; i < len; i++) {
@@ -142,10 +143,7 @@ String.prototype.toTitleCase =
 
 		const len1 = StrUtil.TITLE_UPPER_WORDS.length;
 		for (let i = 0; i < len1; i++) {
-			str = str.replace(
-				StrUtil._TITLE_UPPER_WORDS_RE[i],
-				StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
-			);
+			str = str.replace(StrUtil._TITLE_UPPER_WORDS_RE[i], StrUtil.TITLE_UPPER_WORDS[i].toUpperCase());
 		}
 
 		return str;
@@ -163,7 +161,7 @@ String.prototype.toSentenceCase =
 				out.push(m[0].toLowerCase().uppercaseFirst());
 			}
 		} while (m);
-		return out.join('');
+		return out.join("");
 	};
 
 String.prototype.toSpellCase =
@@ -178,12 +176,12 @@ String.prototype.toSpellCase =
 String.prototype.toCamelCase =
 	String.prototype.toCamelCase ||
 	function () {
-		return this.split(' ')
+		return this.split(" ")
 			.map((word, index) => {
 				if (index === 0) return word.toLowerCase();
 				return `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
 			})
-			.join('');
+			.join("");
 	};
 
 String.prototype.escapeQuotes =
@@ -256,8 +254,7 @@ String.prototype.distance =
 					score[i + 1][j + 1] = score[i][j];
 					DB = j;
 				} else {
-					score[i + 1][j + 1] =
-						Math.min(score[i][j], Math.min(score[i + 1][j], score[i][j + 1])) + 1;
+					score[i + 1][j + 1] = Math.min(score[i][j], Math.min(score[i + 1][j], score[i][j + 1])) + 1;
 				}
 				score[i + 1][j + 1] = Math.min(
 					score[i + 1][j + 1],
@@ -284,7 +281,7 @@ String.prototype.last =
 String.prototype.escapeRegexp =
 	String.prototype.escapeRegexp ||
 	function () {
-		return this.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+		return this.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
 	};
 
 String.prototype.toUrlified =
@@ -306,10 +303,10 @@ String.prototype.toChunks =
 String.prototype.toAscii =
 	String.prototype.toAscii ||
 	function () {
-		return this.normalize('NFD') // replace diacritics with their individual graphemes
-			.replace(/[\u0300-\u036f]/g, '') // remove accent graphemes
-			.replace(/Æ/g, 'AE')
-			.replace(/æ/g, 'ae');
+		return this.normalize("NFD") // replace diacritics with their individual graphemes
+			.replace(/[\u0300-\u036f]/g, "") // remove accent graphemes
+			.replace(/Æ/g, "AE")
+			.replace(/æ/g, "ae");
 	};
 
 String.prototype.trimChar =
@@ -341,31 +338,31 @@ let StrUtil = {
 	},
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: [
-		'a',
-		'an',
-		'the',
-		'and',
-		'but',
-		'or',
-		'for',
-		'nor',
-		'as',
-		'at',
-		'by',
-		'for',
-		'from',
-		'in',
-		'into',
-		'near',
-		'of',
-		'on',
-		'onto',
-		'to',
-		'with',
-		'over'
+		"a",
+		"an",
+		"the",
+		"and",
+		"but",
+		"or",
+		"for",
+		"nor",
+		"as",
+		"at",
+		"by",
+		"for",
+		"from",
+		"in",
+		"into",
+		"near",
+		"of",
+		"on",
+		"onto",
+		"to",
+		"with",
+		"over",
 	],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ['Id', 'Tv', 'Dm', 'Ok'],
+	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm", "Ok"],
 
 	padNumber: (n, len, padder) => {
 		return String(n).padStart(len, padder);
@@ -375,14 +372,14 @@ let StrUtil = {
 		if (maxLen >= str.length) return str;
 
 		maxLen = Math.max(atLeastPre + atLeastSuff + 3, maxLen);
-		let out = '';
+		let out = "";
 		let remain = maxLen - (3 + atLeastPre + atLeastSuff);
 		for (let i = 0; i < str.length - atLeastSuff; ++i) {
 			const c = str[i];
 			if (i < atLeastPre) out += c;
 			else if (remain-- > 0) out += c;
 		}
-		if (remain < 0) out += '...';
+		if (remain < 0) out += "...";
 		out += str.substring(str.length - atLeastSuff, str.length);
 		return out;
 	},
@@ -392,11 +389,11 @@ let StrUtil = {
 	},
 
 	getNamePart(str) {
-		if (typeof str !== 'string') return str;
+		if (typeof str !== "string") return str;
 		return str
-			.split(' ')
+			.split(" ")
 			.filter((it) => !StrUtil.TITLE_LOWER_WORDS.includes(it.toLowerCase()))
-			.join(' ');
-	}
+			.join(" ");
+	},
 };
 //#endregion

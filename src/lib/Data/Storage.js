@@ -1,14 +1,16 @@
-import { Ancestry, Heritage } from './ancestryClass.js';
-import { localStorageStore } from '@skeletonlabs/skeleton';
-import { get } from 'svelte/store';
-import "$lib/Utils/MonkeyPatches.js"
+import { Ancestry, Heritage } from "./classes.js";
+import { writable, get } from "svelte/store";
+import "$lib/Utils/MonkeyPatches.js";
 
 export { ancestries, heritages, Storage as default };
 
 class Storage {
 	constructor() {
+		this.core = {};
 		this.ancestries = ancestries;
 		this.heritages = heritages;
+
+		this.homebrew = {};
 	}
 
 	loadAll() {
@@ -18,25 +20,11 @@ class Storage {
 }
 
 const ancestries = new Ancestries();
-function Ancestries(key = 'ancestries', initialValue = new Map()) {
-	const ancSerializer = {
-		parse: (data) => {
-			return new Map(JSON.parse(data)).map((a) => new Ancestry(a));
-		},
-		stringify: (data) => {
-			return JSON.stringify([...data]);
-		}
-	};
-
-	const { subscribe, set, update } = localStorageStore(key, initialValue, {
-		serializer: ancSerializer
-	});
+function Ancestries() {
+	const { subscribe, set, update } = writable(new Map());
 
 	function load() {
-		const modules = import.meta.glob([
-			'$data/ancestries/*.json',
-			'!$data/ancestries/versatile-heritages.json'
-		]);
+		const modules = import.meta.glob(["$data/ancestries/*.json", "!$data/ancestries/versatile-heritages.json"]);
 
 		for (const path in modules) {
 			// Note, impossible to do console.group, don't even try.
@@ -46,12 +34,7 @@ function Ancestries(key = 'ancestries', initialValue = new Map()) {
 					a._path = path;
 					const ancestry = new Ancestry(a);
 					this.update((x) => {
-						if (dev)
-							console.log(
-								'%cDEV MODE',
-								'font-weight: bold; color: red',
-								'| Added ' + ancestry.name
-							);
+						if (dev) console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added " + ancestry.name);
 						x.set(ancestry.hash, ancestry);
 						return x;
 					});
@@ -64,29 +47,16 @@ function Ancestries(key = 'ancestries', initialValue = new Map()) {
 		subscribe,
 		set,
 		update,
-		load
+		load,
 	};
 }
 
 const heritages = new Heritages();
-function Heritages(key = 'heritages', initialValue = new Map()) {
-	const herSerializer = {
-		parse: (data) => {
-			return new Map(JSON.parse(data)).map((h) => new Heritage(h));
-		},
-		stringify: (data) => {
-			return JSON.stringify([...data]);
-		}
-	};
-
-	const { subscribe, set, update } = localStorageStore(key, initialValue, {
-		serializer: herSerializer
-	});
+function Heritages() {
+	const { subscribe, set, update } = writable(new Map());
 
 	function load() {
-		const modules = import.meta.glob([
-			'$data/ancestries/*.json'
-		]);
+		const modules = import.meta.glob(["$data/ancestries/*.json"]);
 
 		for (const path in modules) {
 			// Note, impossible to do console.group, don't even try.
@@ -99,9 +69,9 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 						this.update((x) => {
 							if (dev)
 								console.log(
-									'%cDEV MODE',
-									'font-weight: bold; color: red',
-									'| Added ' + heritage.name + ' (Versatile Heritage)'
+									"%cDEV MODE",
+									"font-weight: bold; color: red",
+									"| Added " + heritage.name + " (Versatile Heritage)"
 								);
 							x.set(heritage.hash, heritage);
 							return x;
@@ -112,16 +82,16 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 					ancestriesData.forEach((a) => {
 						let heritagesData = a.heritage;
 						heritagesData.forEach((h) => {
-							h.ancestryName = a.name
-							h.ancestrySource = a.source
+							h.ancestryName = a.name;
+							h.ancestrySource = a.source;
 							h._path = path;
 							const heritage = new Heritage(h);
 							this.update((x) => {
 								if (dev)
 									console.log(
-										'%cDEV MODE',
-										'font-weight: bold; color: red',
-										'| Added ' + heritage.name + ` (Heritage)`
+										"%cDEV MODE",
+										"font-weight: bold; color: red",
+										"| Added " + heritage.name + ` (Heritage)`
 									);
 								x.set(heritage.hash, heritage);
 								return x;
@@ -137,27 +107,19 @@ function Heritages(key = 'heritages', initialValue = new Map()) {
 		subscribe,
 		set,
 		update,
-		load
+		load,
 	};
 }
 
 // DEV
-import { dev, browser } from '$app/environment';
+import { dev, browser } from "$app/environment";
 if (dev && browser) {
 	window.pf2ools = window.pf2ools || {};
 	window.pf2ools.Data = window.pf2ools.Data || {};
 	window.pf2ools.Data.ancestries = ancestries;
 	window.pf2ools.Data.heritages = heritages;
-	console.log(
-		'%cDEV MODE',
-		'font-weight: bold; color: red',
-		'| Added Ancestries Data',
-		get(ancestries)
-	);
-	console.log(
-		'%cDEV MODE',
-		'font-weight: bold; color: red',
-		'| Added Heritages Data',
-		get(heritages)
-	);
+	if (dev) {
+		console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added Ancestries Data", get(ancestries));
+		console.log("%cDEV MODE", "font-weight: bold; color: red", "| Added Heritages Data", get(heritages));
+	}
 }

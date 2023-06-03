@@ -1,16 +1,16 @@
-import { toastStore } from '@skeletonlabs/skeleton';
-import { browser } from '$app/environment';
-import { get } from 'svelte/store';
+import { toastStore } from "@skeletonlabs/skeleton";
+import { browser } from "$app/environment";
+import { get } from "svelte/store";
 
 export class Toasts {
 	trigger(options) {
 		toastStore.trigger({
-			message: 'Placeholder',
+			message: "Placeholder",
 			duration: 3000,
 			timeout: 5000 + this.toasts().length * 750,
-			position: 'b',
+			position: "b",
 			isClosable: true,
-			...options
+			...options,
 		});
 	}
 
@@ -24,11 +24,11 @@ export class Toasts {
 
 	async error(message) {
 		console.error(message);
-		this.trigger({ message: message, background: 'variant-filled-error' });
+		this.trigger({ message: message, background: "variant-filled-error" });
 	}
 
 	async success(message) {
-		this.trigger({ message: message, background: 'variant-filled-success' });
+		this.trigger({ message: message, background: "variant-filled-success" });
 	}
 
 	async warn(message) {
@@ -37,7 +37,7 @@ export class Toasts {
 
 	async warning(message) {
 		console.warn(message);
-		this.trigger({ message: message, background: 'variant-filled-warning' });
+		this.trigger({ message: message, background: "variant-filled-warning" });
 	}
 
 	clear() {

@@ -1,8 +1,8 @@
 <script>
-	import { hotkey } from 'svelte-gh-hotkey';
-	import { writable } from 'svelte/store';
-	export let classes = '';
-	let inputDemo = writable('');
+	import { hotkey } from "svelte-gh-hotkey";
+	import { writable } from "svelte/store";
+	export let classes = "";
+	let inputDemo = writable("");
 </script>
 
 <input
@@ -10,9 +10,9 @@
 	type="search"
 	bind:value={$inputDemo}
 	placeholder="Search..."
-	use:hotkey={'f'}
+	use:hotkey={"f"}
 	on:keydown={(e) => {
-		if (e.key === 'Escape') {
+		if (e.key === "Escape") {
 			e.preventDefault();
 			e.target.blur();
 		}

@@ -1,6 +1,6 @@
 <script>
-	import Renderer from '../Renderer.svelte';
-	import Tagger from '../Tagger.svelte';
+	import Renderer from "../Renderer.svelte";
+	import Tagger from "../Tagger.svelte";
 
 	export let entry;
 
@@ -18,7 +18,7 @@
 		{/if}
 		{#if entry.collapsible}
 			<button class="ml-auto select-none" on:keypress on:click={click}>
-				{collapse ? '[+]' : '[\u2012]'}
+				{collapse ? "[+]" : "[\u2012]"}
 			</button>
 		{/if}
 	</p>

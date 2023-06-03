@@ -1,6 +1,6 @@
 <script>
-	import Storage from 'Storage';
-	import { fly } from 'svelte/transition';
+	import Storage from "Storage";
+	import { fly } from "svelte/transition";
 
 	const dataStorage = new Storage();
 	const { ancestries, heritages } = dataStorage;
@@ -15,14 +15,14 @@
 		<div>
 			{#key $ancestries}
 				<span>
-					{$ancestries.size || '❌'}
+					{$ancestries.size || "❌"}
 				</span>
 			{/key}
 			<b>Ancestries</b>
 			-
 			{#key $heritages}
 				<span>
-					{$heritages.size || '❌'}
+					{$heritages.size || "❌"}
 				</span>
 			{/key}
 			<b>Heritages</b>
@@ -38,8 +38,6 @@
 		>
 			Clear Local Storage
 		</button>
-		<button class="btn bg-success-300-600-token" on:click={() => dataStorage.loadAll()}>
-			Preload All Data
-		</button>
+		<button class="btn bg-success-300-600-token" on:click={() => dataStorage.loadAll()}> Preload All Data </button>
 	</div>
 </div>

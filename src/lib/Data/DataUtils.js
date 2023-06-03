@@ -1,12 +1,13 @@
-export default class DataEntry {
+export default class Document {
 	constructor(data) {
-		if (!data) throw new Error('DataEntry must have a data object provided to it.');
+		if (!(typeof data === "object" && !Array.isArray(data) && data !== null))
+			throw new TypeError(
+				"A Document must be given an Object. It has been provided a" + typeof data + " instead."
+			);
 
 		Object.assign(this, data);
 		if (!this.name || !this.source) {
-			throw new Error(
-				`DataEntry must have name and source properties: ${JSON.stringify(data)}`
-			);
+			throw new Error(`Document must have name and source properties: ${JSON.stringify(data)}`);
 		}
 
 		this.JSON = data;
@@ -21,23 +22,24 @@ export default class DataEntry {
 	}
 
 	tag(displayText) {
-		return `${this.name}|${this.source}${displayText ? `|${displayText}` : ''}`;
+		return `${this.name}|${this.source}${displayText ? `|${displayText}` : ""}`;
 	}
 }
 
 export function hashify(name, source) {
-	return `${name + (source ? `_${source}` : '')}`.toLowerCase();
+	return `${name + (source ? `_${source}` : "")}`.toLowerCase();
 }
 
 // DEV
-import { dev, browser } from '$app/environment';
-if (dev && browser) {
+import { dev, browser } from "$app/environment";
+if (browser) {
 	window.pf2ools = window.pf2ools || {};
-	window.pf2ools.Classes = { ...window.pf2ools.Classes, DataEntry };
-	console.log(
-		'%cDEV MODE',
-		'font-weight: bold; color: red',
-		'| Added pf2ools.Classes.DataEntry',
-		window.pf2ools.Classes
-	);
+	window.pf2ools.Classes = { ...window.pf2ools.Classes, Document };
+	if (dev)
+		console.log(
+			"%cDEV MODE",
+			"font-weight: bold; color: red",
+			"| Added pf2ools.Classes.Document",
+			window.pf2ools.Classes
+		);
 }

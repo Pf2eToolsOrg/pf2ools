@@ -1,5 +1,5 @@
 <script>
-	import Tagger from 'tagger';
+	import Tagger from "tagger";
 	export let text;
 </script>
 

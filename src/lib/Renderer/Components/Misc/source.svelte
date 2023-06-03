@@ -1,5 +1,5 @@
 <script>
-	import { source } from '$data/sources.json';
+	import { source } from "$data/sources.json";
 	export let entry;
 
 	function toFullSource(src) {
