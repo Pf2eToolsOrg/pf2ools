@@ -5,7 +5,7 @@
 	import { oneDark } from "@codemirror/theme-one-dark";
 	import Fa from "svelte-fa";
 	import { faItalic, faRefresh } from "@fortawesome/free-solid-svg-icons";
-	import { localStorageStore, modeUserPrefers } from "@skeletonlabs/skeleton";
+	import { localStorageStore, modeCurrent } from "@skeletonlabs/skeleton";
 	import { EditorView } from "codemirror";
 	import CodeMirror from "svelte-codemirror-editor";
 	import { pf2oolsPlugin } from "./pf2ools-codemirror.js";
@@ -24,11 +24,11 @@
 	}
 
 	function refreshCode() {
-		$store = JSON.stringify(renderdemo[0], null, 2);
+		$store = JSON.stringify(renderdemo[0], null, "\t");
 	}
 
 	function format() {
-		$store = JSON.stringify(JSON.parse($store), null, 2);
+		$store = JSON.stringify(JSON.parse($store), null, "\t");
 	}
 
 	$: checkAndUpdateJson($store);
@@ -40,11 +40,11 @@
 
 <div class="pf2ools md:flex pt-1">
 	<div class="mx-0.5 md:w-2/4 relative">
-		<div class="variant-ghost-surface">
+		<div class="variant-ghost-surface text-xs">
 			<CodeMirror
 				bind:value={$store}
 				lang={json()}
-				theme={$modeUserPrefers ? null : oneDark}
+				theme={$modeCurrent ? null : oneDark}
 				extensions={[EditorView.lineWrapping, pf2oolsPlugin]}
 				styles={{
 					"&": {
@@ -71,3 +71,12 @@
 		<Renderer entries={rendered} />
 	</div>
 </div>
+
+<style>
+	:global(.renderTag span) {
+		color: purple;
+	}
+	:global(html.dark .renderTag span) {
+		color: pink;
+	}
+</style>

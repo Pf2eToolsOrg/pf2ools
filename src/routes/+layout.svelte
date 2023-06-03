@@ -23,6 +23,7 @@
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 	import toast from "$lib/Utils/Toasts.js";
 	import "Storage";
+	import { onMount } from "svelte";
 
 	function drawerOpen() {
 		drawerStore.open({
@@ -30,7 +31,9 @@
 		});
 	}
 
-	setInitialClassState();
+	onMount(() => {
+		setInitialClassState();
+	});
 
 	//#region Restart Console Logs on Navigation
 	navigating.subscribe((value) => {

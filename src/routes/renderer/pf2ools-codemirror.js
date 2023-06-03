@@ -1,12 +1,32 @@
 import { MatchDecorator, ViewPlugin, Decoration } from "@codemirror/view";
+import { getValidColor } from "$lib/Renderer/Tags/Formatting/color.svelte";
 // import { tags } from "$lib/Renderer/TagRenderer";
 
-let worldDeco = Decoration.mark({ class: "renderTag" }); // This adds a className to the text that matches the regex.
 let decorator = new MatchDecorator({
 	regexp: /\{@(?<tag>\w+)(?<contents>.+?)\}/g,
-	decoration: (match, view, pos) => {
-		// TODO:
-		return worldDeco;
+	decoration: (match) => {
+		let tag = "";
+		let attributes = { style: "" };
+		switch (match.groups.tag) {
+			case "i":
+			case "italic":
+				tag = "italic";
+				break;
+			case "b":
+			case "bold":
+				tag = "bold";
+				break;
+			case "u":
+			case "underline":
+				tag = "underline";
+				break;
+			case "s":
+			case "strike":
+				tag = "line-through";
+				break;
+		}
+
+		return Decoration.mark({ class: `renderTag ${tag}`, attributes });
 	},
 });
 
