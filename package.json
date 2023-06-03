@@ -47,7 +47,7 @@
 		"codemirror": "^6.0.1",
 		"dom-to-image": "^2.6.0",
 		"svelte-codemirror-editor": "^1.1.0",
-		"svelte-fa": "^3.0.3",
+		"svelte-fa": "^3.0.4",
 		"svelte-gestures": "^1.4.1",
 		"svelte-gh-hotkey": "^0.2.1",
 		"svelte-lazy": "^1.2.1"
