@@ -83,7 +83,7 @@
 			>
 				<svelte:fragment slot="lead">
 					<div class="flex items-center">
-						<button class="btn btn-sm contents noselect" on:click={drawerOpen}>
+						<button class="btn btn-sm contents select-none" on:click={drawerOpen}>
 							<img
 								src="/icons/NoBackground.svg"
 								alt="PF2ools"
@@ -102,12 +102,10 @@
 
 				<!-- Trailing Buttons (Dark Mode, Discord, GitHub, etc.) -->
 				<svelte:fragment slot="trail">
-					<div class="noselect">
-						<LightSwitch />
-					</div>
+					<LightSwitch />
 					<div class="hidden lg:contents">
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface noselect"
+							class="btn btn-sm ml-2 variant-ghost-surface select-none"
 							href="https://ko-fi.com/mrvauxs"
 							target="_blank"
 							rel="noreferrer"
@@ -115,7 +113,7 @@
 							Donations
 						</a>
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface noselect"
+							class="btn btn-sm ml-2 variant-ghost-surface select-none"
 							href="https://discord.gg/2hzNxErtVu"
 							target="_blank"
 							rel="noreferrer"
@@ -123,7 +121,7 @@
 							Discord
 						</a>
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface noselect"
+							class="btn btn-sm ml-2 variant-ghost-surface select-none"
 							href="https://github.com/Pf2eToolsOrg/pf2ools"
 							target="_blank"
 							rel="noreferrer"
