@@ -13,6 +13,7 @@
 		drawerStore,
 		storePopup,
 		Modal,
+		setInitialClassState,
 	} from "@skeletonlabs/skeleton";
 	import "@skeletonlabs/skeleton/styles/all.css";
 	import { hotkey } from "svelte-gh-hotkey";
@@ -28,6 +29,8 @@
 			width: "w-80",
 		});
 	}
+
+	setInitialClassState();
 
 	//#region Restart Console Logs on Navigation
 	navigating.subscribe((value) => {
@@ -103,9 +106,9 @@
 				<!-- Trailing Buttons (Dark Mode, Discord, GitHub, etc.) -->
 				<svelte:fragment slot="trail">
 					<LightSwitch />
-					<div class="hidden lg:contents">
+					<div class="hidden lg:contents select-none">
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface select-none"
+							class="btn btn-sm ml-2 variant-ghost-surface"
 							href="https://ko-fi.com/mrvauxs"
 							target="_blank"
 							rel="noreferrer"
@@ -113,7 +116,7 @@
 							Donations
 						</a>
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface select-none"
+							class="btn btn-sm ml-2 variant-ghost-surface"
 							href="https://discord.gg/2hzNxErtVu"
 							target="_blank"
 							rel="noreferrer"
@@ -121,7 +124,7 @@
 							Discord
 						</a>
 						<a
-							class="btn btn-sm ml-2 variant-ghost-surface select-none"
+							class="btn btn-sm ml-2 variant-ghost-surface"
 							href="https://github.com/Pf2eToolsOrg/pf2ools"
 							target="_blank"
 							rel="noreferrer"
