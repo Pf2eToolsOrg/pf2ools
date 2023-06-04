@@ -40,7 +40,7 @@
 
 <div class="pf2ools md:flex pt-1">
 	<div class="mx-0.5 md:w-2/4 relative">
-		<div class="variant-ghost-surface text-xs">
+		<div class="bg-surface-50 text-xs">
 			<CodeMirror
 				bind:value={$store}
 				lang={json()}
@@ -75,6 +75,14 @@
 <style>
 	:global(.renderTag span) {
 		color: purple;
+	}
+	:global(.renderTag-wrong span) {
+		color: white;
+		background-color: darkred;
+	}
+	:global(html.dark .renderTag-wrong span) {
+		color: white;
+		background-color: red;
 	}
 	:global(html.dark .renderTag span) {
 		color: pink;

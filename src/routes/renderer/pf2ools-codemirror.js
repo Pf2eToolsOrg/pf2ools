@@ -1,32 +1,37 @@
 import { MatchDecorator, ViewPlugin, Decoration } from "@codemirror/view";
-import { getValidColor } from "$lib/Renderer/Tags/Formatting/color.svelte";
-// import { tags } from "$lib/Renderer/TagRenderer";
+import * as tags from "$lib/Renderer/Tags/index.js";
+
+// \\b(${Object.keys(tags).sort((a, b) => b.length - a.length).join("|")})\\b
 
 let decorator = new MatchDecorator({
-	regexp: /\{@(?<tag>\w+)(?<contents>.+?)\}/g,
+	regexp: new RegExp(`{@(\\w+).+?}`, "g"),
 	decoration: (match) => {
-		let tag = "";
+		let tag = match[1];
+
+		if (!tags[tag]) return Decoration.mark({ class: `renderTag-wrong` });
+
+		let css = "";
 		let attributes = { style: "" };
-		switch (match.groups.tag) {
+		switch (tag) {
 			case "i":
 			case "italic":
-				tag = "italic";
+				css = "italic";
 				break;
 			case "b":
 			case "bold":
-				tag = "bold";
+				css = "font-bold";
 				break;
 			case "u":
 			case "underline":
-				tag = "underline";
+				css = "underline";
 				break;
 			case "s":
 			case "strike":
-				tag = "line-through";
+				css = "line-through";
 				break;
 		}
 
-		return Decoration.mark({ class: `renderTag ${tag}`, attributes });
+		return Decoration.mark({ class: `renderTag ${css}`, attributes });
 	},
 });
 
