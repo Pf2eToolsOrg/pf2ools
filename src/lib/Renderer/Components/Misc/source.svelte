@@ -3,7 +3,7 @@
 	export let entry;
 
 	function toFullSource(src) {
-		return source.find((s) => s.source === src).name;
+		return source.find((x) => x.source === src).name;
 	}
 </script>
 

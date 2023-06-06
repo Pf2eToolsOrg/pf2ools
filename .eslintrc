@@ -12,7 +12,14 @@
 		"es2017": true
 	},
 	"rules": {
-		"prettier/prettier": ["error"],
+		"camelcase": ["warn", { "allow": ["pf2_"] }],
+		"id-length": ["warn", { "exceptions": ["i", "x"], "properties": "never" }],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
 		"svelte/no-at-html-tags": "off"
 	}
 }

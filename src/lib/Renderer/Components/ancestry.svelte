@@ -19,7 +19,7 @@
 	}
 
 	function speedArray(speeds) {
-		return Object.keys(speeds).map((s) => `${s === "walk" ? "" : s.toTitleCase()} ${speeds[s]} feet`);
+		return Object.keys(speeds).map((x) => `${x === "walk" ? "" : x.toTitleCase()} ${speeds[x]} feet`);
 	}
 </script>
 
@@ -27,8 +27,8 @@
 	<div class="flex font-good-pro-condensed text-[1.35em] uppercase leading-[1] font-bold">
 		<button
 			class="cursor-copy uppercase"
-			on:click={(e) => copy(entry.name, e)}
-			on:keypress={(e) => copy(entry.name, e)}
+			on:click={() => copy(entry.name)}
+			on:keypress={() => copy(entry.name)}
 			title="Copy to Clipboard"
 		>
 			<Tagger entry={entry.name} />

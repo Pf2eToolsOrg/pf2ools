@@ -17,7 +17,7 @@
 	function checkAndUpdateJson(value) {
 		try {
 			JSON.parse(value);
-		} catch (e) {
+		} catch (event) {
 			return;
 		}
 		rendered = [JSON.parse(value)];

@@ -47,7 +47,7 @@
 	];
 
 	const sourceEntries = sources
-		.filter((x) => !x.unreleased)
+		.filter((source) => !source.unreleased)
 		.map((x) => {
 			return {
 				type: "pf2-h3",

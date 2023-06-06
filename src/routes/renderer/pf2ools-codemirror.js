@@ -38,11 +38,11 @@ let decorator = new MatchDecorator({
 export const pf2oolsPlugin = ViewPlugin.define(
 	(view) => ({
 		decorations: decorator.createDeco(view),
-		update(u) {
-			this.decorations = decorator.updateDeco(u, this.decorations);
+		update(viewUpdate) {
+			this.decorations = decorator.updateDeco(viewUpdate, this.decorations);
 		},
 	}),
 	{
-		decorations: (v) => v.decorations,
+		decorations: (obj) => obj.decorations,
 	}
 );

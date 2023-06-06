@@ -22,6 +22,10 @@ npm run dev
 npm run dev -- --open
 ```
 
+### Good To Know's
+
+- [Writing Client-Side Code](https://kit.svelte.dev/faq#how-do-i-use-a-client-side-only-library-that-depends-on-document-or-window)
+
 ## Building
 
 To create a production version of your app:
