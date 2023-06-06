@@ -14,7 +14,7 @@
 
 	const { showVersatile } = getContext("ancestriesPage");
 
-	function copy(text, event) {
+	function copy(text) {
 		navigator.clipboard.writeText(text);
 	}
 

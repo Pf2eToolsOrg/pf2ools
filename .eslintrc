@@ -1,8 +1,8 @@
 {
 	"root": true,
-	"extends": ["eslint:recommended", "prettier"],
-	"plugins": ["svelte3", "prettier"],
-	"overrides": [{ "files": ["*.svelte"], "processor": "svelte3/svelte3" }],
+	"extends": ["eslint:recommended", "prettier", "plugin:svelte/recommended"],
+	"plugins": ["prettier"],
+	"overrides": [{ "files": ["*.svelte"], "parser": "svelte-eslint-parser" }],
 	"parserOptions": {
 		"sourceType": "module",
 		"ecmaVersion": "latest"
@@ -12,6 +12,7 @@
 		"es2017": true
 	},
 	"rules": {
-		"prettier/prettier": ["error"]
+		"prettier/prettier": ["error"],
+		"svelte/no-at-html-tags": "off"
 	}
 }

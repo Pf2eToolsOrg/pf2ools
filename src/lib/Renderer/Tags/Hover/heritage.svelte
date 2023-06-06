@@ -43,7 +43,7 @@
 <a
 	href={"ancestries#" + href}
 	class="unstyled"
-	on:mouseover={(e) => {
+	on:mouseover={() => {
 		hovered = true;
 	}}
 	on:mousemove={(e) => {

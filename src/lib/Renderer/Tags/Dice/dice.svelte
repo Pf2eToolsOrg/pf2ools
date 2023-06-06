@@ -6,7 +6,14 @@
 
 	const [dice, displayText] = splitTagByPipe(text);
 
-	function roll(dice, e) {
+	function roll(dice, event) {
+		if (event.shiftKey) {
+			// Advantage
+		} else if (event.ctrlKey) {
+			// Disadvantage
+		} else {
+			// Normal
+		}
 		new Roller().quickRoll(dice);
 	}
 </script>

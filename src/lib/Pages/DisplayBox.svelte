@@ -9,7 +9,6 @@
 	import toast from "$lib/Utils/Toasts.js";
 	import { localStorageStore } from "@skeletonlabs/skeleton";
 	import { browser } from "$app/environment";
-	import { onMount } from "svelte";
 	export let selected;
 	export let maxHeight;
 
@@ -77,6 +76,9 @@
 			class="btn btn-sm px-1 variant-ghost-surface rounded-b-none"
 			title="Show JSON Data"
 			on:click={(e) => {
+				if (e.shiftKey) {
+					// Do code here to make popup window
+				}
 				console.log(selected);
 				if (browser) window.selected = selected;
 				toast.success("Pasted to Console");

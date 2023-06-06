@@ -1,6 +1,5 @@
 <script>
 	import Storage from "Storage";
-	import { fly } from "svelte/transition";
 
 	const dataStorage = new Storage();
 	const { ancestries, heritages } = dataStorage;

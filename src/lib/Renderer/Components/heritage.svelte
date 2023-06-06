@@ -8,7 +8,7 @@
 	export let hideTraits = false;
 	export let inline = false;
 
-	function copy(text, event) {
+	function copy(text) {
 		navigator.clipboard.writeText(text);
 	}
 </script>
